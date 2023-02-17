@@ -1,0 +1,43 @@
+.searchModule {
+    width: 33%;
+    color: $white;
+    overflow: hidden;
+    background-color: transparent;
+    input {
+        padding: 15px;
+        outline: none;
+        border: none;
+        width: 100%;
+        font-size: 1rem;
+        border: none;
+        border-right: 1px solid $white;
+        background-color: transparent;
+        background: url('../assets/search.png') no-repeat center left;
+        background-size: 30px;
+        padding-left:60px;
+    }
+}
+  
+  .searchModule ul {
+    padding: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 100%;
+    margin-top: 1px;
+    border-radius: 3px;
+    max-height: 310px;
+    background-color: #ffffff;
+  }
+  
+  .searchModule ul li {
+    padding: 15px;
+    background: white;
+    border-bottom: 1px solid #c7c0c0;
+    margin-top: 0.5px;
+  }
+  
+  .searchModule li:hover {
+    color: rgb(241, 249, 249);
+    border-color: rgb(47, 110, 245);
+    background-color: rgb(47, 110, 245);
+  }

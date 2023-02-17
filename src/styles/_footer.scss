@@ -1,0 +1,27 @@
+footer{
+    background: $black;
+    padding: 2rem 3rem 1rem 16vw;
+    section{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        div{
+            display: flex;
+            flex-direction: column;
+            img{
+                max-width: 154px;
+                width: 25%;
+                margin-bottom: 1rem;
+            }
+        }
+
+        nav{
+            display: flex;
+            align-items: baseline;
+            justify-content: space-around;
+            a{
+                margin-left: 3rem;
+            }
+        }
+    }
+}
