@@ -1,0 +1,21 @@
+.logo {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  color: #c0d862;
+  transition: color 0.3s ease-in-out;
+
+  &__img {
+    width: rem(40);
+    height: rem(40);
+    box-sizing: content-box;
+    object-fit: cover;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: palevioletred;
+    }
+  }
+}

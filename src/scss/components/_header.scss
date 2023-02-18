@@ -1,0 +1,19 @@
+.header {
+  //  position: sticky;
+  //  top: 0;
+  z-index: 5;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include adaptiveValue("padding-top", 32, 10);
+    @include adaptiveValue("padding-bottom", 32, 10);
+  }
+
+  &__logo {
+    margin-right: rem(20);
+    font-weight: 700;
+  }
+}

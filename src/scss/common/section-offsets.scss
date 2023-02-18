@@ -1,0 +1,4 @@
+.section-offsets {
+  @include adaptiveValue("padding-top", 30, 15);
+  @include adaptiveValue("padding-bottom", 30, 15);
+}

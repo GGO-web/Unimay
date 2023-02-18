@@ -1,0 +1,64 @@
+$fontFamily: 'CenturyGothic';
+$fontSize: rem(14);
+$fontWeight: 400;
+$lineHeight: calc(20 / 14);
+
+// Min Page width
+$minWidth: 320;
+
+// Min mobile width
+$minMobile: 375;
+
+// Max design layout width
+$maxWidth: 1920;
+
+// Width of container
+$maxWidthContainer: 1290;
+
+// Container padding left + right
+$containerPadding: 30;
+
+// First breakpoint call width
+$containerWidth: $maxWidthContainer + $containerPadding;
+$containerFull: #{$containerWidth} + 'px';
+
+// breakpoints
+$pc: em($containerWidth);
+$tablet: em(993);
+$mobile: em(769);
+$mobileSmall: em(480);
+
+body {
+  .lock & {
+    overflow: hidden;
+    touch-action: none;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  main {
+    flex: 1 1 auto;
+  }
+}
+
+.container {
+  @if $maxWidthContainer>0 {
+    max-width: rem($maxWidthContainer);
+    margin: 0 auto;
+  }
+
+  @if $containerPadding>0 {
+    padding: 0 rem(math.div($containerPadding, 2));
+  }
+}
+
+.container-fluid {
+  overflow-x: hidden;
+  margin: 0 auto;
+  width: 100%;
+  max-width: rem($maxWidth);
+}

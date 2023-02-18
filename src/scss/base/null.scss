@@ -1,0 +1,138 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+  font-family: $fontFamily;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: $minWidth + px;
+  min-height: 100%;
+  font-family: $fontFamily, sans-serif;
+  font-weight: $fontWeight;
+  -webkit-font-smoothing: antialiased;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  color: var(--color-white);
+  background-color: var(--color-bg);
+}
+
+input,
+button,
+textarea {
+  font-family: $fontFamily;
+  font-size: inherit;
+}
+
+input {
+  vertical-align: middle;
+  font: inherit;
+  line-height: inherit;
+}
+
+input::placeholder {
+  color: inherit;
+  background-color: inherit;
+}
+
+img {
+  vertical-align: middle;
+  height: auto;
+  min-width: 0;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+a {
+  line-height: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+polyline,
+svg path {
+  fill: inherit;
+  stroke: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.is-hidden {
+  display: none !important; /* stylelint-disable-line declaration-no-important */
+}
+
+.btn-reset {
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.input-reset {
+  border: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+  overflow: hidden;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+}
+
+// codebase
+h2 {
+  font-family: 'CenturyGothic-bold';
+  font-weight: bold;
+  font-size: rem(42);
+  line-height: calc(52 / 42);
+  letter-spacing: 0;
+
+  margin: 80px 0 32px 0;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: rem(24);
+}
+
+.two-blocks {
+  display: flex;
+
+  .left-block {
+    width: 60%;
+  }
+
+  .right-block {
+    width: 40%;
+  }
+}

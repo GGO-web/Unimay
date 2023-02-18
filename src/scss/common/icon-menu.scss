@@ -1,0 +1,4 @@
+.icon-menu {
+   @include adaptiveValue("margin-left", 40, 20, $minMobile, $minWidth, 1);
+   @include burger(20px, 14px, #000);
+}

@@ -1,0 +1,22 @@
+@use 'sass:math'; // use math functions
+
+// basic variables, mixins & functions, fonts
+@import '_vars';
+@import 'base/mixins';
+@import 'fonts/fonts';
+
+// settings and basic reset styles
+@import '_settings';
+@import 'base/null';
+
+// adding layout features
+@import 'base';
+
+// common styles
+@import 'common';
+
+// components
+@import 'components';
+
+// screens layout blocks
+@import './screens/home/home';
