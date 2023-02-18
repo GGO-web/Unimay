@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import {Rating} from 'react-simple-star-rating';
 
 export const StarRating = () => {
-  const [rating, setRating] = useState(0); // initial rating value
+  const [rating, setRating] = useState(4); // initial rating value
 
   // Catch Rating value
-  const handleRating = (rate) => {
+  const handleRating = (rate: number) => {
     setRating(rate);
     // Some logic
   };
@@ -14,10 +14,10 @@ export const StarRating = () => {
     <div className="App">
       <Rating
         onClick={handleRating}
-        ratingValue={rating}
+        initialValue={rating}
         size={20}
-        label
         transition
+        readonly
         fillColor="orange"
         emptyColor="gray"
       />

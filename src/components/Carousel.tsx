@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import {StarRating} from './Rating';
+import {StarRating} from './Rating/Rating';
+import {carouselItems} from '../constants';
 
 // import './owl.css';
 
@@ -35,71 +36,22 @@ export class Carousel extends Component {
     return (
       <div>
         <OwlCarousel {...options} className="owl-theme" margin={8}>
-          <div className="item carousel__item">
-            <img src="../assets/films/titansAtac.png" />
+          {carouselItems.map((carouselItem) => (
+            <div key={carouselItem.id} className="item carousel__item">
+              <img src={carouselItem.image} />
 
-            <div className="overlay">
-              <p>4 сезони, 2013</p>
-              <StarRating />
-              <h3>Атака Титанів</h3>
-              <p>
-                Вже багато років людство веде боротьбу з титанами — величезними
-                істотами, які не мають особливого...
-              </p>
-            </div>
-          </div>
+              <div className="overlay">
+                <p>
+                  {carouselItem.seasons} сезони, {carouselItem.year}
+                </p>
 
-          <div className="item carousel__item">
-            <img src="public/img/films/joeJoe.png" />
-            <div className="overlay">
-              <p>5 сезонів, 2012</p>
-              <StarRating />
-              <h3>Неймовірні пригоди ДжоДжо</h3>
-              <p>
-                Вже багато років людство веде боротьбу з титанами — величезними
-                істотами, які не мають особливого...
-              </p>
-            </div>
-          </div>
+                <StarRating />
 
-          <div className="item carousel__item">
-            <img src="public/img/films/fullmetalAlchemist.png" />
-            <div className="overlay">
-              <p>4 сезони, 2013</p>
-              <StarRating />
-              <h3>Fullmetal Alchemist: Brotherhood</h3>
-              <p>
-                The boys spend the entirety of Fullmetal Alchemist Brotherhood
-                searching for a philosopher&apos;s stone in....
-              </p>
+                <h3>{carouselItem.title}</h3>
+                <p>{carouselItem.text}</p>
+              </div>
             </div>
-          </div>
-
-          <div className="item carousel__item">
-            <img src="public/img/films/titansAtac.png" />
-            <div className="overlay">
-              <p>4 сезони, 2013</p>
-              <StarRating />
-              <h3>Атака Титанів</h3>
-              <p>
-                Вже багато років людство веде боротьбу з титанами — величезними
-                істотами, які не мають особливого...
-              </p>
-            </div>
-          </div>
-
-          <div className="item carousel__item">
-            <img src="public/img/films/joeJoe.png" />
-            <div className="overlay">
-              <p>5 сезонів, 2012</p>
-              <StarRating />
-              <h3>Неймовірні пригоди ДжоДжо</h3>
-              <p>
-                Вже багато років людство веде боротьбу з титанами — величезними
-                істотами, які не мають особливого...
-              </p>
-            </div>
-          </div>
+          ))}
         </OwlCarousel>
       </div>
     );

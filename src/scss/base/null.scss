@@ -34,8 +34,9 @@ textarea {
 
 input {
   vertical-align: middle;
-  font: inherit;
   line-height: inherit;
+  font: inherit;
+  color: inherit;
 }
 
 input::placeholder {

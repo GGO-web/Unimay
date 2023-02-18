@@ -1,12 +1,12 @@
 import React from 'react';
 
-import {Sidenav} from '../../components/Sidenav';
-import {Footer} from '../../components/Footer';
-import {Topnav} from '../../components/Topnav';
-import {BlogBlock} from '../../components/BlogBlock';
+import {Sidenav} from '../../components/Navigation/Sidenav';
+import {Topnav} from '../../components/Navigation/Topnav';
 
+import {Footer} from '../../components/Footer';
+import {BlogBlock} from '../../components/BlogBlock';
 import Carousel from '../../components/Carousel';
-import {InstantSearch} from '../../components/InstantSearch.jsx';
+import {InstantSearch} from '../../components/Searchbar/InstantSearch.js';
 
 export function Home() {
   return (
