@@ -1,0 +1,19 @@
+.carousel__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+
+  @include adaptiveValue('max-width', 360, 280);
+  @include adaptiveValue('min-height', 500, 360);
+
+  &-bottom {
+    margin-top: auto;
+    background-color: rgba($black, 0.8);
+    padding: 20px;
+  }
+}
