@@ -39,6 +39,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-height: 100dvh;
 
   main {
     flex: 1 1 auto;
@@ -46,6 +47,8 @@ body {
 }
 
 .container {
+  flex: 1 1 auto;
+
   @if $maxWidthContainer>0 {
     max-width: rem($maxWidthContainer);
     margin: 0 auto;

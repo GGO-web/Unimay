@@ -14,7 +14,14 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "require-jsdoc": "off"
+    "require-jsdoc": "off",
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ]
   },
   "settings": {
     "react": {

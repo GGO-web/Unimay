@@ -1,19 +1,12 @@
 .button-style {
   display: inline-block;
-  border: 1px solid var(--color-black);
-  padding: 16px 36px;
-  width: 100%;
+  padding: rem(17) rem(56);
+  border-radius: var(--border-radius);
   font-weight: 500;
-  line-height: 1.15;
+  line-height: percent(26, 20);
   text-align: center;
-  text-transform: uppercase;
   color: var(--color-white);
-  background-color: var(--color-black);
+  background-color: var(--color-red);
 
-  @include adaptiveValue("font-size", 24, 20);
-
-  &_stroke {
-    color: inherit;
-    background-color: var(--color-white);
-  }
+  @include adaptiveValue('font-size', 20, 16);
 }

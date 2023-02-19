@@ -1,20 +1,17 @@
 import React from 'react';
 
-import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 
 import {Home} from './pages/Home/Home';
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home></Home>,
-  },
-]);
+import {NotFound} from './pages/NotFound/NotFound';
 
 export const App = () => {
   return (
     <div className="wrapper">
-      <RouterProvider router={router} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 };
