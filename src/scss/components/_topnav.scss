@@ -1,11 +1,14 @@
 .topnav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   background-color: var(--color-dark);
 
   &__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }

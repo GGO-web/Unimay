@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 
 export const Topnav = () => {
   return (
-    <header className="topnav flex-1">
+    <header className="topnav">
       <div className="topnav__container container">
-        <nav>
+        <nav className="menu">
           <ul className="list-reset list">
             <li className="list__item">
               <Link to="/">Фільми</Link>
@@ -26,10 +26,12 @@ export const Topnav = () => {
         </nav>
 
         <div className="button-group" style={{display: 'flex', gap: '30px'}}>
-          <button className="button-style">Вхід</button>
-          <button className="button-style button-style_stroke">
+          <Link to="/login" className="button-style">
+            Вхід
+          </Link>
+          <Link to="/registration" className="button-style button-style_stroke">
             Реєстрація
-          </button>
+          </Link>
         </div>
       </div>
     </header>
