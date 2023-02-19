@@ -1,19 +1,17 @@
 import React from 'react';
 
-import {Sidenav} from '../../components/Navigation/Sidenav';
-import {Topnav} from '../../components/Navigation/Topnav';
-
 import {Footer} from '../../components/Footer';
 import {BlogBlock} from '../../components/BlogBlock';
-import Carousel from '../../components/Carousel/Carousel';
+import {Carousel} from '../../components/Carousel/Carousel';
 import {InstantSearch} from '../../components/Searchbar/InstantSearch.js';
+
+import {Navigation} from '../../components/Navigation/Navigation';
 
 export function Home() {
   return (
-    <div className="home flex">
-      <div className="home__inner">
-        <Topnav />
-        <Sidenav />
+    <section className="home flex">
+      <div className="home__container">
+        <Navigation />
 
         <main>
           <section id="main-screen">
@@ -49,6 +47,6 @@ export function Home() {
 
         <Footer />
       </div>
-    </div>
+    </section>
   );
 }
