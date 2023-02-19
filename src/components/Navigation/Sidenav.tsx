@@ -5,29 +5,30 @@ import logo from '/assets/logo-mini.png';
 import about from '/assets/about.png';
 import search from '/assets/search.png';
 
+import {Link} from 'react-router-dom';
+
 const mainNavItems = [
   {url: '/', icon: logo, label: 'Home'},
-  {url: '/projects', icon: menu, label: 'Menu'},
-  {url: '/me', icon: about, label: 'About'},
+  {url: '/menu', icon: menu, label: 'Menu'},
+  {url: '/profile', icon: about, label: 'Profile'},
   {url: '/blog', icon: search, label: 'Search'},
 ];
 
 export const Sidenav = () => {
   return (
-    <div className="sidenav">
-      <nav>
+    <aside className="sidenav">
+      <div className="sidenav__container">
         {mainNavItems.map((link) => (
-          <a
-            href={link.url}
+          <Link
+            className="sidenav__link"
+            to={link.url}
             title={link.label}
-            target="_self"
-            rel="noopener noreferrer"
             key={link.url}
           >
             <img src={link.icon} alt={link.label} />
-          </a>
+          </Link>
         ))}
-      </nav>
-    </div>
+      </div>
+    </aside>
   );
 };

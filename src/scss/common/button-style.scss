@@ -1,12 +1,33 @@
 .button-style {
   display: inline-block;
-  padding: rem(17) rem(56);
+  padding: rem(10) rem(40);
   border-radius: var(--border-radius);
-  font-weight: 500;
-  line-height: percent(26, 20);
+  font-weight: 700;
   text-align: center;
   color: var(--color-white);
   background-color: var(--color-red);
+  min-width: 190px;
+  transition: border-radius 0.2s ease-in-out, color 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
 
-  @include adaptiveValue('font-size', 20, 16);
+  @include adaptiveValue('font-size', 16, 14);
+
+  @media (any-hover: hover) {
+    &:hover {
+      border-radius: 30px;
+    }
+  }
+
+  &_stroke {
+    background-color: transparent;
+    border: 1px solid var(--color-red);
+    color: var(--color-red);
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: var(--color-red);
+        color: var(--color-white);
+      }
+    }
+  }
 }
