@@ -2,6 +2,7 @@ $fontFamily: 'CenturyGothic';
 $fontSize: rem(14);
 $fontWeight: 400;
 $lineHeight: calc(20 / 14);
+$sidebarWidth: 100px;
 
 // Min Page width
 $minWidth: 320;
@@ -64,4 +65,9 @@ body {
   margin: 0 auto;
   width: 100%;
   max-width: rem($maxWidth);
+}
+
+.page-section__container {
+  max-width: calc(100vw - $sidebarWidth);
+  flex: 1 1 auto;
 }

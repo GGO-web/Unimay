@@ -14,28 +14,31 @@ export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__container container">
-        <section>
-          <div>
-            <img src="../img/logo.png" alt="logo" />
-            <span>
-              UNIMAY Media, Студія озвучування аніме, 2023 (с) Всі права
-              захищені.
-            </span>
-          </div>
-          <nav>
-            {madeWithLinks.map((link) => (
+        <div className="footer__company">
+          <a href="#" className="footer__logo">
+            <img src="/img/logo.png" alt="logo" />
+          </a>
+
+          <p className="footer__copy">
+            UNIMAY Media, Студія озвучування аніме, 2023 (с) Всі права захищені.
+          </p>
+        </div>
+
+        <ul className="footer__links list-reset">
+          {madeWithLinks.map((link) => (
+            <li className="footer__links-item" key={link.url}>
               <a
+                className="footer__link"
                 href={link.url}
                 title={link.label}
                 target="_blank"
-                rel="noopener noreferrer"
-                key={link.url}
+                rel="noreferrer"
               >
                 <img src={link.icon} alt={link.label} />
               </a>
-            ))}
-          </nav>
-        </section>
+            </li>
+          ))}
+        </ul>
       </div>
     </footer>
   );

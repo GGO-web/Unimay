@@ -111,31 +111,3 @@ button {
   width: 1px;
   height: 1px;
 }
-
-// codebase
-h2 {
-  font-family: 'CenturyGothic-bold';
-  font-weight: bold;
-  font-size: rem(42);
-  line-height: calc(52 / 42);
-  letter-spacing: 0;
-
-  margin: 80px 0 32px 0;
-}
-
-h3 {
-  font-weight: bold;
-  font-size: rem(24);
-}
-
-.two-blocks {
-  display: flex;
-
-  .left-block {
-    width: 60%;
-  }
-
-  .right-block {
-    width: 40%;
-  }
-}

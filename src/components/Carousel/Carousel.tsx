@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {Swiper, SwiperSlide} from 'swiper/react';
-import {Navigation, Pagination} from 'swiper';
 
 import {Link} from 'react-router-dom';
 
@@ -12,7 +11,7 @@ import {carouselItems} from '../../constants';
 export const Carousel = () => {
   return (
     <Swiper
-      modules={[Navigation, Pagination]}
+      className="carousel"
       spaceBetween={30}
       grabCursor
       slidesPerView="auto"

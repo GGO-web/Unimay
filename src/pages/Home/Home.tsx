@@ -13,39 +13,45 @@ export function Home() {
     <section className="home page-section">
       <Sidenav />
 
-      <div className="home__container flex">
+      <div className="home__container page-section__container">
         <Topnav />
 
-        <main>
-          <section id="main-screen">
-            <div className="search-block">
-              <InstantSearch />
-            </div>
-          </section>
-
-          <div className="container">
-            <h2>Новинки</h2>
-            <Carousel />
+        <section id="main-screen">
+          <div className="search-block">
+            <InstantSearch />
           </div>
+        </section>
 
+        <main className="main">
           <div className="container">
-            <h2>Новинки</h2>
-            <Carousel />
+            <section className="novelty">
+              <div className="novelty__container">
+                <h2 className="heading">Новинки</h2>
+                <Carousel />
+              </div>
+            </section>
+
+            <section className="novelty">
+              <div className="novelty__container">
+                <h2 className="heading">Новинки</h2>
+                <Carousel />
+              </div>
+            </section>
+
+            <div className="container two-blocks">
+              <div className="left-block">
+                <h2 className="heading">Блог</h2>
+                <BlogBlock />
+                <BlogBlock />
+                <BlogBlock />
+              </div>
+
+              <div className="right-block">
+                <h2 className="heading">Топ тижня</h2>
+                <h2 className="heading">Рекомендації</h2>
+              </div>
+            </div>
           </div>
-
-          {/* <div className="container two-blocks">
-            <div className="left-block">
-              <h2>Блог</h2>
-              <BlogBlock />
-              <BlogBlock />
-              <BlogBlock />
-            </div>
-
-            <div className="right-block">
-              <h2>Топ тижня</h2>
-              <h2>Рекомендації</h2>
-            </div>
-          </div> */}
         </main>
 
         <Footer />

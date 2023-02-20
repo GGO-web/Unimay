@@ -1,6 +1,28 @@
-footer {
+.footer {
   background: $black;
   padding: 30px 0;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__logo {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  &__copy {
+    margin: 0;
+  }
 
   section {
     display: flex;
@@ -10,6 +32,7 @@ footer {
     div {
       display: flex;
       flex-direction: column;
+
       img {
         max-width: 154px;
         width: 25%;
@@ -21,6 +44,7 @@ footer {
       display: flex;
       align-items: baseline;
       justify-content: space-around;
+
       a {
         margin-left: 3rem;
       }
