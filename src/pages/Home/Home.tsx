@@ -3,10 +3,10 @@ import React from 'react';
 import {Footer} from '../../components/Footer';
 import {BlogBlock} from '../../components/BlogBlock';
 import {Carousel} from '../../components/Carousel/Carousel';
-import {InstantSearch} from '../../components/Searchbar/InstantSearch.js';
 
 import {Topnav} from '../../components/Navigation/Topnav';
 import {Sidenav} from '../../components/Navigation/Sidenav';
+import {Hero} from '../../components/Hero/Hero';
 
 export function Home() {
   return (
@@ -16,12 +16,9 @@ export function Home() {
       <div className="home__container page-section__container">
         <Topnav />
 
+        <Hero />
+
         <main className="main">
-          <section id="main-screen">
-            <div className="search-block">
-              <InstantSearch />
-            </div>
-          </section>
           <section className="novelty">
             <div className="novelty__container container">
               <h2 className="heading">Новинки</h2>
