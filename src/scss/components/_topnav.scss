@@ -12,3 +12,26 @@
     padding-bottom: 20px;
   }
 }
+
+.menu {
+  margin-right: 30px;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 neg(rem(15));
+
+    &-item {
+      font-weight: 700;
+
+      @include adaptiveValue('font-size', 18, 14);
+      @include underline;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding: rem(15);
+  }
+}

@@ -6,21 +6,31 @@ export const Topnav = () => {
     <header className="topnav">
       <div className="topnav__container container">
         <nav className="menu">
-          <ul className="list-reset list">
-            <li className="list__item">
-              <Link to="/">Фільми</Link>
+          <ul className="menu__list list-reset">
+            <li className="menu__list-item">
+              <Link to="/" className="menu__link">
+                Фільми
+              </Link>
             </li>
-            <li className="list__item">
-              <Link to="/">Серіали</Link>
+            <li className="menu__list-item">
+              <Link to="/" className="menu__link">
+                Серіали
+              </Link>
             </li>
-            <li className="list__item">
-              <Link to="/">Мульти</Link>
+            <li className="menu__list-item">
+              <Link to="/" className="menu__link">
+                Мульти
+              </Link>
             </li>
-            <li className="list__item">
-              <Link to="/">Форум</Link>
+            <li className="menu__list-item">
+              <Link to="/" className="menu__link">
+                Форум
+              </Link>
             </li>
-            <li className="list__item">
-              <Link to="/">Топ 100</Link>
+            <li className="menu__list-item">
+              <Link to="/" className="menu__link">
+                Топ 100
+              </Link>
             </li>
           </ul>
         </nav>
