@@ -1,18 +1,29 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export const BlogBlock = () => {
   return (
-    <article className="blog-block">
-      <img src="/img/films/blog-foto.png" />
-      <div className="blog-block__info">
-        <span>09.12.2022</span>
-        <h3>Король Шаманів зроблять по-новому!</h3>
-        <p>
+    <article className="blog-preview">
+      <img className="blog-preview__image" src="/img/films/blog-foto.png" />
+
+      <div className="blog-preview__info">
+        <time className="blog-preview__date paragraph3" dateTime="09.12.2022">
+          09.12.2022
+        </time>
+
+        <h3 className="blog-preview__title heading3">
+          Короля Шаманів зроблять по-новому!
+        </h3>
+
+        <p className="blog-preview__text paragraph2">
           Зроблять вони це вже дуже скоро — старт нового серіалу буде у квітні
           цього року.Історія розповідає про людей, що бачать духів і можуть
           брати від них силу. Опис мабуть такий собі, але сюжет непростий...
         </p>
-        <a>Читати далі...</a>
+
+        <Link className="blog-preview__more" to="blog/1">
+          Читати далі...
+        </Link>
       </div>
     </article>
   );

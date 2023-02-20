@@ -5,8 +5,8 @@ import {BlogBlock} from '../../components/BlogBlock';
 import {Carousel} from '../../components/Carousel/Carousel';
 import {InstantSearch} from '../../components/Searchbar/InstantSearch.js';
 
-import {Sidenav} from '../../components/Navigation/Sidenav';
 import {Topnav} from '../../components/Navigation/Topnav';
+import {Sidenav} from '../../components/Navigation/Sidenav';
 
 export function Home() {
   return (
@@ -16,31 +16,30 @@ export function Home() {
       <div className="home__container page-section__container">
         <Topnav />
 
-        <section id="main-screen">
-          <div className="search-block">
-            <InstantSearch />
-          </div>
-        </section>
-
         <main className="main">
+          <section id="main-screen">
+            <div className="search-block">
+              <InstantSearch />
+            </div>
+          </section>
+          <section className="novelty">
+            <div className="novelty__container container">
+              <h2 className="heading">Новинки</h2>
+              <Carousel />
+            </div>
+          </section>
+          <section className="novelty">
+            <div className="novelty__container container">
+              <h2 className="heading">Новинки</h2>
+              <Carousel />
+            </div>
+          </section>
+
           <div className="container">
-            <section className="novelty">
-              <div className="novelty__container">
-                <h2 className="heading">Новинки</h2>
-                <Carousel />
-              </div>
-            </section>
-
-            <section className="novelty">
-              <div className="novelty__container">
-                <h2 className="heading">Новинки</h2>
-                <Carousel />
-              </div>
-            </section>
-
-            <div className="container two-blocks">
+            <div className="two-blocks">
               <div className="left-block">
                 <h2 className="heading">Блог</h2>
+
                 <BlogBlock />
                 <BlogBlock />
                 <BlogBlock />

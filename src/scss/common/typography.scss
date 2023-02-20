@@ -15,6 +15,12 @@
   @include adaptiveValue('font-size', 24, 18);
 }
 
+.paragraph2 {
+  margin: 0;
+
+  @include adaptiveValue('font-size', 16, 14);
+}
+
 .paragraph3 {
   margin: 0;
 
