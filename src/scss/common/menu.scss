@@ -2,19 +2,25 @@
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
+  width: 100%;
 
   &__item {
-    @include adaptiveValue("margin-right", 65, 30, $containerWidth, 992);
+    font-weight: 700;
 
-    &:last-child {
-      margin-right: 0;
-    }
+    @include adaptiveValue('font-size', 18, 14);
+    @include underline;
   }
 
   &__link {
-    text-transform: uppercase;
+    display: inline-block;
+    padding: rem(15);
 
     @include underline;
+  }
+
+  &__list {
+    margin-right: rem(30);
+    margin: 0 neg(rem(15));
   }
 
   &__list,
@@ -23,36 +29,45 @@
     align-items: center;
   }
 
+  &__body {
+    width: 100%;
+    justify-content: space-between;
+  }
+
   @media (max-width: $tablet) {
     &__body {
       position: absolute;
       left: 0;
       right: 0;
-      top: var(--header-height);
+      top: 100%;
+      padding: rem(30) 0;
       z-index: -1;
       display: flex;
-      align-items: flex-start;
-      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      justify-content: flex-start;
       overflow: auto;
-      height: calc(101 * var(--vh) - var(--header-height));
-      max-height: 440px;
-      background-color: #f6f6f6;
-      transform: translateX(-100%);
+      height: calc(100vh - 100px);
+      height: calc(100dvh - 100px);
+      background-color: var(--color-gray);
+      transform: translateY(-200%);
 
-      // transition: transform 0.3s var(--transition-menu);
+      transition: transform 0.3s ease-in-out;
       will-change: transform;
+
+      // @include adaptiveValue('--value', 100, 30, 992, $minMobile);
     }
 
     &__list {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: rem(30) 0 rem(30);
+      padding: rem(40) 0 rem(40);
     }
 
     &__item {
       margin-right: 0;
-      margin-bottom: rem(40);
+      margin-bottom: rem(20);
 
       &:last-child {
         margin-bottom: 0;
@@ -60,7 +75,7 @@
     }
 
     .menu-open &__body {
-      transform: translateX(0);
+      transform: translateY(0);
     }
   }
 }
