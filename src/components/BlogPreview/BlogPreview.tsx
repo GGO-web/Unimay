@@ -1,7 +1,8 @@
 import React from 'react';
+
 import {Link} from 'react-router-dom';
 
-export const BlogBlock = () => {
+export const BlogPreview = () => {
   return (
     <article className="blog-preview">
       <img className="blog-preview__image" src="/img/films/blog-foto.png" />

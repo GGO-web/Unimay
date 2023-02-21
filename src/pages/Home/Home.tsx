@@ -1,10 +1,10 @@
 import React from 'react';
 
 import {Footer} from '../../components/Footer';
-import {BlogBlock} from '../../components/BlogBlock';
+import {BlogPreview} from '../../components/BlogPreview/BlogPreview';
 import {Carousel} from '../../components/Carousel/Carousel';
 
-import {Topnav} from '../../components/Navigation/Topnav';
+import {Header} from '../../components/Header';
 import {Sidenav} from '../../components/Navigation/Sidenav';
 import {Hero} from '../../components/Hero/Hero';
 
@@ -14,7 +14,7 @@ export function Home() {
       <Sidenav />
 
       <div className="home__container page-section__container">
-        <Topnav />
+        <Header />
 
         <Hero />
 
@@ -37,9 +37,9 @@ export function Home() {
               <div className="left-block">
                 <h2 className="heading">Блог</h2>
 
-                <BlogBlock />
-                <BlogBlock />
-                <BlogBlock />
+                <BlogPreview />
+                <BlogPreview />
+                <BlogPreview />
               </div>
 
               <div className="right-block">

@@ -1,10 +1,11 @@
 import React from 'react';
+
 import {Link} from 'react-router-dom';
 
-export const Topnav = () => {
+export const Header = () => {
   return (
-    <header className="topnav">
-      <div className="topnav__container container">
+    <header className="header">
+      <div className="header__container container">
         <nav className="menu">
           <ul className="menu__list list-reset">
             <li className="menu__list-item">
