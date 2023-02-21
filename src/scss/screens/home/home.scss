@@ -3,3 +3,17 @@
 @import './components/hero';
 @import './components/_blogPreview';
 @import './components/_search';
+
+.home__container {
+  position: relative;
+}
+
+.button-group {
+  display: flex;
+
+  @include adaptiveValue('gap', 30, 10);
+
+  @media (max-width: $mobile) {
+    flex-wrap: wrap;
+  }
+}
