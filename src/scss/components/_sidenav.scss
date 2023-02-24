@@ -1,7 +1,7 @@
 .sidenav {
   min-height: 100vh;
   min-height: 100dvh;
-  max-width: 100px;
+  max-width: var(--sidebar-width);
   background: var(--color-gray);
   padding: 20px;
   position: sticky;
