@@ -11,14 +11,14 @@ import {Hero} from '../../components/Hero/Hero';
 export function Home() {
   return (
     <section className="home page-section">
-      <Sidenav />
-
       <div className="home__container page-section__container">
         <Header />
 
-        <Hero />
+        <Sidenav />
 
         <main className="main">
+          <Hero />
+
           <section className="novelty">
             <div className="novelty__container container">
               <h2 className="heading">Новинки</h2>

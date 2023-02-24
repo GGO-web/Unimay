@@ -16,7 +16,7 @@ export const Header = () => {
   }
 
   return (
-    <header className="header">
+    <header className="header grid-span">
       <div className="header__container container">
         <div className="menu">
           <button

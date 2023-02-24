@@ -62,3 +62,8 @@ body {
   width: 100%;
   max-width: rem($maxWidth);
 }
+
+.main {
+  overflow: hidden;
+  grid-column: 2 / -1;
+}

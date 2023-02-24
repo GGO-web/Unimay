@@ -12,7 +12,7 @@ const madeWithLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer grid-span">
       <div className="footer__container container">
         <div className="footer__company">
           <a href="#" className="footer__logo">

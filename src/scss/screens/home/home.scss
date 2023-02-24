@@ -6,6 +6,8 @@
 
 .home__container {
   position: relative;
+  display: grid;
+  grid-template-columns: 100px auto;
 }
 
 .button-group {
