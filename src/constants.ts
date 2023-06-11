@@ -1,6 +1,11 @@
 /* eslint-disable max-len */
 
 import {ICarouselItem} from './types/constants';
+import logo from '*.png';
+import menu from '*.png';
+import about from '*.png';
+import search from '*.png';
+import {getIconUrl} from './helpers/getIconUrl';
 
 export const carouselItems: ICarouselItem[] = [
   {
@@ -51,4 +56,10 @@ export const carouselItems: ICarouselItem[] = [
     seasons: 4,
     year: 2013,
   },
+];
+
+export const socialLinks = [
+  {url: 'https://www.gatsbyjs.org/', icon: 'socials/facebook', label: 'Facebook'},
+  {url: 'https://github.com/taniarascia', icon: 'socials/instagram', label: 'Instagram'},
+  {url: 'https://www.netlify.com', icon: 'socials/tik-tok', label: 'Tictok'},
 ];

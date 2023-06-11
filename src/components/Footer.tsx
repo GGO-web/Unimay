@@ -1,14 +1,8 @@
 import React from 'react';
 
-import fb from '/assets/fb.png';
-import insta from '/assets/insta.png';
-import tictok from '/assets/tictok.png';
-
-const madeWithLinks = [
-  {url: 'https://www.gatsbyjs.org/', icon: fb, label: 'Facebook'},
-  {url: 'https://github.com/taniarascia', icon: insta, label: 'Instagram'},
-  {url: 'https://www.netlify.com', icon: tictok, label: 'Tictok'},
-];
+import {getIconUrl} from '../helpers/getIconUrl';
+import {socialLinks} from '../constants';
+import {Icon} from '@components/Icon/Icon';
 
 export const Footer = () => {
   return (
@@ -16,7 +10,7 @@ export const Footer = () => {
       <div className="footer__container container">
         <div className="footer__company">
           <a href="#" className="footer__logo">
-            <img src="/img/logo.png" alt="logo" />
+            <img src={getIconUrl('logo-large.svg')} alt="logo" />
           </a>
 
           <p className="footer__copy">
@@ -25,7 +19,7 @@ export const Footer = () => {
         </div>
 
         <ul className="footer__links list-reset">
-          {madeWithLinks.map((link) => (
+          {socialLinks.map((link) => (
             <li className="footer__links-item" key={link.url}>
               <a
                 className="footer__link"
@@ -34,7 +28,7 @@ export const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={link.icon} alt={link.label} />
+                <Icon iconName={link.icon} />
               </a>
             </li>
           ))}

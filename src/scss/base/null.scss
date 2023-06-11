@@ -3,6 +3,7 @@
 *::after {
   box-sizing: inherit;
   font-family: inherit;
+  color: inherit;
 }
 
 html {
@@ -58,12 +59,6 @@ a {
   line-height: inherit;
   text-decoration: none;
   color: inherit;
-}
-
-polyline,
-svg path {
-  fill: inherit;
-  stroke: inherit;
 }
 
 h1,
