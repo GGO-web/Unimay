@@ -7,6 +7,7 @@ import { Carousel } from '@components/Carousel/Carousel';
 import { Header } from '@components/Header';
 import { Sidenav } from '@components/Navigation/Sidenav';
 import { Hero } from '@components/Hero/Hero';
+import { Heading } from '@components/Heading/Heading';
 
 export function Home() {
   return (
@@ -21,14 +22,16 @@ export function Home() {
 
           <section className="novelty">
             <div className="novelty__container container">
-              <h2 className="heading">Новинки</h2>
+              <Heading>Новинки</Heading>
+
               <Carousel />
             </div>
           </section>
 
           <section className="novelty">
             <div className="novelty__container container">
-              <h2 className="heading">Новинки</h2>
+              <Heading>Новинки</Heading>
+
               <Carousel />
             </div>
           </section>
@@ -36,7 +39,7 @@ export function Home() {
           <div className="container">
             <div className="two-blocks">
               <div className="left-block">
-                <h2 className="heading">Блог</h2>
+                <Heading>Блог</Heading>
 
                 <BlogPreview />
                 <BlogPreview />
@@ -44,8 +47,8 @@ export function Home() {
               </div>
 
               <div className="right-block">
-                <h2 className="heading">Топ тижня</h2>
-                <h2 className="heading">Рекомендації</h2>
+                <Heading>Топ тижня</Heading>
+                <Heading>Рекомендації</Heading>
               </div>
             </div>
           </div>

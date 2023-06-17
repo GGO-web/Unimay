@@ -1,6 +1,6 @@
-import React, {useRef} from 'react';
+import React, { useRef } from 'react';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   const iconMenu = useRef<HTMLButtonElement>(null);
@@ -63,6 +63,7 @@ export const Header = () => {
               <Link to="/login" className="button-style">
                 Вхід
               </Link>
+
               <Link
                 to="/registration"
                 className="button-style button-style_stroke"

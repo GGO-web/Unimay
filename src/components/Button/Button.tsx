@@ -1,5 +1,9 @@
-import React, {HTMLAttributes, StyleHTMLAttributes, SVGAttributes} from 'react';
-import {Icon} from '@components/Icon/Icon';
+import React, {
+  HTMLAttributes,
+  StyleHTMLAttributes,
+  SVGAttributes
+} from 'react';
+import { Icon } from '@components/Icon/Icon';
 import cn from 'classnames';
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
@@ -13,7 +17,7 @@ export const Button = ({
   className,
   iconProps,
   ...props
-} : ButtonProps) => {
+}: ButtonProps) => {
   return (
     <button className={cn('button btn-reset', className)} {...props}>
       {iconName && <Icon iconName={iconName} {...iconProps} />}

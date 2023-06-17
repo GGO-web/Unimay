@@ -6,8 +6,8 @@ export const StarRating = () => {
   const [rating, setRating] = useState(4); // initial rating value
 
   return (
-    <div className="App">
-      <FlexGroup>
+    <FlexGroup centerY>
+      <FlexGroup gap={0}>
         {new Array(rating).fill(
           <Icon
             style={{
@@ -18,7 +18,9 @@ export const StarRating = () => {
         )}
       </FlexGroup>
 
-      {rating}
-    </div>
+      <ul>
+        <li>345 голосів</li>
+      </ul>
+    </FlexGroup>
   );
 };

@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { StarRating } from '../Rating/Rating';
 
 import { carouselItems, ROUTES } from '../../constants';
+import { Paragraph } from '@components/Paragraph/Paragraph';
+import { Heading } from '@components/Heading/Heading';
 
 export const Carousel = () => {
   return (
@@ -25,21 +27,21 @@ export const Carousel = () => {
             }}
           >
             <div className="carousel__item-bottom">
-              <p className="carousel__item-seasons paragraph3">
+              <Paragraph className="carousel__item-seasons mb-1.5">
                 {carouselItem.seasons} сезони, {carouselItem.year}
-              </p>
+              </Paragraph>
 
               <Link to={ROUTES.VIEW_TITLE_BY_ID(carouselItem.id)}>
-                <h3 className="carousel__item-title heading3">
+                <Heading level={3} className="carousel__item-title mb-2">
                   {carouselItem.title}
-                </h3>
+                </Heading>
               </Link>
 
               <StarRating />
 
-              <p className="carousel__item-text paragraph3">
+              <Paragraph className="carousel__item-text mt-3">
                 {carouselItem.text}
-              </p>
+              </Paragraph>
             </div>
           </article>
         </SwiperSlide>

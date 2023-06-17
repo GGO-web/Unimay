@@ -1,6 +1,8 @@
 import React from 'react';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Heading } from '@components/Heading/Heading';
+import { Paragraph } from '@components/Paragraph/Paragraph';
 
 export const BlogPreview = () => {
   return (
@@ -12,15 +14,15 @@ export const BlogPreview = () => {
           09.12.2022
         </time>
 
-        <h3 className="blog-preview__title heading3">
+        <Heading level={3} className="blog-preview__title heading3">
           Короля Шаманів зроблять по-новому!
-        </h3>
+        </Heading>
 
-        <p className="blog-preview__text paragraph2">
+        <Paragraph className="blog-preview__text paragraph2">
           Зроблять вони це вже дуже скоро — старт нового серіалу буде у квітні
           цього року.Історія розповідає про людей, що бачать духів і можуть
           брати від них силу. Опис мабуть такий собі, але сюжет непростий...
-        </p>
+        </Paragraph>
 
         <Link className="blog-preview__more" to="blog/1">
           Читати далі...

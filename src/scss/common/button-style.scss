@@ -8,6 +8,7 @@
   color: var(--color-white);
   background-color: var(--color-red);
   min-width: 190px;
+  max-width: 300px;
   transition: border-radius 0.2s ease-in-out, color 0.2s ease-in-out,
     background-color 0.2s ease-in-out;
 

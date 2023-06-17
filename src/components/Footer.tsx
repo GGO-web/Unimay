@@ -1,8 +1,9 @@
 import React from 'react';
 
-import {getIconUrl} from '../helpers/getIconUrl';
-import {socialLinks} from '../constants';
-import {Icon} from '@components/Icon/Icon';
+import { getIconUrl } from '../helpers/getIconUrl';
+import { socialLinks } from '../constants';
+import { Icon } from '@components/Icon/Icon';
+import { Paragraph } from '@components/Paragraph/Paragraph';
 
 export const Footer = () => {
   return (
@@ -13,9 +14,9 @@ export const Footer = () => {
             <img src={getIconUrl('logo-large.svg')} alt="logo" />
           </a>
 
-          <p className="footer__copy">
+          <Paragraph className="footer__copy">
             UNIMAY Media, Студія озвучування аніме, 2023 (с) Всі права захищені.
-          </p>
+          </Paragraph>
         </div>
 
         <ul className="footer__links list-reset">

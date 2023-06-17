@@ -2,8 +2,6 @@
   position: relative;
   height: 100vh;
   height: 100dvh;
-  // margin-left: -$sidebarWidth;
-  // padding-left: $sidebarWidth;
 
   margin-bottom: 85px;
 
@@ -15,22 +13,6 @@
 
   &__content {
     max-width: 630px;
-  }
-
-  &__title {
-    margin: 0;
-
-    span {
-      @include highlight($red, 100%);
-    }
-  }
-
-  &__text {
-    font-weight: 700;
-
-    span {
-      @include highlight($black, 100%, false);
-    }
   }
 }
 
