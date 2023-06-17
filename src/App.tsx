@@ -1,18 +1,20 @@
 import React from 'react';
 
-import {Route, Routes} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
-import {Home} from './pages/Home/Home';
-import {NotFound} from './pages/NotFound/NotFound';
-import {Anime} from './pages/Anime/Anime';
+import { Home } from '@pages/Home/Home';
+import { NotFound } from '@pages/NotFound/NotFound';
+import { Title } from '@pages/Title/Title';
+
+import { ROUTES } from './constants';
 
 export const App = () => {
   return (
     <div className="wrapper">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/anime/:id" element={<Anime />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path={ROUTES.HOME} element={<Home />} />
+        <Route path={ROUTES.TITLE} element={<Title />} />
+        <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
       </Routes>
     </div>
   );

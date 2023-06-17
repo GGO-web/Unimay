@@ -1,12 +1,12 @@
 import React from 'react';
 
-import {Footer} from '../../components/Footer';
-import {BlogPreview} from '../../components/BlogPreview/BlogPreview';
-import {Carousel} from '../../components/Carousel/Carousel';
+import { Footer } from '@components/Footer';
+import { BlogPreview } from '@components/BlogPreview/BlogPreview';
+import { Carousel } from '@components/Carousel/Carousel';
 
-import {Header} from '../../components/Header';
-import {Sidenav} from '../../components/Navigation/Sidenav';
-import {Hero} from '../../components/Hero/Hero';
+import { Header } from '@components/Header';
+import { Sidenav } from '@components/Navigation/Sidenav';
+import { Hero } from '@components/Hero/Hero';
 
 export function Home() {
   return (
@@ -25,6 +25,7 @@ export function Home() {
               <Carousel />
             </div>
           </section>
+
           <section className="novelty">
             <div className="novelty__container container">
               <h2 className="heading">Новинки</h2>

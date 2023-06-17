@@ -1,27 +1,23 @@
-import React, {useState} from 'react';
-import {Rating} from 'react-simple-star-rating';
+import React, { useState } from 'react';
+import { Icon } from '@components/Icon/Icon';
+import { FlexGroup } from '@components/FlexGroup/FlexGroup';
 
 export const StarRating = () => {
   const [rating, setRating] = useState(4); // initial rating value
 
-  // Catch Rating value
-  const handleRating = (rate: number) => {
-    setRating(rate);
-    // Some logic
-  };
-
   return (
     <div className="App">
-      <Rating
-        onClick={handleRating}
-        initialValue={rating}
-        size={20}
-        transition
-        readonly
-        fillColor="orange"
-        emptyColor="gray"
-      />
-      {/* Use rating value */}
+      <FlexGroup>
+        {new Array(rating).fill(
+          <Icon
+            style={{
+              color: 'var(--color-yellow)'
+            }}
+            iconName={'star'}
+          />
+        )}
+      </FlexGroup>
+
       {rating}
     </div>
   );
