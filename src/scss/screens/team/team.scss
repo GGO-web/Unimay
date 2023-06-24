@@ -1,0 +1,22 @@
+.team {
+  &__text {
+    margin-top: 52px;
+  }
+
+  &__persons {
+    margin: 93px 0px 84px 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    row-gap: 84px;
+    column-gap: 20px;
+
+    @media (max-width: 1390px) {
+      justify-content: center;
+    }
+    @media (max-width: 500px) {
+      row-gap: 20px;
+    }
+  }
+}
