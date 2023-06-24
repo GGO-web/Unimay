@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { Home } from '@pages/Home/Home';
+import { Team } from '@pages/Home/Team';
 import { NotFound } from '@pages/NotFound/NotFound';
 import { Title } from '@pages/Title/Title';
 
@@ -13,6 +14,7 @@ export const App = () => {
     <div className="wrapper">
       <Routes>
         <Route path={ROUTES.HOME} element={<Home />} />
+        <Route path={ROUTES.TEAM} element={<Team />} /> {/* path="/team" */}
         <Route path={ROUTES.TITLE} element={<Title />} />
         <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
       </Routes>

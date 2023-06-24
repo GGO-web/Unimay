@@ -67,6 +67,7 @@ export const socialLinks = [
 
 export const ROUTES = {
   HOME: '/',
+  TEAM: '/team',
   TITLE: '/title/:id',
   NOT_FOUND: '*',
   VIEW_TITLE_BY_ID: (id: string) => {
