@@ -1,4 +1,5 @@
 import React from 'react';
+import { getImageUrl } from '@helpers/getImageUrl';
 
 import { Footer } from '@components/Footer';
 import { Header } from '@components/Header';
@@ -7,12 +8,6 @@ import { Heading } from '@components/Heading/Heading';
 import { NavigationPage } from '@components/Navigation/NavigationPage';
 import { Sidenav } from '@components/Navigation/Sidenav';
 import { TeamPerson } from '@components/TeamPerson/TeamPerson';
-
-import photo_1 from '../../assets/photo/1.png';
-import photo_2 from '../../assets/photo/2.png';
-import photo_3 from '../../assets/photo/3.png';
-import photo_4 from '../../assets/photo/4.png';
-import photo_5 from '../../assets/photo/5.png';
 
 const navPageNames = [
   {
@@ -27,7 +22,7 @@ const navPageNames = [
 
 const persons = [
   {
-    photo: photo_1,
+    photo: getImageUrl('photo/1.png'),
     name: 'Олена Проуторова',
     profession: 'акторка озвучення',
     city: 'м. Дніпро',
@@ -37,7 +32,7 @@ const persons = [
     tiktok: 'https://www.tiktok.com/uk-UA/'
   },
   {
-    photo: photo_2,
+    photo: getImageUrl('photo/2.png'),
     name: 'Сова Андрій',
     profession: 'звукорежисер та дабер',
     city: 'м. Краматорськ',
@@ -47,7 +42,7 @@ const persons = [
     tiktok: 'https://www.tiktok.com/uk-UA/'
   },
   {
-    photo: photo_3,
+    photo: getImageUrl('photo/3.png'),
     name: 'Чигирик Ольга',
     profession: 'акторка озвучення/сабер(перекладач)',
     city: 'м. Львів',
@@ -57,7 +52,7 @@ const persons = [
     tiktok: 'https://www.tiktok.com/uk-UA/'
   },
   {
-    photo: photo_4,
+    photo: getImageUrl('photo/4.png'),
     name: 'Денис Проуторов',
     profession: 'актор озвучення',
     city: 'м. Дніпро',
@@ -67,7 +62,7 @@ const persons = [
     tiktok: 'https://www.tiktok.com/uk-UA/'
   },
   {
-    photo: photo_5,
+    photo: getImageUrl('photo/5.png'),
     name: 'Чернов Микита',
     profession: 'актор озвучення, звукоінженер',
     city: 'м.Харків',
