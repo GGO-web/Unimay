@@ -1,22 +1,23 @@
+@import "./components/_teamperson";
+
 .team {
   &__text {
-    margin-top: 52px;
+    @include adaptiveValue("margin-top", 52, 20);
   }
 
   &__persons {
-    margin: 93px 0px 84px 0px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
-    row-gap: 84px;
-    column-gap: 20px;
+    gap: 20px;
 
-    @media (max-width: 1390px) {
-      justify-content: center;
-    }
-    @media (max-width: 500px) {
-      row-gap: 20px;
+    @include adaptiveValue("row-gap", 84, 20);
+
+    @include adaptiveValue("margin-top", 93, 20);
+    @include adaptiveValue("margin-bottom", 84, 20);
+
+    @media (max-width: $mobileSmall) {
+      grid-template-columns: 1fr;
     }
   }
 }

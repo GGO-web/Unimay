@@ -19,7 +19,8 @@
   }
 
   &__list {
-    margin-right: rem(30);
+    flex-wrap: wrap;
+
     margin: 0 neg(rem(15));
   }
 

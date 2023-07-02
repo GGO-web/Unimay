@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { getIconUrl } from '../helpers/getIconUrl';
-import { socialLinks } from '../constants';
+import { getIconUrl } from '@helpers/getIconUrl';
+import { socialLinks } from '../../constants';
 import { Icon } from '@components/Icon/Icon';
 import { Paragraph } from '@components/Paragraph/Paragraph';
 

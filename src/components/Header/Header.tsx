@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 
 import { Link } from 'react-router-dom';
+import { navigationItems } from '../../constants';
 
 export const Header = () => {
   const iconMenu = useRef<HTMLButtonElement>(null);
@@ -32,31 +33,15 @@ export const Header = () => {
 
           <nav className="menu__body">
             <ul className="menu__list list-reset">
-              <li className="menu__item">
-                <Link to="/" className="menu__link">
-                  Фільми
-                </Link>
-              </li>
-              <li className="menu__item">
-                <Link to="/" className="menu__link">
-                  Серіали
-                </Link>
-              </li>
-              <li className="menu__item">
-                <Link to="/" className="menu__link">
-                  Мульти
-                </Link>
-              </li>
-              <li className="menu__item">
-                <Link to="/" className="menu__link">
-                  Форум
-                </Link>
-              </li>
-              <li className="menu__item">
-                <Link to="/" className="menu__link">
-                  Топ 100
-                </Link>
-              </li>
+              {navigationItems.map((navItem) => {
+                return (
+                  <li key={navItem.id} className="menu__item">
+                    <Link to={navItem.href} className="menu__link">
+                      {navItem.text}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
 
             <div className="button-group">

@@ -1,0 +1,22 @@
+.teamperson {
+  &__name {
+    background-color: var(--color-dark);
+    padding: 14px 5px;
+    border-radius: 6px;
+  }
+
+  &__description {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  &__social {
+    display: flex;
+    justify-content: center;
+
+    & svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

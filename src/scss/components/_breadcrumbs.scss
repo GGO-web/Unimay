@@ -1,0 +1,27 @@
+.breadcrumbs {
+  padding: 33px 0px 31px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  color: $white;
+
+  &__container {
+    display: flex;
+
+    & p {
+      padding: 0px 5px;
+    }
+  }
+
+  &__item {
+    &:last-child {
+      color: var(--color-red);
+    }
+
+    &:not(:last-child)::after {
+      content: ">>";
+      cursor: auto;
+      pointer-events: none;
+      margin: 0 5px;
+    }
+  }
+}
