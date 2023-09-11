@@ -1,0 +1,47 @@
+.services-card {
+  position: relative;
+
+  padding: 82px 27px 36px 67px;
+
+  background-color: var(--color-gray);
+  height: 340px;
+  width: 100%;
+
+  &_position {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+
+    color: var(--color-red);
+    opacity: 20%;
+    font-weight: 700;
+    @include adaptiveValue('font-size', 151, 120);
+    line-height: 100%;
+  }
+
+  &_title {
+    min-height: 60px;
+    padding-left: 40px;
+    padding-bottom: 10px;
+
+    color: var(--color-red);
+    font-weight: 700;
+  }
+
+  &_btn {
+    position: absolute;
+
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @media (max-width: $mobileSmall) {
+    padding: 40px 13.5px 18px 33.5px;
+
+    &_position {
+      top: 10px;
+      left: 10px;
+    }
+  }
+}

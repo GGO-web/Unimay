@@ -8,6 +8,9 @@ import { Header } from '@components/Header/Header';
 import { Sidenav } from '@components/Navigation/Sidenav';
 import { Hero } from '@components/Hero/Hero';
 import { Heading } from '@components/Heading/Heading';
+import { Paragraph } from '@components/Paragraph/Paragraph';
+import { ServicesCard } from './components/ServicesCard';
+import { services } from '../../constants';
 
 export function Home() {
   return (
@@ -50,6 +53,25 @@ export function Home() {
                 <Heading>Топ тижня</Heading>
                 <Heading>Рекомендації</Heading>
               </div>
+            </div>
+          </div>
+
+          <div className="container">
+            <Heading>Послуги</Heading>
+            <Paragraph>
+              Студії озвучення надають різноманітні послуги у зв'язку з
+              озвученням аніме, фільмів, телесеріалів та інших відеоконтентів.
+              Основні послуги, які надає “UnimayMedia”:
+            </Paragraph>
+
+            <div className="services-cards">
+              {services.map((card) => (
+                <ServicesCard
+                  position={card.position}
+                  title={card.title}
+                  subtitle={card.subtitle}
+                />
+              ))}
             </div>
           </div>
         </main>
