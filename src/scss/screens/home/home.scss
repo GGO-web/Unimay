@@ -3,7 +3,8 @@
 @import './components/hero';
 @import './components/_blogPreview';
 @import './components/_search';
-@import './components/_servicesCard';
+@import '../../../pages/Home/styles/_servicesCard';
+@import '../../../pages/Home/styles/_servicesList';
 
 .home__container {
   position: relative;
@@ -18,21 +19,5 @@
 
   @media (max-width: $mobile) {
     flex-wrap: wrap;
-  }
-}
-
-.services-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-
-  gap: 20px;
-
-  @include adaptiveValue('row-gap', 84, 20);
-
-  @include adaptiveValue('margin-top', 36, 20);
-  @include adaptiveValue('margin-bottom', 126, 20);
-
-  @media (max-width: $mobileSmall) {
-    grid-template-columns: 1fr;
   }
 }
