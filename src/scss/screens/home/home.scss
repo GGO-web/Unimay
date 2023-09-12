@@ -3,6 +3,8 @@
 @import './components/hero';
 @import './components/_blogPreview';
 @import './components/_search';
+@import '../../../pages/Home/styles/_servicesCard';
+@import '../../../pages/Home/styles/_servicesList';
 
 .home__container {
   position: relative;
