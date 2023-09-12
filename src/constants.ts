@@ -257,7 +257,7 @@ export const TEAM_PERSONS: ITeamPerson[] = [
   }
 ];
 
-export const services = [
+export const SERVICES_LIST = [
   {
     position: 1,
     title: 'Озвучення діалогів',

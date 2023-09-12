@@ -10,7 +10,7 @@ import { Hero } from '@components/Hero/Hero';
 import { Heading } from '@components/Heading/Heading';
 import { Paragraph } from '@components/Paragraph/Paragraph';
 import { ServicesCard } from './components/ServicesCard';
-import { services } from '../../constants';
+import { SERVICES_LIST } from '../../constants';
 
 export function Home() {
   return (
@@ -65,7 +65,7 @@ export function Home() {
             </Paragraph>
 
             <div className="services-cards">
-              {services.map((card) => (
+              {SERVICES_LIST.map((card) => (
                 <ServicesCard
                   position={card.position}
                   title={card.title}
