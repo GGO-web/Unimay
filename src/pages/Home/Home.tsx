@@ -8,6 +8,7 @@ import { Header } from '@components/Header/Header';
 import { Sidenav } from '@components/Navigation/Sidenav';
 import { Hero } from '@components/Hero/Hero';
 import { Heading } from '@components/Heading/Heading';
+import { Services } from './components/Services/Services';
 
 export function Home() {
   return (
@@ -51,6 +52,10 @@ export function Home() {
                 <Heading>Рекомендації</Heading>
               </div>
             </div>
+          </div>
+
+          <div className="container">
+            <Services />
           </div>
         </main>
 
