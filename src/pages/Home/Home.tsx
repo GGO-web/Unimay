@@ -67,6 +67,7 @@ export function Home() {
             <div className="services-cards">
               {SERVICES_LIST.map((card) => (
                 <ServicesCard
+                  key={card.id}
                   position={card.position}
                   title={card.title}
                   subtitle={card.subtitle}
