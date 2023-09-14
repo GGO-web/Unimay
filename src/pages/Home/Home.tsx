@@ -9,6 +9,8 @@ import { Sidenav } from '@components/Navigation/Sidenav';
 import { Hero } from '@components/Hero/Hero';
 import { Heading } from '@components/Heading/Heading';
 import { Services } from './components/Services/Services';
+import { TeamBlock } from './components/TeamBlock/TeamBlock';
+import { Icon } from '@components/Icon/Icon';
 
 export function Home() {
   return (
@@ -56,6 +58,9 @@ export function Home() {
 
           <div className="container">
             <Services />
+          </div>
+          <div className="container">
+            <TeamBlock />
           </div>
         </main>
 
