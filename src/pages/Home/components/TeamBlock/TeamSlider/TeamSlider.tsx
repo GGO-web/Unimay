@@ -12,65 +12,44 @@ import { Icon } from '@components/Icon/Icon';
 interface TeamSliderProps {}
 
 const TeamSlider: React.FC<TeamSliderProps> = () => {
-  const swiperRef = React.useRef<SwiperRef | any>(null); // delete the “any” type, how to solve the problem?
-  const [slidePerView, setSlidePerView] = React.useState<
-    1 | 2 | 3 | 4 | 'auto'
-  >(4);
+  const swiperRef = React.useRef<SwiperRef>(null);
+  const [slidePerView, setSlidePerView] = React.useState<number | 'auto'>(4);
 
-  React.useEffect(() => {
-    function handleResize() {
-      const widthWindow = window.innerWidth;
-      if (
-        widthWindow > TABLET_POINT &&
-        widthWindow > MOBILE_POINT &&
-        widthWindow > MOBILE_SMALL_POINT
-      ) {
-        setSlidePerView(4);
-      }
-      if (
-        widthWindow < TABLET_POINT &&
-        widthWindow > MOBILE_POINT &&
-        widthWindow > MOBILE_SMALL_POINT
-      ) {
-        setSlidePerView(3);
-      }
-      if (
-        widthWindow < TABLET_POINT &&
-        widthWindow < MOBILE_POINT &&
-        widthWindow > MOBILE_SMALL_POINT
-      ) {
-        setSlidePerView(2);
-      }
-      if (
-        widthWindow < TABLET_POINT &&
-        widthWindow < MOBILE_POINT &&
-        widthWindow < MOBILE_SMALL_POINT
-      ) {
-        setSlidePerView(1); // "auto"
-      }
-    }
-    handleResize();
+  const nextElementSwiper = () => {
+    if (!swiperRef.current) return false;
+    swiperRef.current?.swiper?.slideNext();
+  };
+  const prevElementSwiper = () => {
+    if (!swiperRef.current) return false;
+    swiperRef.current?.swiper?.slidePrev();
+  };
 
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
   return (
     <div className="team-slider">
       <Icon
         iconName="arrow-left"
         className="team-slider_arrow-left"
-        onClick={() => swiperRef.current.slidePrev()}
+        onClick={prevElementSwiper}
       />
       <Swiper
         spaceBetween={20} // should be 80, as in Figma layout
         grabCursor
         keyboard={{ enabled: true }}
         slidesPerView={slidePerView}
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
+        ref={swiperRef}
+        breakpoints={{
+          [TABLET_POINT]: {
+            slidesPerView: 4
+          },
+          [MOBILE_POINT]: {
+            slidesPerView: 3
+          },
+          [MOBILE_SMALL_POINT]: {
+            slidesPerView: 2
+          },
+          0: {
+            slidesPerView: 1
+          }
         }}
       >
         {TEAM_PERSONS.map((person) => (
@@ -82,7 +61,7 @@ const TeamSlider: React.FC<TeamSliderProps> = () => {
       <Icon
         iconName="arrow-right"
         className="team-slider_arrow-right"
-        onClick={() => swiperRef.current.slideNext()}
+        onClick={nextElementSwiper}
       />
     </div>
   );
