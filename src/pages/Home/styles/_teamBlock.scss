@@ -1,0 +1,23 @@
+.team-block {
+  position: relative;
+
+  &_btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  @media (max-width: $mobile) {
+    &_btn {
+      z-index: 10;
+      top: unset;
+      right: unset;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+    }
+  }
+}

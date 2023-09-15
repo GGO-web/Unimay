@@ -287,3 +287,7 @@ export const SERVICES_LIST = [
       'спеціалізовані команди перекладачів, які перекладають діалоги та інші аудіоелементи з оригінальної мови на різні інші мови'
   }
 ];
+
+export const TABLET_POINT = 993;
+export const MOBILE_POINT = 769;
+export const MOBILE_SMALL_POINT = 480;
