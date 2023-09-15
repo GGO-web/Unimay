@@ -12,6 +12,7 @@
   }
 
   &__content {
+    z-index: 10;
     max-width: 630px;
   }
 }
@@ -22,7 +23,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1;
 
   &__image {
     width: 100%;
