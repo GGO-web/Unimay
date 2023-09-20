@@ -121,6 +121,26 @@ export const TEAM_BREADCRUMBS = [
   }
 ];
 
+export const TITLE_BREADCRUMBS = [
+  {
+    name: 'Головна',
+    link: ROUTES.HOME
+  },
+  {
+    name: 'Cеріли',
+    link: '#'
+  },
+
+  {
+    name: 'Субтитровані серіали',
+    link: '#'
+  },
+  {
+    name: 'Константин: Місто Демонів',
+    link: '#'
+  }
+];
+
 export interface ITeamPerson {
   photo: string;
   name: string;
@@ -291,3 +311,68 @@ export const SERVICES_LIST = [
 export const TABLET_POINT = 993;
 export const MOBILE_POINT = 769;
 export const MOBILE_SMALL_POINT = 480;
+
+export interface ICurrentAnime {
+  name: string;
+  image: string;
+  raiting: number; // what comes from backend (string | number)?
+  year: string | number; // what comes from backend (string | number)?
+  country: string;
+  genr: string;
+  producer: string;
+  actors: string;
+  subtitles?: boolean;
+}
+
+export const CURRENT_ANIME: ICurrentAnime = {
+  name: 'Константин: Місто Демонів 1 сезон',
+  raiting: 8.5,
+  image: getImageUrl('Konstantin-city-of-demons.jpg'),
+  year: '2018',
+  country: 'США',
+  genr: 'Субтитровані серіали , Мультсеріали',
+  producer: 'Девід С. Гойер, Сем Реджістер, Сара Шечтер',
+  actors:
+    "Метт Райан, Даміан О'Хара, Лаура Бейлі, Емілі О'Брайен, Рейчел Кімзі, Аткін Даунс, Джим Мескімен",
+  subtitles: true
+};
+
+export interface INextSeasson {
+  name: string;
+  image: string;
+  raiting: number; // what comes from backend (string | number)?
+  vote: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
+  voteRaiting: number; // what comes from backend (string | number)?
+  numberOfSeasons: number; // what comes from backend (string | number)?
+  year: string | number; // what comes from backend (string | number)?
+  country: string;
+  producer: string;
+}
+
+export const NEXT_ANIME: INextSeasson = {
+  name: 'Атака Титанов',
+  raiting: 8.5,
+  vote: 4.5,
+  voteRaiting: 3.5,
+  numberOfSeasons: 4,
+  image: getImageUrl('attack-of-the-titans.jpg'),
+  year: '2018',
+  country: 'США',
+  producer: 'Девід С. Гойер, Сем Реджістер, Сара Шечтер'
+};
+
+export interface IRecommendations {
+  hashtags: string[];
+  name: string;
+  voteRaiting: number; // what comes from backend (string | number)?
+  image: string;
+  quantityComment: number;
+}
+
+export const RECOMMENDATIONS_ANIME: IRecommendations = {
+  hashtags: ['нове', 'топ'],
+  name: 'Чотири людини та брехня кожного',
+  voteRaiting: 1.5,
+  image: getImageUrl('chotiri-people-that-skin-nonsense.jpg'),
+  quantityComment: 220
+};
