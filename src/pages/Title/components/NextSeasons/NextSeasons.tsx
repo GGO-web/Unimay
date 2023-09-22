@@ -21,12 +21,12 @@ export const NextSeasons = ({ anime }: { anime: INextSeasson }) => {
           className="next-seasons__promo"
           style={{ backgroundImage: `url(${anime.image})` }}
         >
-          <div className="next-seasons__promo-raiting">
+          <div className="next-seasons__promo-rating">
             <p className="text-sm">
               <strong>IMDB</strong>
             </p>
             <p className="text-xl">
-              <strong>{anime.raiting}</strong>
+              <strong>{anime.rating}</strong>
             </p>
           </div>
         </div>
@@ -41,7 +41,7 @@ export const NextSeasons = ({ anime }: { anime: INextSeasson }) => {
           <div className="next-seasons__description-stars">
             <Stars value={anime.vote} edit={false} />
             <div className="elipse" />
-            <Paragraph>{anime.voteRaiting}K голосів</Paragraph>
+            <Paragraph>{anime.voteRating}K голосів</Paragraph>
           </div>
           <FlexGroup gap={2} column className="mb-[14px]">
             <Paragraph size="sm">Страна: {anime.country}</Paragraph>

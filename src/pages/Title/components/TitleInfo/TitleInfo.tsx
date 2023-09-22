@@ -14,12 +14,12 @@ export const TitleInfo = ({ anime }: { anime: ICurrentAnime }) => {
           className="title-info__promo"
           style={{ backgroundImage: `url(${anime.image})` }}
         >
-          <div className="title-info__promo-raiting">
+          <div className="title-info__promo-rating">
             <p className="text-sm">
               <strong>IMDB</strong>
             </p>
             <p className="text-xl">
-              <strong>{anime.raiting}</strong>
+              <strong>{anime.rating}</strong>
             </p>
           </div>
         </div>

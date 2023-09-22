@@ -315,7 +315,7 @@ export const MOBILE_SMALL_POINT = 480;
 export interface ICurrentAnime {
   name: string;
   image: string;
-  raiting: number; // what comes from backend (string | number)?
+  rating: number;
   year: string | number; // what comes from backend (string | number)?
   country: string;
   genr: string;
@@ -326,7 +326,7 @@ export interface ICurrentAnime {
 
 export const CURRENT_ANIME: ICurrentAnime = {
   name: 'Константин: Місто Демонів 1 сезон',
-  raiting: 8.5,
+  rating: 8.5,
   image: getImageUrl('Konstantin-city-of-demons.jpg'),
   year: '2018',
   country: 'США',
@@ -340,9 +340,9 @@ export const CURRENT_ANIME: ICurrentAnime = {
 export interface INextSeasson {
   name: string;
   image: string;
-  raiting: number; // what comes from backend (string | number)?
+  rating: number;
   vote: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
-  voteRaiting: number; // what comes from backend (string | number)?
+  voteRating: number;
   numberOfSeasons: number; // what comes from backend (string | number)?
   year: string | number; // what comes from backend (string | number)?
   country: string;
@@ -351,9 +351,9 @@ export interface INextSeasson {
 
 export const NEXT_ANIME: INextSeasson = {
   name: 'Атака Титанов',
-  raiting: 8.5,
+  rating: 8.5,
   vote: 4.5,
-  voteRaiting: 3.5,
+  voteRating: 3.5,
   numberOfSeasons: 4,
   image: getImageUrl('attack-of-the-titans.jpg'),
   year: '2018',
@@ -364,7 +364,7 @@ export const NEXT_ANIME: INextSeasson = {
 export interface IRecommendations {
   hashtags: string[];
   name: string;
-  voteRaiting: number; // what comes from backend (string | number)?
+  voteRating: number;
   image: string;
   quantityComment: number;
 }
@@ -372,7 +372,7 @@ export interface IRecommendations {
 export const RECOMMENDATIONS_ANIME: IRecommendations = {
   hashtags: ['нове', 'топ'],
   name: 'Чотири людини та брехня кожного',
-  voteRaiting: 1.5,
+  voteRating: 1.5,
   image: getImageUrl('chotiri-people-that-skin-nonsense.jpg'),
   quantityComment: 220
 };
