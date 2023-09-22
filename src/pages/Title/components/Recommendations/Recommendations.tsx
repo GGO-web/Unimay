@@ -28,7 +28,7 @@ export const Recommendations = ({ anime }: { anime: IRecommendations }) => {
           <Paragraph>{showHashtags}</Paragraph>
           <Paragraph size="xl">{anime.name}</Paragraph>
 
-          <Paragraph>{anime.voteRaiting}K переглядів </Paragraph>
+          <Paragraph>{anime.voteRating}K переглядів </Paragraph>
           <div className="recommendations__description-block-comment">
             <img src={getImageUrl('comment.svg')} alt="icon" />
             <Paragraph>{anime.quantityComment} коментарів</Paragraph>
