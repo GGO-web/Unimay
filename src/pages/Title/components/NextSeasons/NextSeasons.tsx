@@ -1,12 +1,13 @@
 import { FlexGroup } from '@components/FlexGroup/FlexGroup';
 import { Heading } from '@components/Heading/Heading';
 import { Paragraph } from '@components/Paragraph/Paragraph';
-import { INextSeasson } from 'src/constants';
+import { INextSeasson, LENGTH_CHARS_14 } from '../../../../constants';
 import { Stars } from './Stars/Stars';
 import { Button } from '@components/Button/Button';
 
 export const NextSeasons = ({ anime }: { anime: INextSeasson }) => {
-  const showShortStrProducers = anime.producer.slice(0, 14) + '...';
+  const showShortStrProducers =
+    anime.producer.slice(0, LENGTH_CHARS_14) + '...';
 
   return (
     <div className="next-seasons">

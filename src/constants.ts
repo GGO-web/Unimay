@@ -134,10 +134,6 @@ export const TITLE_BREADCRUMBS = [
   {
     name: 'Субтитровані серіали',
     link: '#'
-  },
-  {
-    name: 'Константин: Місто Демонів',
-    link: '#'
   }
 ];
 
@@ -316,38 +312,41 @@ export interface ICurrentAnime {
   name: string;
   image: string;
   rating: number;
-  year: string | number; // what comes from backend (string | number)?
+  year: number;
   country: string;
-  genr: string;
   producer: string;
-  actors: string;
+
+  genre?: string;
+  actors?: string;
   subtitles?: boolean;
+}
+
+export interface INextSeasson extends ICurrentAnime {
+  vote: number;
+  voteRating: number;
+  numberOfSeasons: number;
+}
+
+export interface IRecommendations {
+  name: string;
+  image: string;
+  hashtags: string[];
+  voteRating: number;
+  quantityComment: number;
 }
 
 export const CURRENT_ANIME: ICurrentAnime = {
   name: 'Константин: Місто Демонів 1 сезон',
   rating: 8.5,
   image: getImageUrl('Konstantin-city-of-demons.jpg'),
-  year: '2018',
+  year: 2018,
   country: 'США',
-  genr: 'Субтитровані серіали , Мультсеріали',
+  genre: 'Субтитровані серіали , Мультсеріали',
   producer: 'Девід С. Гойер, Сем Реджістер, Сара Шечтер',
   actors:
     "Метт Райан, Даміан О'Хара, Лаура Бейлі, Емілі О'Брайен, Рейчел Кімзі, Аткін Даунс, Джим Мескімен",
   subtitles: true
 };
-
-export interface INextSeasson {
-  name: string;
-  image: string;
-  rating: number;
-  vote: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
-  voteRating: number;
-  numberOfSeasons: number; // what comes from backend (string | number)?
-  year: string | number; // what comes from backend (string | number)?
-  country: string;
-  producer: string;
-}
 
 export const NEXT_ANIME: INextSeasson = {
   name: 'Атака Титанов',
@@ -356,18 +355,10 @@ export const NEXT_ANIME: INextSeasson = {
   voteRating: 3.5,
   numberOfSeasons: 4,
   image: getImageUrl('attack-of-the-titans.jpg'),
-  year: '2018',
+  year: 2018,
   country: 'США',
   producer: 'Девід С. Гойер, Сем Реджістер, Сара Шечтер'
 };
-
-export interface IRecommendations {
-  hashtags: string[];
-  name: string;
-  voteRating: number;
-  image: string;
-  quantityComment: number;
-}
 
 export const RECOMMENDATIONS_ANIME: IRecommendations = {
   hashtags: ['нове', 'топ'],
@@ -376,3 +367,5 @@ export const RECOMMENDATIONS_ANIME: IRecommendations = {
   image: getImageUrl('chotiri-people-that-skin-nonsense.jpg'),
   quantityComment: 220
 };
+
+export const LENGTH_CHARS_14 = 14;

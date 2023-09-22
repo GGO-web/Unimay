@@ -35,7 +35,7 @@ export const TitleInfo = ({ anime }: { anime: ICurrentAnime }) => {
             </Paragraph>
 
             <Paragraph>
-              <strong>Жанр:</strong> {anime.genr}
+              <strong>Жанр:</strong> {anime.genre}
             </Paragraph>
 
             <Paragraph>
