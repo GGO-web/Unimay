@@ -1,3 +1,4 @@
+import React from 'react';
 import { Breadcrumbs } from '@components/Breadcrumbs/Breadcrumbs';
 import { Header } from '@components/Header/Header';
 import { Sidenav } from '@components/Navigation/Sidenav';
@@ -21,7 +22,12 @@ export const Title = () => {
 
         <section className="title">
           <div className="title__container container">
-            <Breadcrumbs items={TITLE_BREADCRUMBS} />
+            <Breadcrumbs
+              items={[
+                ...TITLE_BREADCRUMBS,
+                { name: 'Константин: Місто Демонів', link: '#' }
+              ]}
+            />
 
             <main className="title__main">
               <TitleInfo anime={CURRENT_ANIME} />

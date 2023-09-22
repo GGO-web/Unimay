@@ -1,10 +1,10 @@
+import { Icon } from '@components/Icon/Icon';
 import React from 'react';
 
-//@ts-ignore
-import ReactStars from 'react-rating-stars-component'; // solve the problem with typeScript?
+import ReactStars from 'react-rating-stars-component';
 
 interface StarsProps {
-  value: 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
+  value: number;
   edit: boolean;
 }
 
@@ -18,15 +18,11 @@ export const Stars: React.FC<StarsProps> = ({ value, edit }) => {
       <ReactStars
         value={value}
         count={5}
-        className="star"
         onChange={ratingChanged}
-        size={30}
         isHalf={true}
-        emptyIcon={<i className="far fa-star" />}
-        halfIcon={<i className="fa fa-star-half-alt" />}
-        fullIcon={<i className="fa fa-star" />}
-        activeColor="#ffd700"
-        color="white"
+        emptyIcon={<Icon iconName="empty-icon-star" />}
+        halfIcon={<Icon iconName="half-icon-star" />}
+        filledIcon={<Icon iconName="filled-icon-star" />}
         edit={edit}
       />
     </div>
