@@ -8,14 +8,14 @@ import {
   DESCRIPTION_ANIME,
   NEXT_ANIME,
   RECOMMENDATIONS_ANIME,
-  TITLE_BREADCRUMBS
+  TITLE_BREADCRUMBS,
+  LIST_RELEASE_SCHEDULE
 } from '../../constants';
 import { TitleInfo } from './components/TitleInfo/TitleInfo';
 import { NextSeasons } from './components/NextSeasons/NextSeasons';
 import { Recommendations } from './components/Recommendations/Recommendations';
-import { Paragraph } from '@components/Paragraph/Paragraph';
-import { Heading } from '@components/Heading/Heading';
 import { TitleDescription } from './components/TitleDescrption/TitleDescription';
+import { SeriesReleaseSchedule } from './components/SeriesReleaseSchedule/SeriesReleaseSchedule';
 
 export const Title = () => {
   return (
@@ -45,6 +45,8 @@ export const Title = () => {
               heading={DESCRIPTION_ANIME.heading}
               paragraph={DESCRIPTION_ANIME.paragraph}
             />
+
+            <SeriesReleaseSchedule listSeries={LIST_RELEASE_SCHEDULE} />
           </div>
         </section>
       </div>
