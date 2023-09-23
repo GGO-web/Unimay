@@ -9,9 +9,7 @@ import {
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 import { Icon } from '@components/Icon/Icon';
 
-interface TeamSliderProps {}
-
-const TeamSlider: React.FC<TeamSliderProps> = () => {
+const TeamSlider = () => {
   const swiperRef = React.useRef<SwiperRef>(null);
   const [slidePerView, setSlidePerView] = React.useState<number | 'auto'>(4);
 
@@ -26,13 +24,15 @@ const TeamSlider: React.FC<TeamSliderProps> = () => {
 
   return (
     <div className="team-slider">
-      <Icon
-        iconName="arrow-left"
-        className="team-slider_arrow-left"
-        onClick={prevElementSwiper}
-      />
+      <button onClick={prevElementSwiper}>
+        <Icon
+          iconName="arrow-left"
+          className="team-slider_arrow-left"
+        />
+      </button>
+
       <Swiper
-        spaceBetween={20} // should be 80, as in Figma layout
+        spaceBetween={20}
         grabCursor
         keyboard={{ enabled: true }}
         slidesPerView={slidePerView}
@@ -58,11 +58,13 @@ const TeamSlider: React.FC<TeamSliderProps> = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <Icon
-        iconName="arrow-right"
-        className="team-slider_arrow-right"
-        onClick={nextElementSwiper}
-      />
+      
+      <button onClick={nextElementSwiper}>
+        <Icon
+          iconName="arrow-right"
+          className="team-slider_arrow-right"
+        />
+      </button>
     </div>
   );
 };

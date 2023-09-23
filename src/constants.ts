@@ -121,6 +121,22 @@ export const TEAM_BREADCRUMBS = [
   }
 ];
 
+export const TITLE_BREADCRUMBS = [
+  {
+    name: 'Головна',
+    link: ROUTES.HOME
+  },
+  {
+    name: 'Cеріли',
+    link: '#'
+  },
+
+  {
+    name: 'Субтитровані серіали',
+    link: '#'
+  }
+];
+
 export interface ITeamPerson {
   photo: string;
   name: string;
@@ -291,3 +307,86 @@ export const SERVICES_LIST = [
 export const TABLET_POINT = 993;
 export const MOBILE_POINT = 769;
 export const MOBILE_SMALL_POINT = 480;
+
+export interface ICurrentAnime {
+  [name: string]: any;
+  image: string;
+  rating: number;
+  year: number;
+  country: string;
+  producer: string;
+
+  genre?: string;
+  actors?: string;
+  subtitles?: boolean;
+}
+
+export interface INextSeasson extends ICurrentAnime {
+  vote: number;
+  voteRating: number;
+  numberOfSeasons: number;
+}
+
+export interface IRecommendations {
+  name: string;
+  image: string;
+  hashtags: string[];
+  voteRating: number;
+  quantityComment: number;
+}
+
+export const CURRENT_ANIME: ICurrentAnime = {
+  name: 'Константин: Місто Демонів 1 сезон',
+  rating: 8.5,
+  image: getImageUrl('Konstantin-city-of-demons.jpg'),
+  year: 2018,
+  country: 'США',
+  genre: 'Субтитровані серіали , Мультсеріали',
+  producer: 'Девід С. Гойер, Сем Реджістер, Сара Шечтер',
+  actors:
+    "Метт Райан, Даміан О'Хара, Лаура Бейлі, Емілі О'Брайен, Рейчел Кімзі, Аткін Даунс, Джим Мескімен",
+  subtitles: true
+};
+
+export const NEXT_ANIME: INextSeasson = {
+  name: 'Атака Титанов',
+  rating: 8.5,
+  vote: 4.5,
+  voteRating: 3.5,
+  numberOfSeasons: 4,
+  image: getImageUrl('attack-of-the-titans.jpg'),
+  year: 2018,
+  country: 'США',
+  producer: 'Девід С. Гойер, Сем Реджістер, Сара Шечтер'
+};
+
+export const RECOMMENDATIONS_ANIME: IRecommendations = {
+  hashtags: ['нове', 'топ'],
+  name: 'Чотири людини та брехня кожного',
+  voteRating: 1.5,
+  image: getImageUrl('chotiri-people-that-skin-nonsense.jpg'),
+  quantityComment: 220
+};
+
+export const LENGTH_CHARS_14 = 14;
+
+export const DESCRIPTION_ANIME = {
+  heading: 'Константин: Місто Демонів (1 сезон)',
+  paragraph:
+    'Між живим і мертвим світом дуже тонка грань. Нерідко породження пекла порушують цю межу. Вони проникають в тіла в чоловіків, жінок і навіть дітей, починаючи творити щось жахливе. Окультист і мисливець за усілякою нечистю Джон Костянтин не зовсім звичайна людина. На ньому лежить жахлива печать самогубці. Джон побував на тому світі і зміг повернутися в нормальне життя. Тепер за сюжетом мультсеріалу "Костянтин" він володіє древніми знаннями, які допомагають йому відправляти демонів назад у пекло. Людям він допомагає позбутися від темної сутності, проводячи необхідні обряди екзорцизму.\n Звичайно у Джона є маса недоліків. Він багато курить, що негативно позначається на його здоров\'ї. Однак безвідмовний дробовик завжди з ним. Темні сили природно бажають з ним розправитися. Вони придумують різні витончені способи знищити Костянтина. У цій боротьбі мисливцеві допомагає гострий розум і чудове знання свого супротивника. Часто доводиться діяти одному, оскільки навіть кохана дівчина не зовсім розуміє Джона.'
+};
+
+export interface ITitleInfo {
+  id: string;
+  characteristic: string;
+  [key: string]: any;
+}
+
+export const TITLE_INFO: ITitleInfo[] = [
+  { id: v4(), characteristic: 'Рік виходу:', key: 'year' },
+  { id: v4(), characteristic: 'Країна:', key: 'country' },
+  { id: v4(), characteristic: 'Жанр:', key: 'genre' },
+  { id: v4(), characteristic: 'Режисер:', key: 'producer' },
+  { id: v4(), characteristic: 'Актори:', key: 'actors' },
+  { id: v4(), characteristic: 'Озвучення:', key: 'subtitles' }
+];
