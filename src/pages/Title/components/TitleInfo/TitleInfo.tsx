@@ -1,9 +1,9 @@
+import React from 'react';
+
 import { FlexGroup } from '@components/FlexGroup/FlexGroup';
 import { Heading } from '@components/Heading/Heading';
 import { Paragraph } from '@components/Paragraph/Paragraph';
-import React from 'react';
-import { ICurrentAnime } from 'src/constants';
-import { NextSeasons } from '../NextSeasons/NextSeasons';
+import { ICurrentAnime, TITLE_INFO } from '../../../../constants';
 
 export const TitleInfo = ({ anime }: { anime: ICurrentAnime }) => {
   return (
@@ -26,29 +26,17 @@ export const TitleInfo = ({ anime }: { anime: ICurrentAnime }) => {
 
         <div className="title-info__description pb-[28px] mt-[48px]">
           <FlexGroup gap={28} column>
-            <Paragraph>
-              <strong>Рік виходу:</strong> {anime.year}
-            </Paragraph>
+            {TITLE_INFO.map((item) => {
+              const showSubtitles =
+                item.key === 'subtitles' && item.key ? 'Субтитри' : '-';
 
-            <Paragraph>
-              <strong>Країна:</strong> {anime.country}
-            </Paragraph>
-
-            <Paragraph>
-              <strong>Жанр:</strong> {anime.genre}
-            </Paragraph>
-
-            <Paragraph>
-              <strong>Режисер:</strong> {anime.producer}
-            </Paragraph>
-
-            <Paragraph>
-              <strong>Актори:</strong> {anime.actors}
-            </Paragraph>
-
-            <Paragraph>
-              <strong>Озвучення:</strong> {anime.subtitles ? 'Субтитри' : '-'}
-            </Paragraph>
+              return (
+                <Paragraph key={item.id}>
+                  <strong>{item.characteristic}</strong>{' '}
+                  {item.key !== 'subtitles' ? anime[item.key] : showSubtitles}
+                </Paragraph>
+              );
+            })}
           </FlexGroup>
         </div>
       </main>
