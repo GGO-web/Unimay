@@ -309,7 +309,7 @@ export const MOBILE_POINT = 769;
 export const MOBILE_SMALL_POINT = 480;
 
 export interface ICurrentAnime {
-  name: string;
+  [name: string]: any;
   image: string;
   rating: number;
   year: number;
@@ -407,4 +407,19 @@ export const LIST_RELEASE_SCHEDULE: SeriesReleaseScheduleItem[] = [
     episode: 3,
     date: new Date()
   }
+]
+
+export interface ITitleInfo {
+  id: string;
+  characteristic: string;
+  [key: string]: any;
+}
+
+export const TITLE_INFO: ITitleInfo[] = [
+  { id: v4(), characteristic: 'Рік виходу:', key: 'year' },
+  { id: v4(), characteristic: 'Країна:', key: 'country' },
+  { id: v4(), characteristic: 'Жанр:', key: 'genre' },
+  { id: v4(), characteristic: 'Режисер:', key: 'producer' },
+  { id: v4(), characteristic: 'Актори:', key: 'actors' },
+  { id: v4(), characteristic: 'Озвучення:', key: 'subtitles' }
 ];
