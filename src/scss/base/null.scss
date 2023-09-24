@@ -3,6 +3,7 @@
 *::after {
   box-sizing: inherit;
   font-family: inherit;
+  color: inherit;
 }
 
 html {
@@ -23,7 +24,7 @@ body {
   font-size: $fontSize;
   line-height: $lineHeight;
   color: var(--color-white);
-  background-color: var(--color-bg);
+  background-color: var(--color-gray);
 }
 
 input,
@@ -50,6 +51,7 @@ img {
   vertical-align: middle;
   height: auto;
   min-width: 0;
+  width: 100%;
   max-width: 100%;
   object-fit: cover;
 }
@@ -58,12 +60,6 @@ a {
   line-height: inherit;
   text-decoration: none;
   color: inherit;
-}
-
-polyline,
-svg path {
-  fill: inherit;
-  stroke: inherit;
 }
 
 h1,

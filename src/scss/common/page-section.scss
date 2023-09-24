@@ -2,4 +2,10 @@
   display: flex;
   align-items: flex-start;
   flex: 1 1 auto;
+  width: 100%;
+}
+
+.page-section__container {
+  // max-width: calc(100% - var(--sidebar-width));
+  flex: 1 1 auto;
 }

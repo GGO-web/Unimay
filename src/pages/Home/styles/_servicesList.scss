@@ -1,0 +1,15 @@
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+  gap: 20px;
+
+  @include adaptiveValue('row-gap', 84, 20);
+
+  @include adaptiveValue('margin-top', 36, 20);
+  @include adaptiveValue('margin-bottom', 126, 20);
+
+  @media (max-width: $mobileSmall) {
+    grid-template-columns: 1fr;
+  }
+}

@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "vite --open",
+    "dev": "vite --open",
     "prebuild": "npm run format && npm run lint",
     "build": "tsc && vite build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src/ --fix --quiet",
@@ -29,17 +29,23 @@
     ]
   },
   "dependencies": {
+    "@radix-ui/primitive": "^1.0.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.6",
+    "classnames": "^2.3.2",
+    "dayjs": "^1.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "react-simple-star-rating": "^5.1.7",
     "swiper": "^9.0.5",
     "uuid": "^9.0.0",
+    "vite-plugin-dynamic-import": "^1.4.0",
+    "vite-plugin-svgr": "^3.2.0",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
@@ -49,13 +55,16 @@
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
     "@vitejs/plugin-react": "^3.1.0",
+    "autoprefixer": "^10.4.14",
     "eslint": "^8.34.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
+    "postcss": "^8.4.24",
     "prettier": "^2.8.4",
     "sass": "^1.58.3",
+    "tailwindcss": "^3.3.2",
     "typescript": "^4.9.3",
     "vite": "^4.1.0"
   }

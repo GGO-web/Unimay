@@ -63,7 +63,8 @@ body {
   max-width: rem($maxWidth);
 }
 
-.page-section__container {
-  max-width: calc(100% - $sidebarWidth);
-  flex: 1 1 auto;
+.main {
+  overflow: hidden;
+  grid-column: 2 / -1;
+  background-color: var(--color-dark);
 }

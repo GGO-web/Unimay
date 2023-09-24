@@ -1,9 +1,12 @@
 import React from 'react';
 
-import {Swiper, SwiperSlide} from 'swiper/react';
-import {EffectFade} from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectFade } from 'swiper';
 
-import {InstantSearch} from '../Searchbar/InstantSearch';
+import { InstantSearch } from '../Searchbar/InstantSearch';
+import { Heading } from '@components/Heading/Heading';
+import { Paragraph } from '@components/Paragraph/Paragraph';
+import { Button } from '@components/Button/Button';
 
 export const Hero = () => {
   return (
@@ -12,7 +15,7 @@ export const Hero = () => {
         <Swiper
           modules={[EffectFade]}
           fadeEffect={{
-            crossFade: false,
+            crossFade: false
           }}
           className="hero-carousel"
           slidesPerView={1}
@@ -34,18 +37,17 @@ export const Hero = () => {
         </Swiper>
 
         <div className="hero__content">
-          <h1 className="hero__title heading">
-            <span>
-              Unimay Media - це команда яка знає як запалити іскру в твоїх очах.
-            </span>
-          </h1>
+          <Heading level={1} className="hero__title mb-9">
+            Вас вітає <strong>Unimay Media!</strong>
+          </Heading>
 
-          <p className="hero__text heading3">
-            <span>
-              Якісний дубляж аніме українською це те, що ти полюбиш з першого
-              перегляду.
-            </span>
-          </p>
+          <Paragraph size={'lg'} className="hero__text mb-16">
+            <strong>Unimay Media</strong> є однією з провідних компаній, що
+            спеціалізується на локалізації та овученні аніме для україномовної
+            аудиторії.
+          </Paragraph>
+
+          <Button className={'button-style'}>Приєднатися</Button>
         </div>
       </div>
 

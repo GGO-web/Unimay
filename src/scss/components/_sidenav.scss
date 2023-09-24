@@ -1,22 +1,22 @@
 .sidenav {
   min-height: 100vh;
   min-height: 100dvh;
-  max-width: 100px;
-  background: var(--color-gray);
+  max-width: var(--sidebar-width);
+  background: rgba(#060606, 0.8);
   padding: 20px;
-  position: sticky;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 15;
+  color: var(--color-white);
 
   &__container {
+    position: sticky;
+    left: 0;
+    top: 20px;
+    z-index: 15;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  &__link {
+  &__item {
     margin-bottom: 2.5rem;
     background-color: gray;
     border-radius: 6px;
@@ -26,7 +26,7 @@
     align-items: center;
     justify-content: center;
 
-    &:first-child {
+    &--logo {
       background-color: transparent;
       width: 60px;
       height: 60px;

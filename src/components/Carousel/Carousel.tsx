@@ -1,12 +1,14 @@
 import React from 'react';
 
-import {Swiper, SwiperSlide} from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import {StarRating} from '../Rating/Rating';
+import { StarRating } from '../Rating/Rating';
 
-import {carouselItems} from '../../constants';
+import { carouselItems, ROUTES } from '../../constants';
+import { Paragraph } from '@components/Paragraph/Paragraph';
+import { Heading } from '@components/Heading/Heading';
 
 export const Carousel = () => {
   return (
@@ -19,27 +21,27 @@ export const Carousel = () => {
       {carouselItems.map((carouselItem) => (
         <SwiperSlide key={carouselItem.id} className="carousel__item">
           <article
-            className="card flex"
+            className="card flex flex-col flex-auto"
             style={{
-              backgroundImage: `url(${carouselItem.image})`,
+              backgroundImage: `url(${carouselItem.image})`
             }}
           >
             <div className="carousel__item-bottom">
-              <p className="carousel__item-seasons paragraph3">
+              <Paragraph className="carousel__item-seasons mb-1.5">
                 {carouselItem.seasons} сезони, {carouselItem.year}
-              </p>
+              </Paragraph>
 
-              <Link to={`/anime/${carouselItem.id}`}>
-                <h3 className="carousel__item-title heading3">
+              <Link to={ROUTES.VIEW_TITLE_BY_ID(carouselItem.id)}>
+                <Heading level={3} className="carousel__item-title mb-2">
                   {carouselItem.title}
-                </h3>
+                </Heading>
               </Link>
 
               <StarRating />
 
-              <p className="carousel__item-text paragraph3">
+              <Paragraph className="carousel__item-text mt-3">
                 {carouselItem.text}
-              </p>
+              </Paragraph>
             </div>
           </article>
         </SwiperSlide>

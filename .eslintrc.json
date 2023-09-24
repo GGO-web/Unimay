@@ -3,7 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["plugin:react/recommended", "prettier", "google"],
+  "extends": ["plugin:react/recommended", "prettier", "google", "plugin:prettier/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -14,12 +14,21 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "new-cap": "off",
     "require-jsdoc": "off",
     "react/self-closing-comp": [
       "error",
       {
         "component": true,
         "html": true
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "none",
+        "endOfLine": "auto",
+        "printWidth": 80
       }
     ]
   },
@@ -28,5 +37,5 @@
       "version": "detect"
     }
   },
-  "ignorePatterns": ["node_modules/"]
+  "ignorePatterns": ["node_modules/", "./src/assets"]
 }

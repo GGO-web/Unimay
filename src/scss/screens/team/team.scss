@@ -1,0 +1,23 @@
+@import "./components/_teamperson";
+
+.team {
+  &__text {
+    @include adaptiveValue("margin-top", 52, 20);
+  }
+
+  &__persons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 20px;
+
+    @include adaptiveValue("row-gap", 84, 20);
+
+    @include adaptiveValue("margin-top", 93, 20);
+    @include adaptiveValue("margin-bottom", 84, 20);
+
+    @media (max-width: $mobileSmall) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

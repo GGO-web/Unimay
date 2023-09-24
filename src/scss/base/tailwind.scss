@@ -1,0 +1,31 @@
+@tailwind base;
+
+@layer base {
+  h1 {
+    @include adaptiveValue("font-size", 50, 36);
+  }
+
+  h2 {
+    @include adaptiveValue("font-size", 40, 28);
+  }
+
+  h3 {
+    @include adaptiveValue("font-size", 30, 20);
+  }
+
+  .text-xl {
+    @include adaptiveValue("font-size", 24, 20);
+  }
+
+  .text-lg {
+    @include adaptiveValue("font-size", 18, 16);
+  }
+
+  .text-md {
+    @include adaptiveValue("font-size", 16, 14);
+  }
+
+  .text-sm {
+    @include adaptiveValue("font-size", 14, 12);
+  }
+}
