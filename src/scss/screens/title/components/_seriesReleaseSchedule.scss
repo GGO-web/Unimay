@@ -1,0 +1,22 @@
+.series-release-schedule {
+  width: 100%;
+  margin-bottom: 50px;
+
+  &__list {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    justify-content: space-between;
+
+    padding: 20px 30px;
+
+    &:nth-child(2n) {
+      background-color: var(--color-bg);
+    }
+  }
+}
