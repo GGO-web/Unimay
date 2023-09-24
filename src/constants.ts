@@ -1,9 +1,6 @@
 import { ICarouselItem } from './types/constants';
 import { v4 } from 'uuid';
 import { getImageUrl } from '@helpers/getImageUrl';
-import dayjs from 'dayjs';
-
-const currentDate = dayjs();
 
 export const carouselItems: ICarouselItem[] = [
   {
@@ -380,35 +377,34 @@ export const DESCRIPTION_ANIME = {
     'Між живим і мертвим світом дуже тонка грань. Нерідко породження пекла порушують цю межу. Вони проникають в тіла в чоловіків, жінок і навіть дітей, починаючи творити щось жахливе. Окультист і мисливець за усілякою нечистю Джон Костянтин не зовсім звичайна людина. На ньому лежить жахлива печать самогубці. Джон побував на тому світі і зміг повернутися в нормальне життя. Тепер за сюжетом мультсеріалу "Костянтин" він володіє древніми знаннями, які допомагають йому відправляти демонів назад у пекло. Людям він допомагає позбутися від темної сутності, проводячи необхідні обряди екзорцизму.\n Звичайно у Джона є маса недоліків. Він багато курить, що негативно позначається на його здоров\'ї. Однак безвідмовний дробовик завжди з ним. Темні сили природно бажають з ним розправитися. Вони придумують різні витончені способи знищити Костянтина. У цій боротьбі мисливцеві допомагає гострий розум і чудове знання свого супротивника. Часто доводиться діяти одному, оскільки навіть кохана дівчина не зовсім розуміє Джона.'
 };
 
-export const LIST_RELEASE_SCHEDULE = [
+export interface SeriesReleaseScheduleItem {
+  id: string;
+  season: number;
+  series: number;
+  episode: number;
+  date: Date;
+}
+
+export const LIST_RELEASE_SCHEDULE: SeriesReleaseScheduleItem[] = [
   {
     id: v4(),
     season: 1,
     series: 5,
     episode: 5,
-    day: currentDate.date(),
-    month: currentDate.format('MMMM'),
-    year: currentDate.year(),
-    dayWeek: currentDate.format('dddd')
+    date: new Date()
   },
   {
     id: v4(),
     season: 1,
     series: 4,
     episode: 4,
-    day: currentDate.date(),
-    month: currentDate.format('MMMM'),
-    year: currentDate.year(),
-    dayWeek: currentDate.format('dddd')
+    date: new Date()
   },
   {
     id: v4(),
     season: 1,
     series: 3,
     episode: 3,
-    day: currentDate.date(),
-    month: currentDate.format('MMMM'),
-    year: currentDate.year(),
-    dayWeek: currentDate.format('dddd')
+    date: new Date()
   }
 ];
