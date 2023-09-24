@@ -1,7 +1,7 @@
 import { Heading } from '@components/Heading/Heading';
-import { getWeekDay } from '@helpers/getWeekDay';
-import { showNameMonth } from '@helpers/showNameMonth';
+
 import React from 'react';
+import { LENGTH_CHARS_3 } from '../../../../constants';
 
 interface SeriesReleaseScheduleProps {
   listSeries: {
@@ -9,37 +9,37 @@ interface SeriesReleaseScheduleProps {
     season: number;
     series: number;
     episode: number;
-    date: Date;
+    day: number;
+    month: string;
+    year: number;
+    dayWeek: string;
   }[];
 }
 
 export const SeriesReleaseSchedule: React.FC<SeriesReleaseScheduleProps> = ({
   listSeries
 }) => {
-  console.log(listSeries.map((item) => item.date.getDate()));
-
   return (
     <div className="series-release-schedule">
       <Heading className="text-xl mb-5">Графік виходу серій:</Heading>
       <div className="series-release-schedule__list">
-        {listSeries.map((item) => {
-          const day = item.date.getDate();
-          const month = showNameMonth(item.date.getMonth());
-          const year = item.date.getFullYear();
-          const dayWeek = getWeekDay(item.date);
+        {listSeries.map(
+          ({ id, season, series, day, episode, year, month, dayWeek }) => {
+            const shortenedMonth = month.slice(0, LENGTH_CHARS_3);
 
-          return (
-            <div key={item.id} className="series-release-schedule__item">
-              <p>
-                {item.season} сезон {item.series} серія
-              </p>
-              <p>Episode {item.episode}</p>
-              <p>
-                {day} {month} {year} {dayWeek}
-              </p>
-            </div>
-          );
-        })}
+            return (
+              <div key={id} className="series-release-schedule__item">
+                <p>
+                  {season} сезон {series} серія
+                </p>
+                <p>Episode {episode}</p>
+                <p>
+                  {day} {shortenedMonth} {year} {dayWeek}
+                </p>
+              </div>
+            );
+          }
+        )}
       </div>
     </div>
   );

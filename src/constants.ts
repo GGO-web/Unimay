@@ -1,6 +1,9 @@
 import { ICarouselItem } from './types/constants';
 import { v4 } from 'uuid';
 import { getImageUrl } from '@helpers/getImageUrl';
+import dayjs from 'dayjs';
+
+const currentDate = dayjs();
 
 export const carouselItems: ICarouselItem[] = [
   {
@@ -369,6 +372,7 @@ export const RECOMMENDATIONS_ANIME: IRecommendations = {
 };
 
 export const LENGTH_CHARS_14 = 14;
+export const LENGTH_CHARS_3 = 3;
 
 export const DESCRIPTION_ANIME = {
   heading: 'Константин: Місто Демонів (1 сезон)',
@@ -382,20 +386,29 @@ export const LIST_RELEASE_SCHEDULE = [
     season: 1,
     series: 5,
     episode: 5,
-    date: new Date()
+    day: currentDate.date(),
+    month: currentDate.format('MMMM'),
+    year: currentDate.year(),
+    dayWeek: currentDate.format('dddd')
   },
   {
     id: v4(),
     season: 1,
     series: 4,
     episode: 4,
-    date: new Date()
+    day: currentDate.date(),
+    month: currentDate.format('MMMM'),
+    year: currentDate.year(),
+    dayWeek: currentDate.format('dddd')
   },
   {
     id: v4(),
     season: 1,
     series: 3,
     episode: 3,
-    date: new Date()
+    day: currentDate.date(),
+    month: currentDate.format('MMMM'),
+    year: currentDate.year(),
+    dayWeek: currentDate.format('dddd')
   }
 ];
