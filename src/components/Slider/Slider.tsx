@@ -1,16 +1,22 @@
+import { Icon } from '@components/Icon/Icon';
 import { TeamPerson } from '@pages/Team/components/TeamPerson/TeamPerson';
 import React from 'react';
 import {
-  TABLET_POINT,
   MOBILE_POINT,
   MOBILE_SMALL_POINT,
+  TABLET_POINT,
   TEAM_PERSONS
-} from '../../../../../constants';
-import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
-import { Icon } from '@components/Icon/Icon';
+} from '../../constants';
+import { Swiper, SwiperRef } from 'swiper/react';
 
-const TeamSlider = () => {
+interface SliderProps {
+  slide: JSX.Element[];
+}
+
+export const Slider: React.FC<SliderProps> = ({ slide }) => {
   const swiperRef = React.useRef<SwiperRef>(null);
+  const [isFirstSlide, setIsFirstSlide] = React.useState<boolean>(false);
+  const [isLastSlide, setIsLastSlide] = React.useState<boolean>(true);
   const [slidePerView, setSlidePerView] = React.useState<number | 'auto'>(4);
 
   const nextElementSwiper = () => {
@@ -23,9 +29,13 @@ const TeamSlider = () => {
   };
 
   return (
-    <div className="team-slider">
-      <button onClick={prevElementSwiper}>
-        <Icon iconName="arrow-left" className="team-slider_arrow-left" />
+    <div className="slider">
+      <button
+        onClick={prevElementSwiper}
+        className="slider__arrow-left"
+        style={{ visibility: `${isFirstSlide ? 'visible' : 'hidden'}` }}
+      >
+        <Icon iconName="arrow-left" />
       </button>
 
       <Swiper
@@ -34,6 +44,10 @@ const TeamSlider = () => {
         keyboard={{ enabled: true }}
         slidesPerView={slidePerView}
         ref={swiperRef}
+        onSlideChangeTransitionStart={(swiper) =>
+          setIsFirstSlide(!swiper.isBeginning)
+        }
+        onSlideChangeTransitionEnd={(swiper) => setIsLastSlide(!swiper.isEnd)}
         breakpoints={{
           [TABLET_POINT]: {
             slidesPerView: 4
@@ -49,18 +63,16 @@ const TeamSlider = () => {
           }
         }}
       >
-        {TEAM_PERSONS.map((person) => (
-          <SwiperSlide key={person.name}>
-            <TeamPerson person={person} />
-          </SwiperSlide>
-        ))}
+        {slide}
       </Swiper>
 
-      <button onClick={nextElementSwiper}>
-        <Icon iconName="arrow-right" className="team-slider_arrow-right" />
+      <button
+        onClick={nextElementSwiper}
+        className="slider__arrow-right"
+        style={{ visibility: `${isLastSlide ? 'visible' : 'hidden'}` }}
+      >
+        <Icon iconName="arrow-right" />
       </button>
     </div>
   );
 };
-
-export default TeamSlider;
