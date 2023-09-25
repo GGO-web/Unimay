@@ -1,0 +1,52 @@
+.slider {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  @include adaptiveValue('margin-top', 36, 20);
+  @include adaptiveValue('margin-bottom', 126, 20);
+
+  &__arrow-left,
+  &__arrow-right {
+    cursor: pointer;
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  &__arrow-left {
+    margin-right: 10px;
+  }
+  &__arrow-right {
+    margin-left: 10px;
+  }
+
+  & .teamperson {
+    min-width: 150px;
+
+    &__name p {
+      @include adaptiveValue('font-size', 18, 17);
+    }
+  }
+
+  @media (max-width: $mobile) {
+    padding-bottom: 50px;
+
+    &__arrow-left,
+    &__arrow-right {
+      z-index: 10;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &__arrow-left {
+      left: 5px;
+    }
+
+    &__arrow-right {
+      right: 5px;
+    }
+  }
+}
