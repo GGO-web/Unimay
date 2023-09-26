@@ -31,7 +31,7 @@
   }
 
   @media (max-width: $mobile) {
-    padding-bottom: 50px;
+    position: relative;
 
     &__arrow-left,
     &__arrow-right {
