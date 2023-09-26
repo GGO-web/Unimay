@@ -18,6 +18,7 @@ import { TitleDescription } from './components/TitleDescrption/TitleDescription'
 import { SeriesReleaseSchedule } from './components/SeriesReleaseSchedule/SeriesReleaseSchedule';
 
 import { TitleImages } from './components/TitleImages/TitleImages';
+import { SimilarAnime } from './components/SimilarAnime/SimilarAnime';
 
 export const Title = () => {
   return (
@@ -51,6 +52,8 @@ export const Title = () => {
             <TitleImages />
 
             <SeriesReleaseSchedule listSeries={LIST_RELEASE_SCHEDULE} />
+
+            <SimilarAnime />
           </div>
         </main>
       </div>

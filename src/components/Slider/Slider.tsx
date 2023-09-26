@@ -10,9 +10,10 @@ import { Swiper, SwiperRef } from 'swiper/react';
 
 interface SliderProps {
   children: ReactNode;
+  fullWidth?: boolean;
 }
 
-export const Slider: React.FC<SliderProps> = ({ children }) => {
+export const Slider: React.FC<SliderProps> = ({ children, fullWidth }) => {
   const swiperRef = React.useRef<SwiperRef>(null);
   const [isFirstSlide, setIsFirstSlide] = React.useState<boolean>(false);
   const [isLastSlide, setIsLastSlide] = React.useState<boolean>(true);
@@ -28,7 +29,7 @@ export const Slider: React.FC<SliderProps> = ({ children }) => {
   };
 
   return (
-    <div className="slider">
+    <div className={`slider ${fullWidth ? 'full-slider' : ''}`}>
       <button
         onClick={prevElementSwiper}
         className="slider__arrow-left"

@@ -50,3 +50,29 @@
     }
   }
 }
+
+.full-slider {
+  height: 100%;
+  width: 100%;
+
+  position: relative;
+
+  @include adaptiveValue('margin-top', 36, 20);
+  @include adaptiveValue('margin-bottom', 126, 20);
+
+  .slider__arrow-left,
+  .slider__arrow-right {
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .slider__arrow-left {
+    left: 5px;
+  }
+
+  .slider__arrow-right {
+    right: 5px;
+  }
+}
