@@ -1,19 +1,18 @@
 import { Icon } from '@components/Icon/Icon';
-import { TeamPerson } from '@pages/Team/components/TeamPerson/TeamPerson';
-import React from 'react';
+
+import React, { ReactNode } from 'react';
 import {
   MOBILE_POINT,
   MOBILE_SMALL_POINT,
-  TABLET_POINT,
-  TEAM_PERSONS
+  TABLET_POINT
 } from '../../constants';
 import { Swiper, SwiperRef } from 'swiper/react';
 
 interface SliderProps {
-  slide: JSX.Element[];
+  children: ReactNode;
 }
 
-export const Slider: React.FC<SliderProps> = ({ slide }) => {
+export const Slider: React.FC<SliderProps> = ({ children }) => {
   const swiperRef = React.useRef<SwiperRef>(null);
   const [isFirstSlide, setIsFirstSlide] = React.useState<boolean>(false);
   const [isLastSlide, setIsLastSlide] = React.useState<boolean>(true);
@@ -63,7 +62,7 @@ export const Slider: React.FC<SliderProps> = ({ slide }) => {
           }
         }}
       >
-        {slide}
+        {children}
       </Swiper>
 
       <button

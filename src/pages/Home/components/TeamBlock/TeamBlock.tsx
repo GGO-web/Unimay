@@ -1,7 +1,7 @@
 import { Heading } from '@components/Heading/Heading';
 import { Paragraph } from '@components/Paragraph/Paragraph';
 import React from 'react';
-import TeamSlider from './TeamSlider/TeamSlider';
+
 import { Slider } from '@components/Slider/Slider';
 import { TEAM_PERSONS } from '../../../../constants';
 import { SwiperSlide } from 'swiper/react';
@@ -21,13 +21,13 @@ export const TeamBlock: React.FC<TeamBlockProps> = () => {
       </Paragraph>
 
       {/* <TeamSlider /> */}
-      <Slider
-        slide={TEAM_PERSONS.map((person) => (
+      <Slider>
+        {TEAM_PERSONS.map((person) => (
           <SwiperSlide key={person.name}>
             <TeamPerson person={person} />
           </SwiperSlide>
         ))}
-      />
+      </Slider>
     </section>
   );
 };
