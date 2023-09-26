@@ -8,7 +8,7 @@ interface TitleImagesProps {}
 export const TitleImages: React.FC<TitleImagesProps> = () => {
   return (
     <div>
-      <Slider>
+      <Slider fullWidth>
         {TITLE_IMAGES.map(({ id, image }) => (
           <SwiperSlide key={id}>
             <img src={image} alt="image" />
