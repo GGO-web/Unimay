@@ -1,8 +1,12 @@
 .teamperson {
+  min-width: 150px;
+
   &__name {
     background-color: var(--color-dark);
     padding: 14px 5px;
     border-radius: 6px;
+
+    @include adaptiveValue('font-size', 18, 17);
   }
 
   &__description {
