@@ -3,7 +3,7 @@ import { Paragraph } from '@components/Paragraph/Paragraph';
 import React from 'react';
 
 import { Slider } from '@components/Slider/Slider';
-import { TEAM_PERSONS } from '../../../../constants';
+import { TEAM_PERSONS, SWIPER_PROPS_1 } from '../../../../constants';
 import { SwiperSlide } from 'swiper/react';
 import { TeamPerson } from '@pages/Team/components/TeamPerson/TeamPerson';
 
@@ -20,8 +20,7 @@ export const TeamBlock: React.FC<TeamBlockProps> = () => {
         які надає “UnimayMedia”:
       </Paragraph>
 
-      {/* <TeamSlider /> */}
-      <Slider>
+      <Slider swiperProps={SWIPER_PROPS_1}>
         {TEAM_PERSONS.map((person) => (
           <SwiperSlide key={person.name}>
             <TeamPerson person={person} />

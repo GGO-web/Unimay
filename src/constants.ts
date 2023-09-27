@@ -433,3 +433,43 @@ export const TITLE_IMAGES = [
   { id: v4(), image: getImageUrl('title-images/6.jpg') },
   { id: v4(), image: getImageUrl('title-images/7.jpg') }
 ];
+
+export const SWIPER_PROPS_1 = {
+  spaceBetween: 20,
+  grabCursor: true,
+  keyboard: { enabled: true },
+  breakpoints: {
+    [TABLET_POINT]: {
+      slidesPerView: 4
+    },
+    [MOBILE_POINT]: {
+      slidesPerView: 3
+    },
+    [MOBILE_SMALL_POINT]: {
+      slidesPerView: 2
+    },
+    0: {
+      slidesPerView: 1
+    }
+  }
+};
+
+export const SWIPER_PROPS_2 = {
+  spaceBetween: 20,
+  grabCursor: true,
+  keyboard: { enabled: true },
+  breakpoints: {
+    [TABLET_POINT]: {
+      slidesPerView: 3
+    },
+    [MOBILE_POINT]: {
+      slidesPerView: 2
+    },
+    [MOBILE_SMALL_POINT]: {
+      slidesPerView: 1
+    },
+    0: {
+      slidesPerView: 1
+    }
+  }
+};

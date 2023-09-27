@@ -3,7 +3,7 @@ import { Paragraph } from '@components/Paragraph/Paragraph';
 import { StarRating } from '@components/Rating/Rating';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ROUTES, carouselItems } from '../../../../constants';
+import { ROUTES, carouselItems, SWIPER_PROPS_2 } from '../../../../constants';
 import { SwiperSlide } from 'swiper/react';
 import { Slider } from '@components/Slider/Slider';
 
@@ -12,7 +12,7 @@ interface SimilarAnimeProps {}
 export const SimilarAnime: React.FC<SimilarAnimeProps> = () => {
   return (
     <section>
-      <Slider fullWidth>
+      <Slider fullWidth swiperProps={SWIPER_PROPS_2}>
         {carouselItems.map((carouselItem) => (
           <SwiperSlide key={carouselItem.id} className="carousel__item">
             <article
