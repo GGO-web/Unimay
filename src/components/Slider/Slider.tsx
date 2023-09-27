@@ -6,14 +6,19 @@ import {
   MOBILE_SMALL_POINT,
   TABLET_POINT
 } from '../../constants';
-import { Swiper, SwiperRef } from 'swiper/react';
+import { Swiper, SwiperRef, SwiperProps } from 'swiper/react';
 
 interface SliderProps {
   children: ReactNode;
   fullWidth?: boolean;
+  swiperProps?: SwiperProps;
 }
 
-export const Slider: React.FC<SliderProps> = ({ children, fullWidth }) => {
+export const Slider: React.FC<SliderProps> = ({
+  children,
+  fullWidth,
+  swiperProps
+}) => {
   const swiperRef = React.useRef<SwiperRef>(null);
   const [isFirstSlide, setIsFirstSlide] = React.useState<boolean>(false);
   const [isLastSlide, setIsLastSlide] = React.useState<boolean>(true);
@@ -39,29 +44,13 @@ export const Slider: React.FC<SliderProps> = ({ children, fullWidth }) => {
       </button>
 
       <Swiper
-        spaceBetween={20}
-        grabCursor
-        keyboard={{ enabled: true }}
+        {...swiperProps}
         slidesPerView={slidePerView}
         ref={swiperRef}
         onSlideChangeTransitionStart={(swiper) =>
           setIsFirstSlide(!swiper.isBeginning)
         }
         onSlideChangeTransitionEnd={(swiper) => setIsLastSlide(!swiper.isEnd)}
-        breakpoints={{
-          [TABLET_POINT]: {
-            slidesPerView: 4
-          },
-          [MOBILE_POINT]: {
-            slidesPerView: 3
-          },
-          [MOBILE_SMALL_POINT]: {
-            slidesPerView: 2
-          },
-          0: {
-            slidesPerView: 1
-          }
-        }}
       >
         {children}
       </Swiper>
