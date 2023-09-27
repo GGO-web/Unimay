@@ -22,14 +22,6 @@
     margin-left: 10px;
   }
 
-  & .teamperson {
-    min-width: 150px;
-
-    &__name p {
-      @include adaptiveValue('font-size', 18, 17);
-    }
-  }
-
   @media (max-width: $mobile) {
     position: relative;
 
