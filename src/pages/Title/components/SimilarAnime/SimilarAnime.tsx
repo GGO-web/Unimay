@@ -3,16 +3,17 @@ import { Paragraph } from '@components/Paragraph/Paragraph';
 import { StarRating } from '@components/Rating/Rating';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ROUTES, carouselItems, SWIPER_PROPS_2 } from '../../../../constants';
+import { ROUTES, carouselItems } from '../../../../constants';
 import { SwiperSlide } from 'swiper/react';
 import { Slider } from '@components/Slider/Slider';
+import { SWIPER_PROPS_SIMILIAR_ANIME } from './SWIPER_PROPS_SIMILIAR_ANIME';
 
 interface SimilarAnimeProps {}
 
 export const SimilarAnime: React.FC<SimilarAnimeProps> = () => {
   return (
     <section>
-      <Slider fullWidth swiperProps={SWIPER_PROPS_2}>
+      <Slider fullWidth swiperProps={SWIPER_PROPS_SIMILIAR_ANIME}>
         {carouselItems.map((carouselItem) => (
           <SwiperSlide key={carouselItem.id} className="carousel__item">
             <article
