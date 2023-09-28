@@ -25,10 +25,7 @@ const TeamSlider = () => {
   return (
     <div className="team-slider">
       <button onClick={prevElementSwiper}>
-        <Icon
-          iconName="arrow-left"
-          className="team-slider_arrow-left"
-        />
+        <Icon iconName="arrow-left" className="team-slider_arrow-left" />
       </button>
 
       <Swiper
@@ -58,12 +55,9 @@ const TeamSlider = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      
+
       <button onClick={nextElementSwiper}>
-        <Icon
-          iconName="arrow-right"
-          className="team-slider_arrow-right"
-        />
+        <Icon iconName="arrow-right" className="team-slider_arrow-right" />
       </button>
     </div>
   );

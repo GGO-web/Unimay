@@ -13,7 +13,7 @@ export const TeamPerson = ({ person }: { person: ITeamPerson }) => {
       />
 
       <div className="teamperson__name flex-center">
-        <p className="text-xl">{person.name}</p>
+        <p className="text-xl text-center">{person.name}</p>
       </div>
 
       <div className="teamperson__description text-lg">

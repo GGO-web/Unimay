@@ -407,7 +407,7 @@ export const LIST_RELEASE_SCHEDULE: SeriesReleaseScheduleItem[] = [
     episode: 3,
     date: new Date()
   }
-]
+];
 
 export interface ITitleInfo {
   id: string;
@@ -422,4 +422,14 @@ export const TITLE_INFO: ITitleInfo[] = [
   { id: v4(), characteristic: 'Режисер:', key: 'producer' },
   { id: v4(), characteristic: 'Актори:', key: 'actors' },
   { id: v4(), characteristic: 'Озвучення:', key: 'subtitles' }
+];
+
+export const TITLE_IMAGES = [
+  { id: v4(), image: getImageUrl('title-images/1.jpg') },
+  { id: v4(), image: getImageUrl('title-images/2.jpg') },
+  { id: v4(), image: getImageUrl('title-images/3.jpg') },
+  { id: v4(), image: getImageUrl('title-images/4.jpg') },
+  { id: v4(), image: getImageUrl('title-images/5.jpg') },
+  { id: v4(), image: getImageUrl('title-images/6.jpg') },
+  { id: v4(), image: getImageUrl('title-images/7.jpg') }
 ];
