@@ -20,6 +20,7 @@ import { SeriesReleaseSchedule } from './components/SeriesReleaseSchedule/Series
 import { TitleImages } from './components/TitleImages/TitleImages';
 import { SimilarAnime } from './components/SimilarAnime/SimilarAnime';
 
+
 export const Title = () => {
   return (
     <section className="home page-section">
