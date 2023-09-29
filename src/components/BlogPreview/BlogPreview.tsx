@@ -3,6 +3,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Heading } from '@components/Heading/Heading';
 import { Paragraph } from '@components/Paragraph/Paragraph';
+import bubble from '@assets/svg/speechBubble.svg'
+
+interface BlogPreviewItem {
+  title: string;
+  description: string;
+  date: Date;
+  coments: string[];
+}
 
 export const BlogPreview = () => {
   return (
@@ -24,9 +32,18 @@ export const BlogPreview = () => {
           брати від них силу. Опис мабуть такий собі, але сюжет непростий...
         </Paragraph>
 
+        <div className="spread">
         <Link className="blog-preview__more" to="blog/1">
           Читати далі...
         </Link>
+
+        <Link className="blog-preview__more spread" to="blog/1">
+          <img style={{height: '28px', width: '28px', marginRight: '10px'}} src={bubble} alt="bubble" />
+          <span>220 коментарів</span>
+        </Link>
+        </div>
+        
+        
       </div>
     </article>
   );
