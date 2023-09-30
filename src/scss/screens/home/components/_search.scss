@@ -7,6 +7,8 @@
   transform: translateY(-50%);
   margin: 0 auto;
   padding: 20px;
+  position: relative;
+  z-index: 10;
 }
 
 .searchModule {
@@ -28,6 +30,7 @@
     background-size: 30px;
     padding-left: 60px;
   }
+
 }
 
 .searchModule ul {
@@ -38,18 +41,20 @@
   margin-top: 1px;
   border-radius: 3px;
   max-height: 310px;
-  background-color: #ffffff;
+  background-color: black;
 }
 
 .searchModule ul li {
   padding: 15px;
-  background: white;
-  border-bottom: 1px solid #c7c0c0;
+  background: black;
+  border-bottom: 1px solid #242424;
   margin-top: 0.5px;
+  position: relative;
+  z-index: 100;
 }
 
 .searchModule li:hover {
-  color: rgb(241, 249, 249);
-  border-color: rgb(47, 110, 245);
-  background-color: rgb(47, 110, 245);
+  color: $white;
+  border-color: rgb(41, 41, 41);
+  background-color: rgb(41, 41, 41);
 }
