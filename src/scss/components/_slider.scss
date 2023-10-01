@@ -50,7 +50,7 @@
   position: relative;
 
   @include adaptiveValue('margin-top', 36, 20);
-  @include adaptiveValue('margin-bottom', 126, 20);
+  @include adaptiveValue('margin-bottom', 36, 20);
 
   .slider__arrow-left,
   .slider__arrow-right {
