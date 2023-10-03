@@ -80,4 +80,34 @@
       }
     }
   }
+
+  @media (max-width: $mobile) {
+    &__avatar {
+      width: 80px;
+      height: 80px;
+    }
+    &__user-name,
+    &__type-user {
+      padding-left: 90px;
+    }
+    &__message-block {
+      margin-top: 40px;
+
+      padding: 10px 10px 38px 10px;
+    }
+
+    &__footer {
+      flex-direction: column-reverse;
+      gap: 30px;
+
+      &-more {
+        padding-left: unset;
+        justify-content: center;
+      }
+
+      &-answer {
+        justify-content: space-between;
+      }
+    }
+  }
 }
