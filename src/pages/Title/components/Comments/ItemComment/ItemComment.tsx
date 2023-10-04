@@ -45,7 +45,13 @@ export const ItemCommment: React.FC<ItemCommmentProps> = ({
       <div className="item-comment__message-block">
         <Paragraph size="lg">{comment.comment}</Paragraph>
       </div>
-      <footer className="item-comment__footer">
+      <footer
+        className={`item-comment__footer ${
+          comment.replies && comment.replies?.length > 0
+            ? ''
+            : 'footer__one-block'
+        }`}
+      >
         {comment.replies && comment.replies?.length > 0 && (
           <div className="item-comment__footer-more">
             {showArrowUpOrDown}
