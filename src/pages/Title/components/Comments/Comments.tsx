@@ -9,13 +9,23 @@ import { ListComments } from './ListComments/ListComments';
 interface CommentsProps {}
 
 export const Comments: React.FC<CommentsProps> = () => {
+  const numСomments: number | undefined = COMMENTS.length;
+
   return (
     <section>
-      <Heading>Коментарі (100)</Heading>
-      <Paragraph>Коментарів ще немає, будь першим!</Paragraph>
-      <FormComment isAuth={false} hideButtonCancel />
+      <Heading className="pb-10">Коментарі ({numСomments || 0})</Heading>
 
-      <ListComments comments={COMMENTS} />
+      <FormComment isAuth={false} hideButtonCancel />
+      {/* for NOT registered users */}
+
+      {/* <FormComment isAuth={true} hideButtonCancel /> */}
+      {/* for registered users */}
+
+      {numСomments === 0 || numСomments === undefined ? (
+        <Paragraph>Коментарів ще немає, будь першим!</Paragraph>
+      ) : (
+        <ListComments comments={COMMENTS} />
+      )}
     </section>
   );
 };
