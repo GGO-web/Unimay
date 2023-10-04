@@ -1,9 +1,8 @@
 import React from 'react';
 
-import {Link} from 'react-router-dom';
-import {mainNavItems} from '../../constants';
-import {Icon} from '@components/Icon/Icon';
-import {Button} from '@components/Button/Button';
+import { Link } from 'react-router-dom';
+import { Icon } from '@components/Icon/Icon';
+import { Button } from '@components/Button/Button';
 
 export const Sidenav = () => {
   return (
@@ -17,8 +16,14 @@ export const Sidenav = () => {
           <Icon iconName={'logo'} />
         </Link>
 
-        <Button className={'sidenav__item sidenav__item--menu'} iconName={'menu'} />
-        <Button className={'sidenav__item sidenav__item--search'} iconName={'search'} />
+        <Button
+          className={'sidenav__item sidenav__item--menu'}
+          iconName={'menu'}
+        />
+        <Button
+          className={'sidenav__item sidenav__item--search'}
+          iconName={'search'}
+        />
       </div>
     </aside>
   );

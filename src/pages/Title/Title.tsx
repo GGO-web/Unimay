@@ -19,9 +19,13 @@ import { SeriesReleaseSchedule } from './components/SeriesReleaseSchedule/Series
 
 import { TitleImages } from './components/TitleImages/TitleImages';
 import { SimilarAnime } from './components/SimilarAnime/SimilarAnime';
+
 import { FormComment } from './components/Comments/FormComment/FormComment';
 import { ItemCommment } from './components/Comments/ItemComment/ItemComment';
 import { Comments } from './components/Comments/Comments';
+        
+import { CustomPlayer } from '@components/CustomPlayer/CustomPlayer';
+
 
 export const Title = () => {
   return (
@@ -52,9 +56,13 @@ export const Title = () => {
               paragraph={DESCRIPTION_ANIME.paragraph}
             />
 
-            <TitleImages />
+            <section className="player-outer">
+              <TitleImages />
 
-            <SeriesReleaseSchedule listSeries={LIST_RELEASE_SCHEDULE} />
+              <CustomPlayer />
+
+              <SeriesReleaseSchedule listSeries={LIST_RELEASE_SCHEDULE} />
+            </section>
 
             <Comments />
 
