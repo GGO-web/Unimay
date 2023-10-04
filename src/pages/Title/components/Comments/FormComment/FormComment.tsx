@@ -5,11 +5,13 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 interface FormCommentProps {
   isAuth: boolean; // whether the User is authorized
   hideButtonCancel?: boolean; // hide the cancel button ?
+  showFormComment?: () => void; // show/ hide form for fill comment
 }
 
 export const FormComment: React.FC<FormCommentProps> = ({
   isAuth,
-  hideButtonCancel
+  hideButtonCancel,
+  showFormComment
 }) => {
   const {
     register,
@@ -82,7 +84,10 @@ export const FormComment: React.FC<FormCommentProps> = ({
           Відповісти
         </button>
         {hideButtonCancel || (
-          <Button className="button-style button-style_stroke">
+          <Button
+            className="button-style button-style_stroke"
+            onClick={showFormComment}
+          >
             Скасувати
           </Button>
         )}

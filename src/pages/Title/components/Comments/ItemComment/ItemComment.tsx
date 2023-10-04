@@ -2,13 +2,19 @@ import { Paragraph } from '@components/Paragraph/Paragraph';
 import { getIconUrl } from '@helpers/getIconUrl';
 import React from 'react';
 import { IComment } from 'src/types/comments';
+import { FormComment } from '../FormComment/FormComment';
 
 interface ItemCommmentProps {
+  isAuth?: boolean;
   comment: IComment;
 }
 
-export const ItemCommment: React.FC<ItemCommmentProps> = ({ comment }) => {
+export const ItemCommment: React.FC<ItemCommmentProps> = ({
+  comment,
+  isAuth = false
+}) => {
   const [showReplies, setShowReplies] = React.useState<boolean>(false);
+  const [replie, setReplie] = React.useState<boolean>(false);
 
   const userOrGuest = comment.isAuth ? 'Користувач' : 'Гість';
 
@@ -21,6 +27,10 @@ export const ItemCommment: React.FC<ItemCommmentProps> = ({ comment }) => {
   ) : (
     <img src={getIconUrl('arrow-down.svg')} alt="icon" />
   );
+
+  const showFormComment = () => {
+    setReplie(!replie);
+  };
 
   return (
     <div className="item-comment">
@@ -49,9 +59,16 @@ export const ItemCommment: React.FC<ItemCommmentProps> = ({ comment }) => {
             <img src={getIconUrl('message-comment.svg')} alt="icon" />
             <Paragraph>{comment.replies?.length || 0}</Paragraph>
           </div>
-          <button>Відповісти</button>
+          <button onClick={showFormComment}>Відповісти</button>
         </div>
       </footer>
+
+      {replie &&
+        (isAuth ? (
+          <FormComment isAuth showFormComment={showFormComment} />
+        ) : (
+          <FormComment isAuth={false} showFormComment={showFormComment} />
+        ))}
 
       {showReplies && comment.replies && comment.replies.length > 0 && (
         <div className="replies" style={{ paddingLeft: '40px' }}>
