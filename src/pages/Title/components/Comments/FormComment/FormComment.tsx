@@ -32,7 +32,7 @@ export const FormComment: React.FC<FormCommentProps> = ({
 
   return (
     <form className="form-comment" onSubmit={handleSubmit(onSubmit)}>
-      {isAuth && (
+      {!isAuth && (
         <div className="form-comment__name-user error">
           <input
             className={`${errors.nameUser?.message ? 'error' : ''}`}

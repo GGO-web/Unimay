@@ -1,14 +1,26 @@
-import { Heading } from '@components/Heading/Heading';
 import { Paragraph } from '@components/Paragraph/Paragraph';
 import { getIconUrl } from '@helpers/getIconUrl';
 import React from 'react';
+import { IComment } from 'src/types/comments';
 
 interface ItemCommmentProps {
-  isAuth: boolean; // whether the User is authorized
+  comment: IComment;
 }
 
-export const ItemCommment: React.FC<ItemCommmentProps> = ({ isAuth }) => {
-  const userOrGuest = isAuth ? 'Користувач' : 'Гість';
+export const ItemCommment: React.FC<ItemCommmentProps> = ({ comment }) => {
+  const [showReplies, setShowReplies] = React.useState<boolean>(false);
+
+  const userOrGuest = comment.isAuth ? 'Користувач' : 'Гість';
+
+  const showArrowUpOrDown = showReplies ? (
+    <img
+      src={getIconUrl('arrow-down.svg')}
+      style={{ transform: 'rotate(-180deg)' }}
+      alt="icon"
+    />
+  ) : (
+    <img src={getIconUrl('arrow-down.svg')} alt="icon" />
+  );
 
   return (
     <div className="item-comment">
@@ -17,27 +29,37 @@ export const ItemCommment: React.FC<ItemCommmentProps> = ({ isAuth }) => {
       </div>
 
       <Paragraph className="item-comment__user-name" size="xl">
-        Polunina Daria
+        {comment.user}
       </Paragraph>
       <p className="item-comment__type-user">{userOrGuest}</p>
       <div className="item-comment__message-block">
-        <Paragraph size="lg">
-          Дуже класний мульт,на рівні з фільмом 2005!
-        </Paragraph>
+        <Paragraph size="lg">{comment.comment}</Paragraph>
       </div>
       <footer className="item-comment__footer">
-        <div className="item-comment__footer-more">
-          <img src={getIconUrl('arrow-down.svg')} alt="icon" />
-          <button>Розгорнути відповіді</button>
-        </div>
+        {comment.replies && comment.replies?.length > 0 && (
+          <div className="item-comment__footer-more">
+            {showArrowUpOrDown}
+            <button onClick={() => setShowReplies(!showReplies)}>
+              Розгорнути відповіді
+            </button>
+          </div>
+        )}
         <div className="item-comment__footer-answer">
           <div className="answer__counter-block">
             <img src={getIconUrl('message-comment.svg')} alt="icon" />
-            <Paragraph>0</Paragraph>
+            <Paragraph>{comment.replies?.length || 0}</Paragraph>
           </div>
           <button>Відповісти</button>
         </div>
       </footer>
+
+      {showReplies && comment.replies && comment.replies.length > 0 && (
+        <div className="replies" style={{ paddingLeft: '40px' }}>
+          {comment.replies.map((reply) => (
+            <ItemCommment key={reply.id} comment={reply} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
