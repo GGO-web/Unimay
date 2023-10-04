@@ -21,6 +21,7 @@ import { TitleImages } from './components/TitleImages/TitleImages';
 import { SimilarAnime } from './components/SimilarAnime/SimilarAnime';
 import { FormComment } from './components/Comments/FormComment/FormComment';
 import { ItemCommment } from './components/Comments/ItemComment/ItemComment';
+import { Comments } from './components/Comments/Comments';
 
 export const Title = () => {
   return (
@@ -55,8 +56,7 @@ export const Title = () => {
 
             <SeriesReleaseSchedule listSeries={LIST_RELEASE_SCHEDULE} />
 
-            <FormComment isAuth={true} />
-            <ItemCommment isAuth={false} />
+            <Comments />
 
             <SimilarAnime />
           </div>
