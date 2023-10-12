@@ -34,6 +34,7 @@ export const InstantSearch = () => {
 
   return (
     <div className="searchModule">
+      <div className="container">
       <input
         value={search}
         onChange={(e) => onLsChange(e)}
@@ -46,6 +47,11 @@ export const InstantSearch = () => {
           return <li key={res.id}>{res.title}</li>;
         })}
       </ul>
+      </div>
+
+      <div className="container">
+        <button className="button-style" type="button">Пошук</button>
+      </div>      
     </div>
   );
 };

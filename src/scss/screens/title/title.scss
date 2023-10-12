@@ -1,0 +1,41 @@
+@import './components/_titelInfo';
+@import './components/_nextSeasons';
+
+@import './components/_recommendations';
+@import './components/_seriesReleaseSchedule';
+@import './components/_formComment';
+@import './components/_itemComment';
+
+@import "./components/_customPlayer";
+
+.title {
+  .title__container {
+    .title__main {
+      margin-bottom: 86px;
+      display: flex;
+
+      justify-content: space-between;
+      gap: 10px;
+
+      .title__main-col-2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  @media (max-width: $pc) {
+    .title__container {
+      .title__main {
+        flex-wrap: wrap;
+        .title__main-col-2 {
+          width: 100%;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+.next-seasons {
+  min-width: 480px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .next-seasons__main {
+    margin-top: 41px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  main {
+    .next-seasons__promo {
+      position: relative;
+
+      height: 220px;
+      width: 170px;
+
+      background-origin: border-box;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50% 50%;
+
+      &-rating {
+        position: absolute;
+        top: -13px;
+        right: 0px;
+
+        padding: 2px 4px;
+
+        width: 80px;
+        height: 50px;
+
+        border-radius: 6px;
+
+        background-color: $red;
+        p {
+          line-height: normal;
+          &:nth-child(1) {
+            text-align: right;
+          }
+          &:nth-child(2) {
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    .next-seasons__description {
+      width: 270px;
+
+      &-stars {
+        display: flex;
+        align-items: center;
+        column-gap: 8px;
+
+        .elipse {
+          background-color: white;
+          width: 8px;
+          height: 8px;
+          border-radius: 100%;
+        }
+      }
+    }
+  }
+
+  @media (max-width: $pc) {
+    min-width: 100%;
+    main {
+      .next-seasons__description {
+        width: 70%;
+      }
+    }
+  }
+
+  @media (max-width: $mobile) {
+    .next-seasons__main {
+      flex-direction: column;
+    }
+    main {
+      .next-seasons__description {
+        width: 100%;
+      }
+    }
+  }
+}

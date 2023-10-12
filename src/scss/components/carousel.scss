@@ -8,7 +8,7 @@
   background-position: center;
   border-radius: var(--border-radius);
 
-  @include adaptiveValue('max-width', 360, 280);
+  // @include adaptiveValue('max-width', 360, 280);
   @include adaptiveValue('min-height', 500, 360);
 
   &-bottom {
