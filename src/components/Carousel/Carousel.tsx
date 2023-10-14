@@ -16,7 +16,20 @@ export const Carousel = () => {
       className="carousel"
       spaceBetween={30}
       grabCursor
-      slidesPerView="auto"
+      breakpoints={{
+        200: {
+          spaceBetween: 20,
+          slidesPerView: 1
+        },
+        768: {
+          spaceBetween: 30,
+          slidesPerView: 2
+        },
+        1200: {
+          spaceBetween: 30,
+          slidesPerView: 3
+        }
+      }}
     >
       {carouselItems.map((carouselItem) => (
         <SwiperSlide key={carouselItem.id} className="carousel__item">

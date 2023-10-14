@@ -71,6 +71,7 @@ export const ROUTES = {
   HOME: '/',
   TEAM: '/team',
   TITLE: '/title/:id',
+  NEWS: '/news',
   NOT_FOUND: '*',
   VIEW_TITLE_BY_ID: (id: string) => {
     return `/title/${id}`;
@@ -106,7 +107,7 @@ export const navigationItems: NavigationItem[] = [
   },
   {
     id: v4(),
-    href: '#',
+    href: ROUTES.NEWS,
     text: 'Новини'
   }
 ];
@@ -118,6 +119,16 @@ export const TEAM_BREADCRUMBS = [
   },
   {
     name: 'Команда'
+  }
+];
+
+export const NEWS_BREADCRUMBS = [
+  {
+    name: 'Головна',
+    link: ROUTES.HOME
+  },
+  {
+    name: 'Новини'
   }
 ];
 
