@@ -17,6 +17,16 @@ import { Recommendations } from './components/Recommendations/Recommendations';
 import { TitleDescription } from './components/TitleDescrption/TitleDescription';
 import { SeriesReleaseSchedule } from './components/SeriesReleaseSchedule/SeriesReleaseSchedule';
 
+import { TitleImages } from './components/TitleImages/TitleImages';
+import { SimilarAnime } from './components/SimilarAnime/SimilarAnime';
+
+import { FormComment } from './components/Comments/FormComment/FormComment';
+import { ItemCommment } from './components/Comments/ItemComment/ItemComment';
+import { Comments } from './components/Comments/Comments';
+
+import { CustomPlayer } from '@components/CustomPlayer/CustomPlayer';
+
+
 export const Title = () => {
   return (
     <section className="home page-section">
@@ -24,7 +34,7 @@ export const Title = () => {
         <Header />
         <Sidenav />
 
-        <section className="title">
+        <main className="main title">
           <div className="title__container container">
             <Breadcrumbs
               items={[
@@ -33,22 +43,32 @@ export const Title = () => {
               ]}
             />
 
-            <main className="title__main">
+            <section className="title__main">
               <TitleInfo anime={CURRENT_ANIME} />
               <div className="title__main-col-2">
                 <NextSeasons anime={NEXT_ANIME} />
                 <Recommendations anime={RECOMMENDATIONS_ANIME} />
               </div>
-            </main>
+            </section>
 
             <TitleDescription
               heading={DESCRIPTION_ANIME.heading}
               paragraph={DESCRIPTION_ANIME.paragraph}
             />
 
-            <SeriesReleaseSchedule listSeries={LIST_RELEASE_SCHEDULE} />
+            <section className="player-outer">
+              <TitleImages />
+
+              <CustomPlayer />
+
+              <SeriesReleaseSchedule listSeries={LIST_RELEASE_SCHEDULE} />
+            </section>
+
+            <Comments />
+
+            <SimilarAnime />
           </div>
-        </section>
+        </main>
       </div>
     </section>
   );

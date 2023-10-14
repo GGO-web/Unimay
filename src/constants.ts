@@ -71,6 +71,7 @@ export const ROUTES = {
   HOME: '/',
   TEAM: '/team',
   TITLE: '/title/:id',
+  NEWS: '/news',
   NOT_FOUND: '*',
   VIEW_TITLE_BY_ID: (id: string) => {
     return `/title/${id}`;
@@ -106,7 +107,7 @@ export const navigationItems: NavigationItem[] = [
   },
   {
     id: v4(),
-    href: '#',
+    href: ROUTES.NEWS,
     text: 'Новини'
   }
 ];
@@ -118,6 +119,16 @@ export const TEAM_BREADCRUMBS = [
   },
   {
     name: 'Команда'
+  }
+];
+
+export const NEWS_BREADCRUMBS = [
+  {
+    name: 'Головна',
+    link: ROUTES.HOME
+  },
+  {
+    name: 'Новини'
   }
 ];
 
@@ -407,7 +418,7 @@ export const LIST_RELEASE_SCHEDULE: SeriesReleaseScheduleItem[] = [
     episode: 3,
     date: new Date()
   }
-]
+];
 
 export interface ITitleInfo {
   id: string;
@@ -423,3 +434,110 @@ export const TITLE_INFO: ITitleInfo[] = [
   { id: v4(), characteristic: 'Актори:', key: 'actors' },
   { id: v4(), characteristic: 'Озвучення:', key: 'subtitles' }
 ];
+
+export const TITLE_IMAGES = [
+  { id: v4(), image: getImageUrl('title-images/1.jpg') },
+  { id: v4(), image: getImageUrl('title-images/2.jpg') },
+  { id: v4(), image: getImageUrl('title-images/3.jpg') },
+  { id: v4(), image: getImageUrl('title-images/4.jpg') },
+  { id: v4(), image: getImageUrl('title-images/5.jpg') },
+  { id: v4(), image: getImageUrl('title-images/6.jpg') },
+  { id: v4(), image: getImageUrl('title-images/7.jpg') }
+];
+
+export const COMMENTS = [
+  {
+    id: v4(),
+    user: 'John Doe',
+    isAuth: true,
+    comment: 'Це чудове кіно!',
+    timestamp: new Date(),
+    replies: [
+      {
+        id: v4(),
+        user: 'Author',
+        isAuth: false,
+        comment: 'Згоден з тобою John Doe!',
+        timestamp: new Date(),
+        replies: [
+          {
+            id: v4(),
+            user: 'Alexey',
+            isAuth: true,
+            comment:
+              "Я нещодавно подивився аніме, і я залишився вражений. Це було неймовірно захоплююче та чарівне досвід. Аніме майстерно поєднує в собі захоплюючий сюжет, чудово прорисованих персонажів та яскраву анімацію. Сюжет викликав у мене цікавість та емоційне зв'язку з головними героями. Якщо говорити про аніме, то ця історія мала всі елементи, які мені подобаються - пригоди, дружбу, справжні відносини та велику дозу фантазії. І звісно ж, стиль малюнка був вражаючим. Якщо ви любите анімацію, то це аніме варте вашої уваги. В цілому, якщо ви шукаєте захоплюючий та емоційний досвід, який залишить вас з бажанням більше, я вам рекомендую подивитися це аніме. Воно точно варте вашого часу",
+            timestamp: new Date()
+          },
+          {
+            id: v4(),
+            user: 'NKJS',
+            isAuth: false,
+            comment:
+              'Мультсеріал аніме - це дивовижний світ фантазії та мистецтва, який захоплює своєю непередбачуваністю та яскравістю. Цей жанр привертає своєю неймовірною графікою, живописними ландшафтами та надзвичайними персонажами.',
+            timestamp: new Date()
+          },
+          {
+            id: v4(),
+            user: 'Nikita',
+            isAuth: true,
+            comment:
+              'Не можна не відзначити музичний супровід у мультсеріалах аніме. Чудова музика додає атмосфери та підсилює емоційний досвід глядача, роблячи кожну сцену незабутньою.',
+            timestamp: new Date()
+          }
+        ]
+      },
+      {
+        id: v4(),
+        user: 'Alice Smith',
+        isAuth: true,
+        comment: 'I agree, John!',
+        timestamp: new Date()
+      }
+    ]
+  },
+  {
+    id: v4(),
+    user: 'Наталка',
+    isAuth: false,
+    comment:
+      'Цей мультсеріал аніме, на жаль, залишив мене розчарованим. Я очікував більше від цього, але отримав надто простий та нудний сюжет. Персонажі були мало цікавими та поверхневими, і я не відчував з ними жодної емпатії.',
+    timestamp: new Date(),
+    replies: [
+      {
+        id: v4(),
+        user: 'Cat',
+        isAuth: false,
+        comment:
+          'Згоден с тобою Наталка! Сюжет також не зачарував. Він виявився передбачуваним та кліше, не несучи в собі чогось нового чи цікавого. Події розгорталися повільно, а деякі епізоди взагалі не приносили значущих відкриттів чи розвитку сюжету.',
+        timestamp: new Date()
+      },
+      {
+        id: v4(),
+        user: 'Bob Johnson',
+        isAuth: true,
+        comment: 'Не згоден з вами !!!',
+        timestamp: new Date()
+      }
+    ]
+  }
+];
+
+export const SWIPER_PROPS_TEAM = {
+  spaceBetween: 20,
+  grabCursor: true,
+  keyboard: { enabled: true },
+  breakpoints: {
+    [TABLET_POINT]: {
+      slidesPerView: 4
+    },
+    [MOBILE_POINT]: {
+      slidesPerView: 3
+    },
+    [MOBILE_SMALL_POINT]: {
+      slidesPerView: 2
+    },
+    0: {
+      slidesPerView: 1
+    }
+  }
+};

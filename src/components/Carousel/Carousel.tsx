@@ -9,14 +9,33 @@ import { StarRating } from '../Rating/Rating';
 import { carouselItems, ROUTES } from '../../constants';
 import { Paragraph } from '@components/Paragraph/Paragraph';
 import { Heading } from '@components/Heading/Heading';
+import { FreeMode } from 'swiper';
+import { useMediaQuery } from '@reactuses/core';
 
 export const Carousel = () => {
+  const sliderFreeModeMedia = useMediaQuery('(max-width: 768px)');
+
   return (
     <Swiper
       className="carousel"
       spaceBetween={30}
+      modules={[FreeMode]}
       grabCursor
-      slidesPerView="auto"
+      freeMode={sliderFreeModeMedia}
+      breakpoints={{
+        0: {
+          spaceBetween: 20,
+          slidesPerView: 2
+        },
+        768: {
+          spaceBetween: 30,
+          slidesPerView: 2
+        },
+        1024: {
+          spaceBetween: 30,
+          slidesPerView: 3
+        }
+      }}
     >
       {carouselItems.map((carouselItem) => (
         <SwiperSlide key={carouselItem.id} className="carousel__item">
