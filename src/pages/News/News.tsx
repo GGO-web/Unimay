@@ -21,8 +21,6 @@ export const News = () => {
             <div className="team__container container">
               <Breadcrumbs items={NEWS_BREADCRUMBS} />
               <Heading className="mb-[52px]">Новини</Heading>
-
-              
             </div>
           </section>
         </main>

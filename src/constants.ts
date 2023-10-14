@@ -119,7 +119,7 @@ export const TEAM_BREADCRUMBS = [
   },
   {
     name: 'Команда'
-  },
+  }
 ];
 
 export const NEWS_BREADCRUMBS = [
@@ -129,7 +129,7 @@ export const NEWS_BREADCRUMBS = [
   },
   {
     name: 'Новини'
-  },
+  }
 ];
 
 export const TITLE_BREADCRUMBS = [
