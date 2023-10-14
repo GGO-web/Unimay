@@ -20,7 +20,7 @@
   }
 }
 
-.swiper[data-freemode='true'] {
+.swiper-free-mode {
   @media (max-width: 768px) {
     .carousel__item {
       min-width: 300px;

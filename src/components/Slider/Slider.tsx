@@ -64,7 +64,6 @@ export const Slider: React.FC<SliderProps> = ({
         onSlideChangeTransitionStart={(swiper) =>
           setIsFirstSlide(!swiper.isBeginning)
         }
-        data-freemode={enableFreeMode}
         onSlideChangeTransitionEnd={(swiper) => setIsLastSlide(!swiper.isEnd)}
       >
         {children}
