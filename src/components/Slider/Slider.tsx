@@ -7,22 +7,28 @@ import {
   TABLET_POINT
 } from '../../constants';
 import { Swiper, SwiperRef, SwiperProps } from 'swiper/react';
+import { useMediaQuery } from '@reactuses/core';
+import { FreeMode } from 'swiper';
 
 interface SliderProps {
   children: ReactNode;
   fullWidth?: boolean;
   swiperProps?: SwiperProps;
+  enableFreeMode?: boolean;
 }
 
 export const Slider: React.FC<SliderProps> = ({
   children,
   fullWidth,
-  swiperProps
+  swiperProps,
+  enableFreeMode = true
 }) => {
   const swiperRef = React.useRef<SwiperRef>(null);
   const [isFirstSlide, setIsFirstSlide] = React.useState<boolean>(false);
   const [isLastSlide, setIsLastSlide] = React.useState<boolean>(true);
   const [slidePerView, setSlidePerView] = React.useState<number | 'auto'>(4);
+
+  const sliderFreeModeMedia = useMediaQuery('(max-width: 768px)');
 
   const nextElementSwiper = () => {
     if (!swiperRef.current) return false;
@@ -38,7 +44,13 @@ export const Slider: React.FC<SliderProps> = ({
       <button
         onClick={prevElementSwiper}
         className="slider__arrow-left"
-        style={{ visibility: `${isFirstSlide ? 'visible' : 'hidden'}` }}
+        style={{
+          visibility: `${
+            isFirstSlide && (!sliderFreeModeMedia || !enableFreeMode)
+              ? 'visible'
+              : 'hidden'
+          }`
+        }}
       >
         <Icon iconName="arrow-left" />
       </button>
@@ -47,9 +59,12 @@ export const Slider: React.FC<SliderProps> = ({
         {...swiperProps}
         slidesPerView={slidePerView}
         ref={swiperRef}
+        modules={[FreeMode]}
+        freeMode={sliderFreeModeMedia && enableFreeMode}
         onSlideChangeTransitionStart={(swiper) =>
           setIsFirstSlide(!swiper.isBeginning)
         }
+        data-freemode={enableFreeMode}
         onSlideChangeTransitionEnd={(swiper) => setIsLastSlide(!swiper.isEnd)}
       >
         {children}
@@ -58,7 +73,13 @@ export const Slider: React.FC<SliderProps> = ({
       <button
         onClick={nextElementSwiper}
         className="slider__arrow-right"
-        style={{ visibility: `${isLastSlide ? 'visible' : 'hidden'}` }}
+        style={{
+          visibility: `${
+            isLastSlide && (!sliderFreeModeMedia || !enableFreeMode)
+              ? 'visible'
+              : 'hidden'
+          }`
+        }}
       >
         <Icon iconName="arrow-right" />
       </button>

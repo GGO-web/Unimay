@@ -10,10 +10,10 @@ export const SWIPER_PROPS_SIMILIAR_ANIME = {
   keyboard: { enabled: true },
   breakpoints: {
     [TABLET_POINT]: {
-      slidesPerView: 4
+      slidesPerView: 3
     },
     [MOBILE_POINT]: {
-      slidesPerView: 3
+      slidesPerView: 2
     },
     [MOBILE_SMALL_POINT]: {
       slidesPerView: 2

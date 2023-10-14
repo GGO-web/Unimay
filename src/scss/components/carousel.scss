@@ -19,3 +19,11 @@
     padding: 20px;
   }
 }
+
+.swiper[data-freemode='true'] {
+  @media (max-width: 768px) {
+    .carousel__item {
+      min-width: 300px;
+    }
+  }
+}

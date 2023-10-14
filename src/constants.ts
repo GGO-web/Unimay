@@ -521,3 +521,23 @@ export const COMMENTS = [
     ]
   }
 ];
+
+export const SWIPER_PROPS_TEAM = {
+  spaceBetween: 20,
+  grabCursor: true,
+  keyboard: { enabled: true },
+  breakpoints: {
+    [TABLET_POINT]: {
+      slidesPerView: 4
+    },
+    [MOBILE_POINT]: {
+      slidesPerView: 3
+    },
+    [MOBILE_SMALL_POINT]: {
+      slidesPerView: 2
+    },
+    0: {
+      slidesPerView: 1
+    }
+  }
+};
