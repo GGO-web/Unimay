@@ -9,7 +9,11 @@ interface TitleImagesProps {}
 export const TitleImages: React.FC<TitleImagesProps> = () => {
   return (
     <div>
-      <Slider fullWidth swiperProps={SWIPER_PROPS_TITLE_IMAGE}>
+      <Slider
+        fullWidth
+        enableFreeMode={false}
+        swiperProps={SWIPER_PROPS_TITLE_IMAGE}
+      >
         {TITLE_IMAGES.map(({ id, image }) => (
           <SwiperSlide key={id}>
             <img src={image} alt="image" />
