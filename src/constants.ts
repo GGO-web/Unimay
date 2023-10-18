@@ -541,3 +541,16 @@ export const SWIPER_PROPS_TEAM = {
     }
   }
 };
+
+const ANIME_GENRES = [
+  { id: v4(), title: 'Бойовик' },
+  { id: v4(), title: 'Пригоди' },
+  { id: v4(), title: 'Комедія' },
+  { id: v4(), title: 'Драма' },
+  { id: v4(), title: 'Фентезі' },
+  { id: v4(), title: 'Жахи' },
+  { id: v4(), title: 'Містика' },
+  { id: v4(), title: 'Романтика' },
+  { id: v4(), title: 'Наукова фантастика' },
+  { id: v4(), title: 'Повсякденність' }
+];
