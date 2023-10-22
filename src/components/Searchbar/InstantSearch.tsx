@@ -52,13 +52,17 @@ export const InstantSearch = () => {
         />
         {search.length > 0 &&
           (isSearchLoading ? (
-            <ul>
-              <li>loading...</li>
+            <ul className="searchModule__list">
+              <li className="searchModule__list-item">loading...</li>
             </ul>
           ) : (
-            <ul>
+            <ul className="searchModule__list">
               {searchRes.map((res) => {
-                return <li key={res.id}>{res.title}</li>;
+                return (
+                  <li key={res.id} className="searchModule__list-item">
+                    {res.title}
+                  </li>
+                );
               })}
             </ul>
           ))}
@@ -84,14 +88,11 @@ export const InstantSearch = () => {
           )}
         </Select>
       </div>
-
-      <button
-        style={{ height: '54px' }}
-        className="button-style searchModule__button"
-        type="button"
-      >
-        Пошук
-      </button>
+      <div className="searchModule__button">
+        <button className="button-style" type="button">
+          Пошук
+        </button>
+      </div>
     </div>
   );
 };

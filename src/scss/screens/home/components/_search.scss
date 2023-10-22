@@ -18,6 +18,7 @@
   background-color: transparent;
 
   input {
+    position: relative;
     padding: 15px;
     outline: none;
     border: none;
@@ -37,33 +38,38 @@
   }
   &__button {
     width: 30%;
+    & button {
+      height: 100%;
+    }
   }
-}
 
-.searchModule ul {
-  padding: 0;
-  overflow: hidden;
-  overflow-y: auto;
-  width: 100%;
-  margin-top: 1px;
-  border-radius: 3px;
-  max-height: 310px;
-  background-color: black;
-}
+  &__list {
+    position: absolute;
+    left: 0;
+    padding: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 35%;
+    margin-top: 1px;
+    border-radius: 3px;
+    max-height: 310px;
+    background-color: black;
 
-.searchModule ul li {
-  padding: 15px;
-  background: black;
-  border-bottom: 1px solid #242424;
-  margin-top: 0.5px;
-  position: relative;
-  z-index: 100;
-}
+    &-item {
+      padding: 15px;
+      background: black;
+      border-bottom: 1px solid #242424;
+      margin-top: 0.5px;
+      position: relative;
+      z-index: 100;
 
-.searchModule li:hover {
-  color: $white;
-  border-color: rgb(41, 41, 41);
-  background-color: rgb(41, 41, 41);
+      &:hover {
+        color: $white;
+        border-color: rgb(41, 41, 41);
+        background-color: rgb(41, 41, 41);
+      }
+    }
+  }
 }
 
 @media (max-width: $tablet) {
@@ -78,6 +84,10 @@
     &__select,
     &__input,
     &__button {
+      width: 100%;
+    }
+
+    &__list {
       width: 100%;
     }
   }
