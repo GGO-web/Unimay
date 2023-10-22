@@ -76,7 +76,7 @@ export const Search = () => {
           placeholder="Виберіть жанр"
           bgNone
           maxWidth={250}
-          isLoading={isGenreLoading || !ANIME_GENRES}
+          isLoading={isGenreLoading}
           onSelectionChange={(selected) => {
             setGenre(selected);
           }}
@@ -88,11 +88,10 @@ export const Search = () => {
           )}
         </Select>
       </div>
-      <div className="search__button">
-        <button className="button-style" type="button">
-          Пошук
-        </button>
-      </div>
+
+      <button className="button-style search__button" type="button">
+        Пошук
+      </button>
     </div>
   );
 };
