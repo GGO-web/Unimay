@@ -50,6 +50,7 @@
   }
 
   &__rating-block {
+    padding: 20px 0px;
     .inputs-block {
       display: flex;
       justify-content: space-between;
@@ -92,6 +93,17 @@
         height: 1px;
         background-color: var(--color-white);
       }
+    }
+  }
+
+  &__buttons {
+    padding: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    gap: 70px;
+
+    &-clean {
+      text-decoration: underline;
     }
   }
 }

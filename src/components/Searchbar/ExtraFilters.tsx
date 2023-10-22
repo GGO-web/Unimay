@@ -27,8 +27,8 @@ export const ExtraFilters: React.FC<ExtraFiltersProps> = () => {
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   return (
-    <div className="extra-filters">
-      <button className="extra-filters__close"></button>
+    <form className="extra-filters">
+      <button type="button" className="extra-filters__close" />
       <div className="extra-filters__year-block">
         <Paragraph size="lg">Рік</Paragraph>
 
@@ -52,7 +52,7 @@ export const ExtraFilters: React.FC<ExtraFiltersProps> = () => {
         </Select>
       </div>
 
-      <form
+      <div
         className="extra-filters__rating-block"
         onSubmit={handleSubmit(onSubmit)}
       >
@@ -87,9 +87,19 @@ export const ExtraFilters: React.FC<ExtraFiltersProps> = () => {
           maxValue={10}
           step={0.1}
         />
-      </form>
+      </div>
 
       <Switch onChange={setIsMovie}>Фільм / Серіал</Switch>
-    </div>
+
+      <div className="extra-filters__buttons">
+        <button type="button" className="extra-filters__buttons-clean">
+          Очистити
+        </button>
+
+        <button type="submit" className="button-style ">
+          ОК
+        </button>
+      </div>
+    </form>
   );
 };
