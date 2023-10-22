@@ -3,7 +3,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade } from 'swiper';
 
-import { InstantSearch } from '../Searchbar/InstantSearch';
+import { Search } from '../Searchbar/Search';
 import { Heading } from '@components/Heading/Heading';
 import { Paragraph } from '@components/Paragraph/Paragraph';
 import { Button } from '@components/Button/Button';
@@ -52,7 +52,7 @@ export const Hero = () => {
       </div>
 
       <div className="search-block">
-        <InstantSearch />
+        <Search />
       </div>
     </section>
   );
