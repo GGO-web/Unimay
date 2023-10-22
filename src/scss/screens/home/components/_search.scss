@@ -11,7 +11,7 @@
   z-index: 10;
 }
 
-.searchModule {
+.search {
   display: flex;
   color: $white;
   overflow: hidden;
@@ -78,7 +78,7 @@
     max-width: 350px;
   }
 
-  .searchModule {
+  .search {
     flex-direction: column;
 
     &__select,

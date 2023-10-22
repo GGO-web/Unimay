@@ -7,7 +7,7 @@ import { Select } from '@components/Select/Select';
 import { IJsonAlbum } from '../../types/album';
 import { ANIME_GENRES } from '../../constants';
 
-export const Search = () => {
+export const InstantSearch = () => {
   const [posts, setPosts] = React.useState<IJsonAlbum[]>([]);
 
   const [search, setSearch] = useState('');
