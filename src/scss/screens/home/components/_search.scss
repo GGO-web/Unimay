@@ -1,8 +1,8 @@
 .search-block {
   background-color: black;
-  width: 56%;
+  width: 100%;
   height: 100px;
-  max-width: 1070px;
+  max-width: 800px;
   border-radius: 6px;
   transform: translateY(-50%);
   margin: 0 auto;
@@ -12,7 +12,7 @@
 }
 
 .searchModule {
-  width: 33%;
+  display: flex;
   color: $white;
   overflow: hidden;
   background-color: transparent;
@@ -31,6 +31,13 @@
     padding-left: 60px;
   }
 
+  &__select,
+  &__input {
+    width: 35%;
+  }
+  &__button {
+    width: 30%;
+  }
 }
 
 .searchModule ul {
@@ -57,4 +64,21 @@
   color: $white;
   border-color: rgb(41, 41, 41);
   background-color: rgb(41, 41, 41);
+}
+
+@media (max-width: $tablet) {
+  .search-block {
+    height: 200px;
+    max-width: 350px;
+  }
+
+  .searchModule {
+    flex-direction: column;
+
+    &__select,
+    &__input,
+    &__button {
+      width: 100%;
+    }
+  }
 }

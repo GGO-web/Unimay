@@ -542,7 +542,7 @@ export const SWIPER_PROPS_TEAM = {
   }
 };
 
-const ANIME_GENRES = [
+export const ANIME_GENRES = [
   { id: v4(), title: 'Бойовик' },
   { id: v4(), title: 'Пригоди' },
   { id: v4(), title: 'Комедія' },

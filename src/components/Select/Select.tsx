@@ -22,6 +22,8 @@ interface MySelectProps<T extends object>
   items?: Iterable<T>;
   isLoading?: boolean;
   children: React.ReactNode | ((item: T) => React.ReactNode);
+  bgNone?: boolean;
+  maxWidth?: number; // max width select ...px
 }
 
 export function Select<T extends object>({
@@ -31,11 +33,21 @@ export function Select<T extends object>({
   children,
   isLoading = false,
   items,
+  bgNone,
+  maxWidth,
   ...props
 }: MySelectProps<T>) {
   return (
-    <AriaSelect aria-label={label} {...props}>
-      <Button className={'react-aria-Button justify-between'}>
+    <AriaSelect
+      aria-label={label}
+      {...props}
+      style={{ maxWidth: `${maxWidth}px` }}
+    >
+      <Button
+        className={`react-aria-Button justify-between ${
+          bgNone ? 'react-aria-Button-bg-none' : ''
+        }`}
+      >
         {isLoading ? 'Loading' : <SelectValue />}
 
         {isLoading ? (
