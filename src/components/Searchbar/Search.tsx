@@ -51,22 +51,21 @@ export const Search = () => {
           type="text"
           placeholder="Почніть вводити назву..."
         />
-        {search.length > 0 &&
-          (isSearchLoading ? (
-            <ul className="search__list">
+        {search.length > 0 && (
+          <ul className="search__list">
+            {isSearchLoading ? (
               <li className="search__list-item">loading...</li>
-            </ul>
-          ) : (
-            <ul className="search__list">
-              {searchRes.map((res) => {
+            ) : (
+              searchRes.map((res) => {
                 return (
                   <li key={res.id} className="search__list-item">
                     {res.title}
                   </li>
                 );
-              })}
-            </ul>
-          ))}
+              })
+            )}
+          </ul>
+        )}
       </div>
 
       <div className="search__select">
