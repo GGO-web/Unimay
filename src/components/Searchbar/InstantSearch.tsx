@@ -11,6 +11,7 @@ export const InstantSearch = () => {
   const [posts, setPosts] = React.useState<IJsonAlbum[]>([]);
 
   const [search, setSearch] = useState('');
+  const [isSearchLoading, setIsSearchLoading] = useState(false);
 
   const [genr, setGenr] = useState<React.Key>(1);
   const [isGenreLoading, setIsGenreLoading] = useState(false);
@@ -25,11 +26,13 @@ export const InstantSearch = () => {
 
   const onLsChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
+    setIsSearchLoading(true);
 
     await axios
       .get(`https://jsonplaceholder.typicode.com/albums`)
       .then((res) => {
         setPosts(res.data);
+        setIsSearchLoading(false);
       })
       .catch((error) => {
         if (axios.isCancel(error) || error) {
@@ -47,12 +50,18 @@ export const InstantSearch = () => {
           type="text"
           placeholder="Почніть вводити назву..."
         />
-
-        <ul>
-          {searchRes.map((res) => {
-            return <li key={res.id}>{res.title}</li>;
-          })}
-        </ul>
+        {search.length > 0 &&
+          (isSearchLoading ? (
+            <ul>
+              <li>loading...</li>
+            </ul>
+          ) : (
+            <ul>
+              {searchRes.map((res) => {
+                return <li key={res.id}>{res.title}</li>;
+              })}
+            </ul>
+          ))}
       </div>
 
       <div className="searchModule__select">
