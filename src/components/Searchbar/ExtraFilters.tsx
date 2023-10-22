@@ -7,13 +7,15 @@ import { Paragraph } from '@components/Paragraph/Paragraph';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { SliderIMDB } from '@components/SliderIMDB/SliderIMDB';
+import Switch from '@components/Switch/Switch';
 
 interface ExtraFiltersProps {}
 
 export const ExtraFilters: React.FC<ExtraFiltersProps> = () => {
   const [year, setYear] = React.useState<React.Key>(1);
   const [isYearLoading, setIsYearLoading] = React.useState(false);
-  const [value, setValue] = React.useState([5, 8.8]);
+  const [grade, setGrade] = React.useState([5, 8.8]);
+  const [isMovie, setIsMovie] = React.useState(true);
 
   const {
     register,
@@ -63,7 +65,7 @@ export const ExtraFilters: React.FC<ExtraFiltersProps> = () => {
             min={0}
             max={10}
             step={0.1}
-            value={value[0]}
+            value={grade[0]}
             {...register('minValueIMDB')}
           />
           <span className="inputs-block__space" />
@@ -73,19 +75,21 @@ export const ExtraFilters: React.FC<ExtraFiltersProps> = () => {
             min={0}
             max={10}
             step={0.1}
-            value={value[1]}
+            value={grade[1]}
             {...register('maxValueIMDB')}
           />
         </div>
 
         <SliderIMDB
-          value={value}
-          onChange={setValue}
+          value={grade}
+          onChange={setGrade}
           minValue={0}
           maxValue={10}
           step={0.1}
         />
       </form>
+
+      <Switch onChange={setIsMovie}>Фільм / Серіал</Switch>
     </div>
   );
 };
