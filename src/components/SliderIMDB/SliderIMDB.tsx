@@ -10,7 +10,6 @@ import {
 } from 'react-aria-components';
 
 interface SliderIMDBProps<T> extends SliderProps<T> {
-  label?: string;
   thumbLabels?: string[];
   minValue?: number;
   maxValue?: number;
@@ -18,7 +17,6 @@ interface SliderIMDBProps<T> extends SliderProps<T> {
 }
 
 export function SliderIMDB<T extends number | number[]>({
-  label,
   thumbLabels,
   minValue = 0,
   maxValue = 0,
@@ -27,12 +25,6 @@ export function SliderIMDB<T extends number | number[]>({
 }: SliderIMDBProps<T>) {
   return (
     <Slider {...props} minValue={minValue} maxValue={maxValue} step={step}>
-      <Label>{label}</Label>
-      <SliderOutput>
-        {({ state }) =>
-          state.values.map((_, i) => state.getThumbValueLabel(i)).join(' – ')
-        }
-      </SliderOutput>
       <SliderTrack>
         {({ state }) =>
           state.values.map((_, i) => (

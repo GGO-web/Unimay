@@ -7,6 +7,7 @@ import { Search } from '../Searchbar/Search';
 import { Heading } from '@components/Heading/Heading';
 import { Paragraph } from '@components/Paragraph/Paragraph';
 import { Button } from '@components/Button/Button';
+import { ExtraFilters } from '@components/Searchbar/ExtraFilters';
 
 export const Hero = () => {
   return (
@@ -53,6 +54,11 @@ export const Hero = () => {
 
       <div className="search-block">
         <Search />
+
+        <button className="search-block__button">Додаткові фільтри</button>
+        <div className="search-block__filters">
+          <ExtraFilters />
+        </div>
       </div>
     </section>
   );

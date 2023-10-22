@@ -554,3 +554,11 @@ export const ANIME_GENRES = [
   { id: v4(), title: 'Наукова фантастика' },
   { id: v4(), title: 'Повсякденність' }
 ];
+
+const ANIME_YEARS: { id: string; year: number }[] = [];
+
+for (let year = 1980; year <= 2025; year++) {
+  ANIME_YEARS.push({ id: v4(), year });
+}
+
+export { ANIME_YEARS };

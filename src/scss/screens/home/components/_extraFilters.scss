@@ -1,0 +1,97 @@
+.extra-filters {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  min-width: 300px;
+
+  background-color: var(--color-black);
+
+  &__close {
+    position: relative;
+    display: flex;
+    align-self: flex-end;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 20px;
+      background-color: var(--color-white);
+      top: 5px;
+      left: 14px;
+      transform-origin: center;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+
+    &:hover::before,
+    &:hover::after {
+      background-color: var(--color-white);
+    }
+  }
+
+  &__year-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__rating-block {
+    .inputs-block {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      // remove arrows (or up/down button) from input element with type “number” ( <input type="number"> )
+      & input[type='number'] {
+        -webkit-appearance: none;
+        -moz-appearance: textfield;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+        }
+      }
+
+      &__min-value,
+      &__max-value {
+        font-size: 18px;
+        text-align: center;
+
+        width: 74px;
+        height: 54px;
+
+        border-radius: 10px;
+      }
+
+      &__min-value {
+        background-color: var(--color-white);
+        color: var(--color-black);
+      }
+
+      &__max-value {
+        background-color: $gray;
+        color: var(--color-white);
+      }
+
+      &__space {
+        width: 30px;
+        height: 1px;
+        background-color: var(--color-white);
+      }
+    }
+  }
+}
