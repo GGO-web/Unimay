@@ -13,7 +13,7 @@ export const InstantSearch = () => {
   const [search, setSearch] = useState('');
   const [isSearchLoading, setIsSearchLoading] = useState(false);
 
-  const [genr, setGenr] = useState<React.Key>(1);
+  const [genre, setGenre] = useState<React.Key>(1);
   const [isGenreLoading, setIsGenreLoading] = useState(false);
 
   const filterSearch = search.toLowerCase() || '';
@@ -68,13 +68,13 @@ export const InstantSearch = () => {
         <Select
           label="Виберіть епізод"
           items={ANIME_GENRES}
-          selectedKey={genr}
+          selectedKey={genre}
           placeholder="Виберіть жанр"
           bgNone
           maxWidth={250}
           isLoading={isGenreLoading || !ANIME_GENRES}
           onSelectionChange={(selected) => {
-            setGenr(selected);
+            setGenre(selected);
           }}
         >
           {(item) => (
