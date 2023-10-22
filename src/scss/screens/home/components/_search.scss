@@ -1,8 +1,8 @@
 .search-block {
   background-color: black;
-  width: 56%;
+  width: 100%;
   height: 100px;
-  max-width: 1070px;
+  max-width: 800px;
   border-radius: 6px;
   transform: translateY(-50%);
   margin: 0 auto;
@@ -11,13 +11,14 @@
   z-index: 10;
 }
 
-.searchModule {
-  width: 33%;
+.search {
+  display: flex;
   color: $white;
   overflow: hidden;
   background-color: transparent;
 
   input {
+    position: relative;
     padding: 15px;
     outline: none;
     border: none;
@@ -31,30 +32,63 @@
     padding-left: 60px;
   }
 
+  &__select,
+  &__input {
+    width: 35%;
+  }
+  &__button {
+    width: 30%;
+    & button {
+      height: 100%;
+    }
+  }
+
+  &__list {
+    position: absolute;
+    left: 0;
+    padding: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 35%;
+    margin-top: 1px;
+    border-radius: 3px;
+    max-height: 310px;
+    background-color: black;
+
+    &-item {
+      padding: 15px;
+      background: black;
+      border-bottom: 1px solid #242424;
+      margin-top: 0.5px;
+      position: relative;
+      z-index: 100;
+
+      &:hover {
+        color: $white;
+        border-color: rgb(41, 41, 41);
+        background-color: rgb(41, 41, 41);
+      }
+    }
+  }
 }
 
-.searchModule ul {
-  padding: 0;
-  overflow: hidden;
-  overflow-y: auto;
-  width: 100%;
-  margin-top: 1px;
-  border-radius: 3px;
-  max-height: 310px;
-  background-color: black;
-}
+@media (max-width: $tablet) {
+  .search-block {
+    height: 200px;
+    max-width: 350px;
+  }
 
-.searchModule ul li {
-  padding: 15px;
-  background: black;
-  border-bottom: 1px solid #242424;
-  margin-top: 0.5px;
-  position: relative;
-  z-index: 100;
-}
+  .search {
+    flex-direction: column;
 
-.searchModule li:hover {
-  color: $white;
-  border-color: rgb(41, 41, 41);
-  background-color: rgb(41, 41, 41);
+    &__select,
+    &__input,
+    &__button {
+      width: 100%;
+    }
+
+    &__list {
+      width: 100%;
+    }
+  }
 }

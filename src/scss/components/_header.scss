@@ -2,7 +2,7 @@
   background-color: var(--color-gray);
   position: sticky;
   top: 0;
-  z-index: 11;
+  z-index: 99999999999;
 
   &__container {
     display: flex;

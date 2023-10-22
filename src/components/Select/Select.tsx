@@ -19,9 +19,12 @@ interface MySelectProps<T extends object>
   label?: string;
   description?: string;
   errorMessage?: string;
+  placeholder?: string;
   items?: Iterable<T>;
   isLoading?: boolean;
   children: React.ReactNode | ((item: T) => React.ReactNode);
+  bgNone?: boolean;
+  maxWidth?: number; // max width select ...px
 }
 
 export function Select<T extends object>({
@@ -30,14 +33,25 @@ export function Select<T extends object>({
   errorMessage,
   children,
   isLoading = false,
+  placeholder = '',
   items,
+  bgNone,
+  maxWidth,
   ...props
 }: MySelectProps<T>) {
   return (
-    <AriaSelect aria-label={label} {...props}>
-      <Button className={'react-aria-Button justify-between'}>
+    <AriaSelect
+      aria-label={label}
+      placeholder={placeholder}
+      {...props}
+      style={{ maxWidth: `${maxWidth}px` }}
+    >
+      <Button
+        className={`react-aria-Button justify-between ${
+          bgNone ? 'react-aria-Button-bg-none' : ''
+        }`}
+      >
         {isLoading ? 'Loading' : <SelectValue />}
-
         {isLoading ? (
           <Spinner style={{ width: 24, height: 24 }} />
         ) : (

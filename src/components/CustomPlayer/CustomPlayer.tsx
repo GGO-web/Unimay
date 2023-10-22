@@ -67,6 +67,7 @@ export const CustomPlayer = () => {
           items={seasons}
           selectedKey={season}
           isLoading={isPlayerLoading || !seasons}
+          maxWidth={150}
           onSelectionChange={(selected) => {
             setStartTime(0);
             setSeason(selected);
@@ -84,6 +85,7 @@ export const CustomPlayer = () => {
           items={episodes}
           selectedKey={episode}
           isLoading={isPlayerLoading || !episodes}
+          maxWidth={150}
           onSelectionChange={(selected) => {
             setEpisode(selected);
             setStartTime(0);
