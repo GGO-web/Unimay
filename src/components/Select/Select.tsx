@@ -19,6 +19,7 @@ interface MySelectProps<T extends object>
   label?: string;
   description?: string;
   errorMessage?: string;
+  placeholder?: string;
   items?: Iterable<T>;
   isLoading?: boolean;
   children: React.ReactNode | ((item: T) => React.ReactNode);
@@ -32,6 +33,7 @@ export function Select<T extends object>({
   errorMessage,
   children,
   isLoading = false,
+  placeholder = '',
   items,
   bgNone,
   maxWidth,
@@ -40,6 +42,7 @@ export function Select<T extends object>({
   return (
     <AriaSelect
       aria-label={label}
+      placeholder={placeholder}
       {...props}
       style={{ maxWidth: `${maxWidth}px` }}
     >
@@ -49,7 +52,6 @@ export function Select<T extends object>({
         }`}
       >
         {isLoading ? 'Loading' : <SelectValue />}
-
         {isLoading ? (
           <Spinner style={{ width: 24, height: 24 }} />
         ) : (

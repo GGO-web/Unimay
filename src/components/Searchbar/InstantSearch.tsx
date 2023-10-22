@@ -60,6 +60,7 @@ export const InstantSearch = () => {
           label="Виберіть епізод"
           items={ANIME_GENRES}
           selectedKey={genr}
+          placeholder="Виберіть жанр"
           bgNone
           maxWidth={250}
           isLoading={isGenreLoading || !ANIME_GENRES}

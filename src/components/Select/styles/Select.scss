@@ -1,3 +1,8 @@
+html {
+  overflow: auto !important;
+  padding: 0 !important;
+}
+
 .react-aria-Select {
   --border-color-disabled: gainsboro;
   --text-color: #fff;
@@ -99,7 +104,7 @@
   --text-color: var(--spectrum-alias-text-color);
   --text-color-disabled: var(--spectrum-alias-text-color-disabled);
 
-  max-height: inherit;
+  max-height: 300px;
   box-sizing: border-box;
   overflow: auto;
   padding: 4px;
