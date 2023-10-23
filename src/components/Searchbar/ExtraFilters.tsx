@@ -9,9 +9,11 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { SliderIMDB } from '@components/SliderIMDB/SliderIMDB';
 import Switch from '@components/Switch/Switch';
 
-interface ExtraFiltersProps {}
+interface ExtraFiltersProps {
+  togglePopup: (open: boolean) => void;
+}
 
-export const ExtraFilters: React.FC<ExtraFiltersProps> = () => {
+export const ExtraFilters: React.FC<ExtraFiltersProps> = ({ togglePopup }) => {
   const [year, setYear] = React.useState<React.Key>(1);
   const [isYearLoading, setIsYearLoading] = React.useState(false);
   const [grade, setGrade] = React.useState([5, 8.8]);
@@ -28,7 +30,11 @@ export const ExtraFilters: React.FC<ExtraFiltersProps> = () => {
 
   return (
     <form className="extra-filters">
-      <button type="button" className="extra-filters__close" />
+      <button
+        type="button"
+        className="extra-filters__close"
+        onClick={() => togglePopup(false)}
+      />
       <div className="extra-filters__year-block">
         <Paragraph size="lg">Рік</Paragraph>
 

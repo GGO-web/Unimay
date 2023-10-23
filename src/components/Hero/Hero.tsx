@@ -10,6 +10,12 @@ import { Button } from '@components/Button/Button';
 import { ExtraFilters } from '@components/Searchbar/ExtraFilters';
 
 export const Hero = () => {
+  const [isOpenPopup, setIsOpenPopup] = React.useState<boolean>(false);
+
+  const togglePopup = (open: boolean) => {
+    setIsOpenPopup(open);
+  };
+
   return (
     <section className="hero">
       <div className="hero__container container">
@@ -55,10 +61,17 @@ export const Hero = () => {
       <div className="search-block">
         <Search />
 
-        <button className="search-block__button">Додаткові фільтри</button>
-        <div className="search-block__filters">
-          <ExtraFilters />
-        </div>
+        <button
+          className="search-block__button"
+          onClick={() => togglePopup(true)}
+        >
+          Додаткові фільтри
+        </button>
+        {isOpenPopup && (
+          <div className="search-block__filters">
+            <ExtraFilters togglePopup={togglePopup} />
+          </div>
+        )}
       </div>
     </section>
   );
