@@ -1,10 +1,13 @@
 .extra-filters {
   display: flex;
   flex-direction: column;
-  padding: 10px 20px;
-  min-width: 300px;
+  padding: 10px 40px;
+
+  max-width: 350px;
 
   background-color: var(--color-black);
+
+  float: right;
 
   &__close {
     position: relative;
@@ -46,12 +49,14 @@
   &__year-block {
     display: flex;
     justify-content: space-between;
+    gap: 40px;
     align-items: center;
   }
 
   &__rating-block {
-    padding: 20px 0px;
+    padding: 40px 0px;
     .inputs-block {
+      padding: 20px 0px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -89,6 +94,7 @@
       }
 
       &__space {
+        margin: 0px 20px;
         width: 30px;
         height: 1px;
         background-color: var(--color-white);
@@ -97,13 +103,23 @@
   }
 
   &__buttons {
-    padding: 20px 0px;
+    padding: 40px 0px 30px 0px;
     display: flex;
     justify-content: space-between;
-    gap: 70px;
+    gap: 40px;
 
     &-clean {
       text-decoration: underline;
     }
+    &-ok {
+      max-width: 80px;
+      min-width: 50px;
+      padding: rem(10) rem(5);
+    }
+  }
+
+  @media (max-width: $tablet) {
+    padding: 10px 20px;
+    width: 100%;
   }
 }

@@ -89,14 +89,19 @@ export const ExtraFilters: React.FC<ExtraFiltersProps> = () => {
         />
       </div>
 
-      <Switch onChange={setIsMovie}>Фільм / Серіал</Switch>
+      <Switch onChange={setIsMovie}>
+        <Paragraph size="lg">Фільм / Серіал</Paragraph>
+      </Switch>
 
       <div className="extra-filters__buttons">
         <button type="button" className="extra-filters__buttons-clean">
           Очистити
         </button>
 
-        <button type="submit" className="button-style ">
+        <button
+          type="submit"
+          className="button-style extra-filters__buttons-ok"
+        >
           ОК
         </button>
       </div>

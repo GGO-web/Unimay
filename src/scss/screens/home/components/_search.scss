@@ -1,37 +1,36 @@
 .search-block {
-  background-color: black;
   width: 100%;
   max-width: 800px;
   border-radius: 6px;
   transform: translateY(-50%);
   margin: 0 auto;
-  padding: 20px;
   position: relative;
   z-index: 10;
 
   &__button,
   &__filters {
-    position: absolute;
+    width: 100%;
   }
 
   &__button {
-    right: 20px;
-    bottom: -25px;
     text-decoration: underline;
+    margin: 10px 0px 20px 0px;
+    text-align: end;
   }
 
   &__filters {
     right: 0px;
-    bottom: -35px;
-    transform: translateY(100%);
+    position: absolute;
   }
 }
 
 .search {
+  padding: 20px;
   display: flex;
   color: $white;
   overflow: hidden;
-  background-color: transparent;
+  // background-color: transparent;
+  background-color: black;
 
   input {
     position: relative;
@@ -92,6 +91,8 @@
   .search-block {
     height: 200px;
     max-width: 350px;
+
+    transform: translateY(-75%);
   }
 
   .search {
