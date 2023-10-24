@@ -5,7 +5,6 @@ import { ANIME_YEARS } from '../../constants';
 import { Item } from 'react-aria-components';
 import { Paragraph } from '@components/Paragraph/Paragraph';
 
-import { SubmitHandler, useForm } from 'react-hook-form';
 import { SliderIMDB } from '@components/SliderIMDB/SliderIMDB';
 import Switch from '@components/Switch/Switch';
 
@@ -16,17 +15,28 @@ interface ExtraFiltersProps {
 export const ExtraFilters: React.FC<ExtraFiltersProps> = ({ togglePopup }) => {
   const [year, setYear] = React.useState<React.Key>(1);
   const [isYearLoading, setIsYearLoading] = React.useState(false);
-  const [grade, setGrade] = React.useState([5, 8.8]);
-  const [isMovie, setIsMovie] = React.useState(true);
+  const [grade, setGrade] = React.useState<[number, number]>([0, 10]);
+  const [isSeries, setIsSeries] = React.useState(true);
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-    getValues
-  } = useForm<Inputs>({ mode: 'onBlur' });
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const clearParameters = () => {
+    const newGrade: [number, number] = [0, 10];
+    setGrade(newGrade);
+    setYear(0);
+    setIsSeries(true);
+  };
+
+  const setGradeRange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    isMin: boolean
+  ) => {
+    const newValue = +e.target.value;
+
+    const newGrade: [number, number] = isMin
+      ? [newValue, grade[1]]
+      : [grade[0], newValue];
+
+    setGrade(newGrade);
+  };
 
   return (
     <form className="extra-filters">
@@ -58,10 +68,7 @@ export const ExtraFilters: React.FC<ExtraFiltersProps> = ({ togglePopup }) => {
         </Select>
       </div>
 
-      <div
-        className="extra-filters__rating-block"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <div className="extra-filters__rating-block">
         <Paragraph size="lg">Рейтинг IMDB</Paragraph>
 
         <div className="inputs-block">
@@ -72,7 +79,7 @@ export const ExtraFilters: React.FC<ExtraFiltersProps> = ({ togglePopup }) => {
             max={10}
             step={0.1}
             value={grade[0]}
-            {...register('minValueIMDB')}
+            onChange={(e) => setGradeRange(e, true)}
           />
           <span className="inputs-block__space" />
           <input
@@ -82,7 +89,7 @@ export const ExtraFilters: React.FC<ExtraFiltersProps> = ({ togglePopup }) => {
             max={10}
             step={0.1}
             value={grade[1]}
-            {...register('maxValueIMDB')}
+            onChange={(e) => setGradeRange(e, false)}
           />
         </div>
 
@@ -95,12 +102,18 @@ export const ExtraFilters: React.FC<ExtraFiltersProps> = ({ togglePopup }) => {
         />
       </div>
 
-      <Switch onChange={setIsMovie}>
+      <Switch onChange={setIsSeries} isSelect={isSeries}>
         <Paragraph size="lg">Фільм / Серіал</Paragraph>
       </Switch>
 
+      {isSeries ? 'true' : 'false'}
+
       <div className="extra-filters__buttons">
-        <button type="button" className="extra-filters__buttons-clean">
+        <button
+          type="button"
+          className="extra-filters__buttons-clean"
+          onClick={clearParameters}
+        >
           Очистити
         </button>
 

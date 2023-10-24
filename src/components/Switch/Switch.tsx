@@ -5,13 +5,17 @@ import { useToggleState } from '@react-stately/toggle';
 import { useFocusRing } from '@react-aria/focus';
 import React from 'react';
 
-interface SwitchProps extends AriaSwitchProps {}
+interface SwitchProps extends AriaSwitchProps {
+  isSelect: boolean;
+}
 
 export default function Switch(props: SwitchProps) {
-  let state = useToggleState(props);
+  let state = useToggleState({ ...props, isSelected: props.isSelect });
   let ref = React.useRef(null);
   let { inputProps } = useSwitch(props, state, ref);
   let { isFocusVisible, focusProps } = useFocusRing();
+
+  console.log(state);
 
   return (
     <label
@@ -24,7 +28,12 @@ export default function Switch(props: SwitchProps) {
     >
       {props.children}
       <VisuallyHidden>
-        <input {...inputProps} {...focusProps} ref={ref} />
+        <input
+          {...inputProps}
+          {...focusProps}
+          ref={ref}
+          aria-label={props['aria-label']}
+        />
       </VisuallyHidden>
       <svg width={40} height={24} aria-hidden="true" style={{ marginRight: 4 }}>
         <rect x={4} y={4} width={32} height={16} rx={8} fill="#4d4d4d" />
