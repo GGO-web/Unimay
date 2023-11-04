@@ -1,4 +1,4 @@
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dynamicImport from 'vite-plugin-dynamic-import';
 import svgr from 'vite-plugin-svgr';
@@ -18,6 +18,7 @@ export default defineConfig({
       '@helpers': '/src/helpers',
       '@services': '/src/services',
       '@api': '/src/api',
-    },
-  },
+      '@': '/src'
+    }
+  }
 });

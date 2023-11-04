@@ -6,13 +6,14 @@ import { Link } from 'react-router-dom';
 
 import { StarRating } from '../Rating/Rating';
 
-import { carouselItems, ROUTES } from '../../constants';
+import { ROUTES } from '../../constants';
 import { Paragraph } from '@components/Paragraph/Paragraph';
 import { Heading } from '@components/Heading/Heading';
 import { FreeMode } from 'swiper';
 import { useMediaQuery } from '@reactuses/core';
+import { Title } from '@services/Title/interfaces/Title.interface';
 
-export const Carousel = () => {
+export const Carousel = ({ items }: { items?: Title[] }) => {
   const sliderFreeModeMedia = useMediaQuery('(max-width: 768px)');
 
   return (
@@ -37,29 +38,29 @@ export const Carousel = () => {
         }
       }}
     >
-      {carouselItems.map((carouselItem) => (
+      {items?.map((carouselItem) => (
         <SwiperSlide key={carouselItem.id} className="carousel__item">
           <article
             className="card flex flex-col flex-auto"
             style={{
-              backgroundImage: `url(${carouselItem.image})`
+              backgroundImage: `url(${carouselItem.imageLink})`
             }}
           >
             <div className="carousel__item-bottom">
               <Paragraph className="carousel__item-seasons mb-1.5">
-                {carouselItem.seasons} сезони, {carouselItem.year}
+                {carouselItem.year}
               </Paragraph>
 
               <Link to={ROUTES.VIEW_TITLE_BY_ID(carouselItem.id)}>
                 <Heading level={3} className="carousel__item-title mb-2">
-                  {carouselItem.title}
+                  {carouselItem.name}
                 </Heading>
               </Link>
 
               <StarRating />
 
-              <Paragraph className="carousel__item-text mt-3">
-                {carouselItem.text}
+              <Paragraph className="carousel__item-text mt-3 line-clamp-3">
+                {carouselItem.description}
               </Paragraph>
             </div>
           </article>

@@ -11,8 +11,18 @@ import { Heading } from '@components/Heading/Heading';
 import { Services } from './components/Services/Services';
 
 import { TeamBlock } from './components/TeamBlock/TeamBlock';
+import { useQuery } from '@tanstack/react-query';
+import { TitleService } from '@services/Title/Title.service';
 
 export function Home() {
+  const { data: newTitles } = useQuery({
+    queryKey: ['titles'],
+    queryFn: async () => {
+      return TitleService.getAllTitles();
+    },
+    staleTime: 1000 * 60 * 60 // 60 minutes caching
+  });
+
   return (
     <section className="home page-section">
       <div className="home__container page-section__container">
@@ -27,15 +37,7 @@ export function Home() {
             <div className="novelty__container container">
               <Heading>Новинки</Heading>
 
-              <Carousel />
-            </div>
-          </section>
-
-          <section className="novelty">
-            <div className="novelty__container container">
-              <Heading>Новинки</Heading>
-
-              <Carousel />
+              <Carousel items={newTitles} />
             </div>
           </section>
 
