@@ -7,6 +7,11 @@ import { App } from './App';
 import './scss/style.scss';
 import { ErrorBoundary } from '@components/ErrorBoundary/ErrorBoundary';
 import { Spinner } from '@components/Spinner/SpinnerIcon';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+// Create a client
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,7 +22,10 @@ root.render(
     <Suspense fallback={<Spinner />}>
       <React.StrictMode>
         <BrowserRouter>
-          <App />
+          <QueryClientProvider client={queryClient}>
+            <App />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
         </BrowserRouter>
       </React.StrictMode>
     </Suspense>
