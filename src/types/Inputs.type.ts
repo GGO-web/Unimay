@@ -1,4 +1,4 @@
-type Inputs = {
+export type Inputs = {
   nameUser?: string;
   comment: string;
   minValueIMDB: number;

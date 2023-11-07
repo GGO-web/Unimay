@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Select } from '@components/Select/Select';
-import { ANIME_YEARS } from '../../constants';
+import { ANIME_YEARS, FILTERS_MAX } from '../../constants';
 import { Item } from 'react-aria-components';
 import { Paragraph } from '@components/Paragraph/Paragraph';
 
@@ -96,9 +96,9 @@ export const ExtraFilters: React.FC<ExtraFiltersProps> = ({ togglePopup }) => {
         <SliderIMDB
           value={grade}
           onChange={setGrade}
-          minValue={0}
-          maxValue={10}
-          step={0.1}
+          minValue={FILTERS_MAX.min}
+          maxValue={FILTERS_MAX.max}
+          step={FILTERS_MAX.step}
         />
       </div>
 

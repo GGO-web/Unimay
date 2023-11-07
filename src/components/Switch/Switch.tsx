@@ -7,6 +7,7 @@ import React from 'react';
 
 interface SwitchProps extends AriaSwitchProps {
   isSelect: boolean;
+  isDisabled?: boolean;
 }
 
 export default function Switch(props: SwitchProps) {
