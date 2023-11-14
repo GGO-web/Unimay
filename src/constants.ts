@@ -2,6 +2,31 @@ import { ICarouselItem } from './types/constants';
 import { v4 } from 'uuid';
 import { getImageUrl } from '@helpers/getImageUrl';
 
+export type FunctionService = (id: string) => string;
+export interface ServiceOptions {
+  serviceName: string;
+  // invalidationKey?: string;
+  [key: string]: string | FunctionService;
+}
+export interface ApiServiceOptions {
+  TITLE: ServiceOptions;
+  [key: string]: ServiceOptions;
+}
+
+export const API_SERVICES: ApiServiceOptions = {
+  TITLE: {
+    serviceName: 'titles',
+    GET_ALL: '',
+    GET_BY_ID: (id: string) => {
+      return `/${id}`;
+    },
+    invalidationKey: 'titles'
+  }
+};
+
+export const ACCESS_TOKEN = 'accessToken';
+export const REFRESH_TOKEN = 'refreshToken';
+
 export const carouselItems: ICarouselItem[] = [
   {
     id: '1',
