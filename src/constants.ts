@@ -579,3 +579,23 @@ export const ANIME_GENRES = [
   { id: v4(), title: 'Наукова фантастика' },
   { id: v4(), title: 'Повсякденність' }
 ];
+
+const ANIME_YEARS: { id: string; year: number }[] = [];
+
+for (let year = 1980; year <= 2025; year++) {
+  ANIME_YEARS.push({ id: v4(), year });
+}
+
+export { ANIME_YEARS };
+
+interface IFiltersMax {
+  min: number;
+  max: number;
+  step: number;
+}
+
+export const FILTERS_MAX: IFiltersMax = {
+  min: 0,
+  max: 10,
+  step: 0.1
+};
