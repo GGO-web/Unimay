@@ -5,9 +5,20 @@ import axios from 'axios';
 import { Item } from 'react-aria-components';
 import { Select } from '@components/Select/Select';
 import { IJsonAlbum } from '../../types/album';
-import { ANIME_GENRES } from '../../constants';
+import { useQuery } from '@tanstack/react-query';
+import { GenreService } from '@services/Genre/Genre.service';
 
 export const Search = () => {
+  const { data: newGenres } = useQuery({
+    queryKey: ['genres'],
+    queryFn: async () => {
+      return GenreService.getAllGenres();
+    },
+    staleTime: 1000 * 60 * 60 // 60 minutes caching
+  });
+
+  console.log(newGenres);
+
   const [posts, setPosts] = React.useState<IJsonAlbum[]>([]);
 
   const [search, setSearch] = useState('');
@@ -71,7 +82,7 @@ export const Search = () => {
       <div className="search__select">
         <Select
           label="Виберіть епізод"
-          items={ANIME_GENRES}
+          items={newGenres}
           selectedKey={genre}
           placeholder="Виберіть жанр"
           bgNone
@@ -81,9 +92,9 @@ export const Search = () => {
             setGenre(selected);
           }}
         >
-          {(item) => (
-            <Item textValue={item.title} id={item.id}>
-              {item.title}
+          {({ name, id }: { name: string; id: number }) => (
+            <Item textValue={name} id={id}>
+              {name}
             </Item>
           )}
         </Select>

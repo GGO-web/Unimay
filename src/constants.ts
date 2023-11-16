@@ -21,6 +21,14 @@ export const API_SERVICES: ApiServiceOptions = {
       return `/${id}`;
     },
     invalidationKey: 'titles'
+  },
+  GENRE: {
+    serviceName: 'genres',
+    GET_ALL: '',
+    GET_BY_ID: (id: string) => {
+      return `/${id}`;
+    },
+    invalidationKey: 'genres'
   }
 };
 
