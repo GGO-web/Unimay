@@ -106,8 +106,6 @@ export const ExtraFilters: React.FC<ExtraFiltersProps> = ({ togglePopup }) => {
         <Paragraph size="lg">Фільм / Серіал</Paragraph>
       </Switch>
 
-      {isSeries ? 'true' : 'false'}
-
       <div className="extra-filters__buttons">
         <button
           type="button"

@@ -590,7 +590,7 @@ export const ANIME_GENRES = [
 
 const ANIME_YEARS: { id: string; year: number }[] = [];
 
-for (let year = 1980; year <= 2025; year++) {
+for (let year = 1980; year <= new Date().getFullYear(); year++) {
   ANIME_YEARS.push({ id: v4(), year });
 }
 
