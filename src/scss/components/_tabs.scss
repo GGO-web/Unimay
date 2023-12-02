@@ -1,0 +1,16 @@
+.tabs {
+  overflow: hidden;
+}
+
+.tabpanel {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  translate: 0;
+  transition: translate 0.2s ease-in-out, opacity 0.3s;
+}
+
+.tabpanel[data-inert="true"] {
+  opacity: 0;
+  translate: -100%;
+}
