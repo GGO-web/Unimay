@@ -33,12 +33,11 @@ export const Title = () => {
   const { id } = useParams();
 
   const { data: title } = useQuery({
-    queryKey: ['titles'],
+    queryKey: ['titles', id],
     queryFn: async () => {
       return TitleService.getTitleById(id);
     },
-    staleTime: 1000 * 60 * 60,
-    enabled: id !== ''
+    staleTime: 1000 * 60 * 60
   });
 
   console.log(title);
