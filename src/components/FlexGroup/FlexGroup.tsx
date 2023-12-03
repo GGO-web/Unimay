@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import cn from 'classnames';
 
 interface FlexGroupProps extends HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
+  children: React.ReactNode | React.ReactNode[];
   centerY?: boolean;
   center?: boolean;
   column?: boolean;

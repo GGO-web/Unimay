@@ -1,5 +1,5 @@
 import { Key } from 'react';
-import { SavedPlayerInfo } from '../interfaces/SavedPlayerInfo.interface';
+import { SavedPlayerInfo } from '@/interfaces/SavedPlayerInfo.interface';
 
 interface FetchPlayerProps {
   url?: string;
@@ -26,9 +26,7 @@ export const fetchVideoPlayer = async ({
   const randomPoster = getRandomArbitrary(1, 5);
   return fetch(
     `${
-      url
-        ? url
-        : 'https://voidboost.net/serial/8171b59d92582ed8eb7d17c9d6768660/iframe'
+      url ? url : 'https://voidboost.net/embed/tt15765670'
     }?s=${season}&e=${episode}&start=${startTime}&autoplay=${
       startTime !== 0 ? 1 : 0
     }&poster=1&poster_id=${randomPoster}&h=voidboost.net&plang=ua`

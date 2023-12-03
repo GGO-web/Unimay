@@ -2,41 +2,49 @@ import React from 'react';
 
 import { FlexGroup } from '@components/FlexGroup/FlexGroup';
 import { Heading } from '@components/Heading/Heading';
-import { Paragraph } from '@components/Paragraph/Paragraph';
-import { ICurrentAnime, TITLE_INFO } from '../../../../constants';
 
-export const TitleInfo = ({ anime }: { anime: ICurrentAnime }) => {
+import { Title } from '@services/Title/interfaces/Title.interface';
+
+export const TitleInfo = ({ anime }: { anime?: Title }) => {
   return (
     <div className="title-info">
-      <Heading>{anime.name}</Heading>
+      <Heading>{anime?.name || 'Невідомий шедевр'}</Heading>
       <main className="title-info__main">
         <div
           className="title-info__promo"
-          style={{ backgroundImage: `url(${anime.image})` }}
+          style={{ backgroundImage: `url(${anime?.imageLink})` }}
         >
           <div className="title-info__promo-rating">
-            <p className="text-sm">
-              <strong>IMDB</strong>
-            </p>
-            <p className="text-xl">
-              <strong>{anime.rating}</strong>
-            </p>
+            <p className="text-sm font-bold text-center">IMDB</p>
+            <p className="text-xl font-bold text-center">5</p>
           </div>
         </div>
 
         <div className="title-info__description pb-[28px] mt-[48px]">
           <FlexGroup gap={28} column>
-            {TITLE_INFO.map((item) => {
-              const showSubtitles =
-                item.key === 'subtitles' && item.key ? 'Субтитри' : '-';
+            <FlexGroup>
+              <strong>Рік виходу:</strong>
+              {anime?.year || '-'}
+            </FlexGroup>
 
-              return (
-                <Paragraph key={item.id}>
-                  <strong>{item.characteristic}</strong>{' '}
-                  {item.key !== 'subtitles' ? anime[item.key] : showSubtitles}
-                </Paragraph>
-              );
-            })}
+            <FlexGroup>
+              <strong>Країна:</strong>
+              {anime?.country || '-'}
+            </FlexGroup>
+
+            <FlexGroup>
+              <strong>Жанр:</strong>
+              {anime?.genres?.map((genre) => genre.name)?.join(', ') || []}
+            </FlexGroup>
+
+            <FlexGroup>
+              <strong>Режисер:</strong>
+              {anime?.directors || '-'}
+            </FlexGroup>
+
+            <FlexGroup>
+              <strong>Озвучення:</strong> Cубтитри
+            </FlexGroup>
           </FlexGroup>
         </div>
       </main>

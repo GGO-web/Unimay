@@ -4,8 +4,6 @@ import { Header } from '@components/Header/Header';
 import { Sidenav } from '@components/Navigation/Sidenav';
 
 import {
-  CURRENT_ANIME,
-  DESCRIPTION_ANIME,
   NEXT_ANIME,
   RECOMMENDATIONS_ANIME,
   TITLE_BREADCRUMBS,
@@ -25,14 +23,31 @@ import { Comments } from './components/Comments/Comments';
 import { CustomPlayer } from '@components/CustomPlayer/CustomPlayer';
 import { TrailerPlayer } from '@components/TrailerPlayer/TrailerPlayer';
 import { ITab, Tabs } from '@components/Tabs/Tabs';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { TitleService } from '@services/Title/Title.service';
 
 export const Title = () => {
+  const { id } = useParams();
+
+  const { data: title } = useQuery({
+    queryKey: ['titles', id],
+    queryFn: async () => {
+      return TitleService.getTitleById(id);
+    },
+    staleTime: 1000 * 60 * 60
+  });
+
+  const playerLink = useMemo(() => {
+    return title?.players?.at(0)?.embedLink;
+  }, [title]);
+
   const videoTabs: ITab[] = useMemo(() => {
     return [
       {
         id: 'anime',
         label: 'Дивитися онлайн',
-        element: <CustomPlayer />
+        element: <CustomPlayer url={playerLink} />
       },
       {
         id: 'trailer',
@@ -40,7 +55,7 @@ export const Title = () => {
         element: <TrailerPlayer />
       }
     ];
-  }, []);
+  }, [playerLink]);
 
   return (
     <section className="home page-section">
@@ -53,12 +68,13 @@ export const Title = () => {
             <Breadcrumbs
               items={[
                 ...TITLE_BREADCRUMBS,
-                { name: 'Константин: Місто Демонів', link: '#' }
+                { name: title?.name || 'Невідомий шедевр', link: '#' }
               ]}
             />
 
             <section className="title__main">
-              <TitleInfo anime={CURRENT_ANIME} />
+              <TitleInfo anime={title} />
+
               <div className="title__main-col-2">
                 <NextSeasons anime={NEXT_ANIME} />
                 <Recommendations anime={RECOMMENDATIONS_ANIME} />
@@ -66,8 +82,8 @@ export const Title = () => {
             </section>
 
             <TitleDescription
-              heading={DESCRIPTION_ANIME.heading}
-              paragraph={DESCRIPTION_ANIME.paragraph}
+              heading={title?.name}
+              paragraph={title?.description}
             />
 
             <section className="player-outer">

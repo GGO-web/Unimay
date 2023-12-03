@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { toFormattedTime } from '@helpers/getDateFromSeconds';
 import { fetchVideoPlayer } from '@helpers/fetchVideoPlayer';
-import { SavedPlayerInfo } from '../../interfaces/SavedPlayerInfo.interface';
+import { SavedPlayerInfo } from '@/interfaces/SavedPlayerInfo.interface';
 
 import { Select } from '@components/Select/Select';
 import { Item } from 'react-aria-components';
 
-export const CustomPlayer = () => {
+export const CustomPlayer = ({ url }: { url?: string }) => {
   const [info, setInfo] = useState<SavedPlayerInfo>();
   const [seasons, setSeasons] = useState<{ season: number }[]>();
   const [season, setSeason] = useState<React.Key>(1);
@@ -22,6 +22,7 @@ export const CustomPlayer = () => {
     setIsPlayerLoading(true);
 
     const { info } = await fetchVideoPlayer({
+      url,
       season,
       episode,
       startTime
@@ -56,8 +57,12 @@ export const CustomPlayer = () => {
   };
 
   useEffect(() => {
+    if (!url) {
+      return;
+    }
+
     fetchVideoPlayerData();
-  }, [season, episode, startTime]);
+  }, [url, season, episode, startTime]);
 
   return (
     <div className="player-container relative aspect-video">

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import { Item } from 'react-aria-components';
 import { Select } from '@components/Select/Select';
-import { IJsonAlbum } from '../../types/album';
+import { IJsonAlbum } from '@/types/album';
 import { useQuery } from '@tanstack/react-query';
 import { GenreService } from '@services/Genre/Genre.service';
 
@@ -17,15 +17,13 @@ export const Search = () => {
     staleTime: 1000 * 60 * 60 // 60 minutes caching
   });
 
-  console.log(newGenres);
-
   const [posts, setPosts] = React.useState<IJsonAlbum[]>([]);
 
   const [search, setSearch] = useState('');
   const [isSearchLoading, setIsSearchLoading] = useState(false);
 
   const [genre, setGenre] = useState<React.Key>(1);
-  const [isGenreLoading, setIsGenreLoading] = useState(false);
+  const [isGenreLoading] = useState(false);
 
   const filterSearch = search.toLowerCase() || '';
 
