@@ -4,8 +4,6 @@ import { Header } from '@components/Header/Header';
 import { Sidenav } from '@components/Navigation/Sidenav';
 
 import {
-  CURRENT_ANIME,
-  DESCRIPTION_ANIME,
   NEXT_ANIME,
   RECOMMENDATIONS_ANIME,
   TITLE_BREADCRUMBS,
@@ -40,14 +38,16 @@ export const Title = () => {
     staleTime: 1000 * 60 * 60
   });
 
-  console.log(title);
+  const playerLink = useMemo(() => {
+    return title?.players?.at(0)?.embedLink;
+  }, [title]);
 
   const videoTabs: ITab[] = useMemo(() => {
     return [
       {
         id: 'anime',
         label: 'Дивитися онлайн',
-        element: <CustomPlayer />
+        element: <CustomPlayer url={playerLink} />
       },
       {
         id: 'trailer',
@@ -55,7 +55,7 @@ export const Title = () => {
         element: <TrailerPlayer />
       }
     ];
-  }, []);
+  }, [playerLink]);
 
   return (
     <section className="home page-section">
