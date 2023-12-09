@@ -7,12 +7,21 @@ import { Select } from '@components/Select/Select';
 import { IJsonAlbum } from '@/types/album';
 import { useQuery } from '@tanstack/react-query';
 import { GenreService } from '@services/Genre/Genre.service';
+import { TitleService } from '@services/Title/Title.service';
 
 export const Search = () => {
   const { data: newGenres } = useQuery({
     queryKey: ['genres'],
     queryFn: async () => {
       return GenreService.getAllGenres();
+    },
+    staleTime: 1000 * 60 * 60 // 60 minutes caching
+  });
+
+  const { data: newTitles } = useQuery({
+    queryKey: ['titles'],
+    queryFn: async () => {
+      return TitleService.getAllTitles();
     },
     staleTime: 1000 * 60 * 60 // 60 minutes caching
   });
@@ -36,19 +45,33 @@ export const Search = () => {
   const onLsChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
     setIsSearchLoading(true);
-
-    await axios
-      .get(`https://jsonplaceholder.typicode.com/albums`)
-      .then((res) => {
-        setPosts(res.data);
-        setIsSearchLoading(false);
-      })
-      .catch((error) => {
-        if (axios.isCancel(error) || error) {
-          console.log('Could not get');
-          setIsSearchLoading(false);
-        }
+    if (newTitles && newTitles?.length !== 0) {
+      const seriesNames: IJsonAlbum[] = newTitles.map(({ name, id }) => {
+        return {
+          id: +id,
+          title: name,
+          userId: 1
+        };
       });
+      setPosts(seriesNames);
+      setIsSearchLoading(false);
+    } else {
+      console.log('Could not get');
+      setIsSearchLoading(false);
+    }
+
+    // await axios
+    //   .get(`https://jsonplaceholder.typicode.com/albums`)
+    //   .then((res) => {
+    //     setPosts(res.data);
+    //     setIsSearchLoading(false);
+    //   })
+    //   .catch((error) => {
+    //     if (axios.isCancel(error) || error) {
+    //       console.log('Could not get');
+    //       setIsSearchLoading(false);
+    //     }
+    //   });
   };
 
   return (
@@ -67,7 +90,14 @@ export const Search = () => {
             ) : (
               searchRes.map((res) => {
                 return (
-                  <li key={res.id} className="search__list-item">
+                  <li
+                    key={res.id}
+                    onClick={() => {
+                      setSearch(res.title);
+                      setPosts([]);
+                    }}
+                    className="search__list-item"
+                  >
                     {res.title}
                   </li>
                 );
