@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Select } from '@components/Select/Select';
-import { ANIME_YEARS, FILTERS_MAX } from '../../constants';
+import { ANIME_YEARS, FILTERS_MAX } from '@/constants';
 import { Item } from 'react-aria-components';
 import { Paragraph } from '@components/Paragraph/Paragraph';
 
@@ -14,7 +14,7 @@ interface ExtraFiltersProps {
 
 export const ExtraFilters: React.FC<ExtraFiltersProps> = ({ togglePopup }) => {
   const [year, setYear] = React.useState<React.Key>(1);
-  const [isYearLoading, setIsYearLoading] = React.useState(false);
+  const [isYearLoading] = React.useState(false);
   const [grade, setGrade] = React.useState<[number, number]>([0, 10]);
   const [isSeries, setIsSeries] = React.useState(true);
 

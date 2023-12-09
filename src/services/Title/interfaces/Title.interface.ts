@@ -1,5 +1,6 @@
 import { Genre } from '@services/Genre/interfaces/Genre.interface';
 import { Keyword } from '@services/Keywords/interfaces/Keyword.interface';
+import { Player } from '@services/Players/interfaces/Player.interface';
 
 export interface Title {
   id: string;
@@ -7,6 +8,7 @@ export interface Title {
   imageLink: string;
   genres: Genre[];
   keywords: Keyword[];
+  players: Player[];
   description: string;
   country: string;
   year: number;

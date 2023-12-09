@@ -32,14 +32,9 @@
       border-radius: 6px;
 
       background-color: $red;
+
       p {
         line-height: normal;
-        &:nth-child(1) {
-          text-align: right;
-        }
-        &:nth-child(2) {
-          text-align: center;
-        }
       }
     }
   }
