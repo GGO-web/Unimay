@@ -1,6 +1,12 @@
+@import './components/listTitles.scss';
+
 .search-results {
   &__container {
     margin-top: 36px;
     position: relative;
+  }
+
+  .search-block__filters {
+    z-index: 10;
   }
 }

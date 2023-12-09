@@ -8,7 +8,7 @@ interface IListTitleProps {
 
 export const ListTitles: React.FC<IListTitleProps> = ({ items }) => {
   return (
-    <div>
+    <div className="list-titles">
       {items?.map((title) => (
         <CardItem
           imageLink={title.imageLink}
