@@ -12,6 +12,7 @@ import { Heading } from '@components/Heading/Heading';
 import { FreeMode } from 'swiper';
 import { useMediaQuery } from '@reactuses/core';
 import { Title } from '@services/Title/interfaces/Title.interface';
+import { CardItem } from '@components/CardItem/CardItem';
 
 export const Carousel = ({ items }: { items?: Title[] }) => {
   const sliderFreeModeMedia = useMediaQuery('(max-width: 768px)');
@@ -40,7 +41,14 @@ export const Carousel = ({ items }: { items?: Title[] }) => {
     >
       {items?.map((carouselItem) => (
         <SwiperSlide key={carouselItem.id} className="carousel__item">
-          <article
+          <CardItem
+            imageLink={carouselItem.imageLink}
+            year={carouselItem.year}
+            name={carouselItem.name}
+            description={carouselItem.description}
+            id={carouselItem.id}
+          />
+          {/* <article
             className="card flex flex-col flex-auto"
             style={{
               backgroundImage: `url(${carouselItem.imageLink})`
@@ -63,7 +71,7 @@ export const Carousel = ({ items }: { items?: Title[] }) => {
                 {carouselItem.description}
               </Paragraph>
             </div>
-          </article>
+          </article> */}
         </SwiperSlide>
       ))}
     </Swiper>

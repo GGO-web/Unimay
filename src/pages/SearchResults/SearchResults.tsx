@@ -1,11 +1,24 @@
 import React from 'react';
 
+import { Heading } from 'react-aria-components';
+
+import { ListTitles } from './components/ListTitles/ListTitles';
+
 import { Header } from '@components/Header/Header';
 import { Sidenav } from '@components/Navigation/Sidenav';
 import { Search } from '@components/Searchbar/Search';
 import { ExtraFilters } from '@components/Searchbar/ExtraFilters';
+import { useQuery } from '@tanstack/react-query';
+import { TitleService } from '@services/Title/Title.service';
 
 export const SearchResults = () => {
+  const { data: newTitles } = useQuery({
+    queryKey: ['titles'],
+    queryFn: async () => {
+      return TitleService.getAllTitles();
+    },
+    staleTime: 1000 * 60 * 60 // 60 minutes caching
+  });
   const [isOpenPopup, setIsOpenPopup] = React.useState<boolean>(false);
 
   const togglePopup = (open: boolean) => {
@@ -32,6 +45,9 @@ export const SearchResults = () => {
                 <ExtraFilters togglePopup={togglePopup} />
               </div>
             )}
+
+            <Heading>Результати пошуку... (12)</Heading>
+            <ListTitles items={newTitles} />
           </div>
         </main>
       </div>
