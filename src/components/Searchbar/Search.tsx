@@ -5,6 +5,7 @@ import { IJsonAlbum } from '@/types/album';
 import { useQuery } from '@tanstack/react-query';
 import { GenreService } from '@services/Genre/Genre.service';
 import { TitleService } from '@services/Title/Title.service';
+import { Link } from 'react-router-dom';
 
 export const Search = () => {
   const { data: newGenres } = useQuery({
@@ -52,23 +53,7 @@ export const Search = () => {
       });
       setPosts(seriesNames);
       setIsSearchLoading(false);
-    } else {
-      console.log('Could not get');
-      setIsSearchLoading(false);
     }
-
-    // await axios
-    //   .get(`https://jsonplaceholder.typicode.com/albums`)
-    //   .then((res) => {
-    //     setPosts(res.data);
-    //     setIsSearchLoading(false);
-    //   })
-    //   .catch((error) => {
-    //     if (axios.isCancel(error) || error) {
-    //       console.log('Could not get');
-    //       setIsSearchLoading(false);
-    //     }
-    //   });
   };
 
   return (
@@ -123,9 +108,11 @@ export const Search = () => {
         </Select>
       </div>
 
-      <button className="button-style search__button" type="button">
-        Пошук
-      </button>
+      <Link to={'/search'}>
+        <button className="button-style search__button" type="button">
+          Пошук
+        </button>
+      </Link>
     </div>
   );
 };
