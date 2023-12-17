@@ -1,0 +1,26 @@
+@import './components/listTitles.scss';
+
+.search-results {
+  &__container {
+    margin-top: 36px;
+    position: relative;
+  }
+
+  &__footer {
+    margin-top: 93px;
+    margin-bottom: 52px;
+    display: flex;
+    gap: 20px;
+  }
+
+  .search-block__filters {
+    z-index: 10;
+  }
+
+  @media (max-width: $tablet) {
+    &__footer {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}

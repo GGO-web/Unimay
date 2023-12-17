@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
-import axios from 'axios';
-
-import { Item } from 'react-aria-components';
+import { ListBoxItem } from 'react-aria-components';
 import { Select } from '@components/Select/Select';
-import { IJsonAlbum } from '@/types/album';
 import { useQuery } from '@tanstack/react-query';
 import { GenreService } from '@services/Genre/Genre.service';
+import { TitleService } from '@services/Title/Title.service';
+import { useNavigate } from 'react-router-dom';
+import { useQueryState } from '@hooks/useQueryState';
 
 export const Search = () => {
   const { data: newGenres } = useQuery({
@@ -17,38 +17,52 @@ export const Search = () => {
     staleTime: 1000 * 60 * 60 // 60 minutes caching
   });
 
-  const [posts, setPosts] = React.useState<IJsonAlbum[]>([]);
+  const [search, setSearch] = useQueryState('search', '');
+  const [genre, setGenre] = useQueryState('genre', '');
 
-  const [search, setSearch] = useState('');
-  const [isSearchLoading, setIsSearchLoading] = useState(false);
+  const selectedGenre = newGenres?.find((g) => g.name === genre)?.id || null;
 
-  const [genre, setGenre] = useState<React.Key>(1);
-  const [isGenreLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const filterSearch = search.toLowerCase() || '';
-
-  const searchRes = posts.filter((post) => {
-    const finalRes = post.title.toLowerCase();
-
-    return RegExp(filterSearch, 'gi').test(finalRes);
+  const { data: searchTitles, isLoading: isLoadingTitles } = useQuery({
+    queryKey: ['titles', search, genre],
+    queryFn: async () => {
+      return TitleService.getAllTitles({
+        search,
+        genres: genre || ''
+      });
+    },
+    staleTime: 1000 * 60 * 60 // 60 minutes caching
   });
 
-  const onLsChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-    setIsSearchLoading(true);
+  const [isGenreLoading] = useState(false);
+  const [showSearchResultsDropdown, setShowSearchResultsDropdown] =
+    useState(false);
 
-    await axios
-      .get(`https://jsonplaceholder.typicode.com/albums`)
-      .then((res) => {
-        setPosts(res.data);
-        setIsSearchLoading(false);
-      })
-      .catch((error) => {
-        if (axios.isCancel(error) || error) {
-          console.log('Could not get');
-          setIsSearchLoading(false);
-        }
-      });
+  const isSearchDisabled = isLoadingTitles || isGenreLoading;
+
+  const onSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+    setShowSearchResultsDropdown(true);
+  };
+
+  const onSelectionGenre = (selected: React.Key) => {
+    const genreItem = newGenres?.find((g) => g.id === selected)?.name || '';
+
+    if (genreItem === genre) {
+      setGenre('');
+    } else {
+      setGenre(genreItem);
+    }
+  };
+
+  const onSelectSearchResult = (searchResult: string) => {
+    setSearch(searchResult);
+    setShowSearchResultsDropdown(false);
+  };
+
+  const onClickSearch = () => {
+    navigate(`/search?search=${search}&genre=${genre || ''}`);
   };
 
   return (
@@ -56,19 +70,32 @@ export const Search = () => {
       <div className="search__input ">
         <input
           value={search}
-          onChange={(e) => onLsChange(e)}
+          onChange={onSearchChange}
+          onFocus={() => {
+            if (searchTitles && searchTitles.length > 0) {
+              setShowSearchResultsDropdown(true);
+            }
+          }}
+          onBlur={() =>
+            setTimeout(() => setShowSearchResultsDropdown(false), 100)
+          }
           type="text"
           placeholder="Почніть вводити назву..."
         />
-        {search.length > 0 && (
+
+        {showSearchResultsDropdown && (
           <ul className="search__list">
-            {isSearchLoading ? (
+            {isLoadingTitles ? (
               <li className="search__list-item">loading...</li>
             ) : (
-              searchRes.map((res) => {
+              searchTitles?.map((title) => {
                 return (
-                  <li key={res.id} className="search__list-item">
-                    {res.title}
+                  <li
+                    key={title.id}
+                    onClick={() => onSelectSearchResult(title.name)}
+                    className="search__list-item"
+                  >
+                    {title.name}
                   </li>
                 );
               })
@@ -81,24 +108,26 @@ export const Search = () => {
         <Select
           label="Виберіть епізод"
           items={newGenres}
-          selectedKey={genre}
+          selectedKey={selectedGenre}
           placeholder="Виберіть жанр"
           bgNone
           maxWidth={250}
           isLoading={isGenreLoading}
-          onSelectionChange={(selected) => {
-            setGenre(selected);
-          }}
+          onSelectionChange={onSelectionGenre}
         >
           {({ name, id }: { name: string; id: number }) => (
-            <Item textValue={name} id={id}>
+            <ListBoxItem textValue={name} id={id}>
               {name}
-            </Item>
+            </ListBoxItem>
           )}
         </Select>
       </div>
 
-      <button className="button-style search__button" type="button">
+      <button
+        className="button-style search__button"
+        disabled={isSearchDisabled}
+        onClick={onClickSearch}
+      >
         Пошук
       </button>
     </div>
