@@ -105,6 +105,7 @@ export const ROUTES = {
   TEAM: '/team',
   TITLE: '/title/:id',
   NEWS: '/news',
+  SEARCH: '/search',
   NOT_FOUND: '*',
   VIEW_TITLE_BY_ID: (id: string) => {
     return `/title/${id}`;

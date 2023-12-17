@@ -9,6 +9,7 @@ import { NotFound } from '@pages/NotFound/NotFound';
 import { Title } from '@pages/Title/Title';
 
 import { ROUTES } from './constants';
+import { SearchResults } from '@pages/SearchResults/SearchResults';
 
 export const App = () => {
   return (
@@ -18,6 +19,7 @@ export const App = () => {
         <Route path={ROUTES.TEAM} element={<Team />} /> {/* path="/team" */}
         <Route path={ROUTES.TITLE} element={<Title />} />
         <Route path={ROUTES.NEWS} element={<News />} />
+        <Route path={ROUTES.SEARCH} element={<SearchResults />} />
         <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
       </Routes>
     </div>
