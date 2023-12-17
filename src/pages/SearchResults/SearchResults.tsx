@@ -14,12 +14,18 @@ import { Paragraph } from '@components/Paragraph/Paragraph';
 import { NextSeasons } from '@pages/Title/components/NextSeasons/NextSeasons';
 import { Recommendations } from '@pages/Title/components/Recommendations/Recommendations';
 import { NEXT_ANIME, RECOMMENDATIONS_ANIME } from '@/constants';
+import { useSearchParams } from 'react-router-dom';
 
 export const SearchResults = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const { data: newTitles } = useQuery({
     queryKey: ['titles'],
     queryFn: async () => {
-      return TitleService.getAllTitles();
+      return TitleService.getAllTitles({
+        search: searchParams.get('search') || '',
+        genres: searchParams.get('genre') || ''
+      });
     },
     staleTime: 1000 * 60 * 60 // 60 minutes caching
   });
