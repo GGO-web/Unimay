@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Select } from '@components/Select/Select';
 import { ANIME_YEARS, FILTERS_MAX } from '@/constants';
-import { Item } from 'react-aria-components';
 import { Paragraph } from '@components/Paragraph/Paragraph';
 
 import { SliderIMDB } from '@components/SliderIMDB/SliderIMDB';
@@ -60,11 +59,7 @@ export const ExtraFilters: React.FC<ExtraFiltersProps> = ({ togglePopup }) => {
             setYear(selected);
           }}
         >
-          {(item) => (
-            <Item textValue={item.year.toString()} id={item.id}>
-              {item.year}
-            </Item>
-          )}
+          {(item) => <div key={item.id}>{item.year}</div>}
         </Select>
       </div>
 

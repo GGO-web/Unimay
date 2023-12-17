@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 
-import axios from 'axios';
-
-import { Item } from 'react-aria-components';
 import { Select } from '@components/Select/Select';
 import { IJsonAlbum } from '@/types/album';
 import { useQuery } from '@tanstack/react-query';
@@ -121,9 +118,7 @@ export const Search = () => {
           }}
         >
           {({ name, id }: { name: string; id: number }) => (
-            <Item textValue={name} id={id}>
-              {name}
-            </Item>
+            <div key={id}>{name}</div>
           )}
         </Select>
       </div>

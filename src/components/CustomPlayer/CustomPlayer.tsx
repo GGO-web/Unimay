@@ -4,7 +4,6 @@ import { fetchVideoPlayer } from '@helpers/fetchVideoPlayer';
 import { SavedPlayerInfo } from '@/interfaces/SavedPlayerInfo.interface';
 
 import { Select } from '@components/Select/Select';
-import { Item } from 'react-aria-components';
 
 export const CustomPlayer = ({ url }: { url?: string }) => {
   const [info, setInfo] = useState<SavedPlayerInfo>();
@@ -78,11 +77,7 @@ export const CustomPlayer = ({ url }: { url?: string }) => {
             setSeason(selected);
           }}
         >
-          {(item) => (
-            <Item textValue={item.season.toString()} id={item.season}>
-              Сезон {item.season}
-            </Item>
-          )}
+          {(item) => <div key={item.season}>Сезон {item.season}</div>}
         </Select>
 
         <Select
@@ -96,11 +91,7 @@ export const CustomPlayer = ({ url }: { url?: string }) => {
             setStartTime(0);
           }}
         >
-          {(item) => (
-            <Item textValue={item.episode.toString()} id={item.episode}>
-              Серія {item.episode}
-            </Item>
-          )}
+          {(item) => <div key={item.episode}>Серія {item.episode}</div>}
         </Select>
       </div>
 
