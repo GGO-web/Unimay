@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 
-import axios from 'axios';
-
 import { ListBoxItem } from 'react-aria-components';
 import { Select } from '@components/Select/Select';
-import { IJsonAlbum } from '@/types/album';
 import { useQuery } from '@tanstack/react-query';
 import { GenreService } from '@services/Genre/Genre.service';
 import { TitleService } from '@services/Title/Title.service';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const Search = () => {
   const { data: newGenres } = useQuery({
@@ -19,71 +16,48 @@ export const Search = () => {
     staleTime: 1000 * 60 * 60 // 60 minutes caching
   });
 
-  const { data: newTitles } = useQuery({
-    queryKey: ['titles'],
+  const [search, setSearch] = useState('');
+  const [genre, setGenre] = useState<React.Key>(1);
+
+  const navigate = useNavigate();
+
+  const { data: searchTitles, isLoading: isLoadingTitles } = useQuery({
+    queryKey: ['titles', search],
     queryFn: async () => {
-      return TitleService.getAllTitles();
+      return TitleService.getAllTitles({
+        search,
+        genres: newGenres?.find((g) => g.id === genre)?.name || ''
+      });
     },
     staleTime: 1000 * 60 * 60 // 60 minutes caching
   });
 
-  const [posts, setPosts] = React.useState<IJsonAlbum[]>([]);
-
-  const [search, setSearch] = useState('');
-  const [isSearchLoading, setIsSearchLoading] = useState(false);
-
-  const [genre, setGenre] = useState<React.Key>(1);
   const [isGenreLoading] = useState(false);
-
-  const filterSearch = search.toLowerCase() || '';
-
-  const searchRes = posts.filter((post) => {
-    const finalRes = post.title.toLowerCase();
-
-    return RegExp(filterSearch, 'gi').test(finalRes);
-  });
-
-  const onLsChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-    setIsSearchLoading(true);
-    if (newTitles && newTitles?.length !== 0) {
-      const seriesNames: IJsonAlbum[] = newTitles.map(({ name, id }) => {
-        return {
-          id: +id,
-          title: name,
-          userId: 1
-        };
-      });
-      setPosts(seriesNames);
-      setIsSearchLoading(false);
-    }
-  };
 
   return (
     <div className="search">
       <div className="search__input ">
         <input
           value={search}
-          onChange={(e) => onLsChange(e)}
+          onChange={(e) => setSearch(e.target.value)}
           type="text"
           placeholder="Почніть вводити назву..."
         />
         {search.length > 0 && (
           <ul className="search__list">
-            {isSearchLoading ? (
+            {isLoadingTitles ? (
               <li className="search__list-item">loading...</li>
             ) : (
-              searchRes.map((res) => {
+              searchTitles?.map((title) => {
                 return (
                   <li
-                    key={res.id}
+                    key={title.id}
                     onClick={() => {
-                      setSearch(res.title);
-                      setPosts([]);
+                      setSearch(title.name);
                     }}
                     className="search__list-item"
                   >
-                    {res.title}
+                    {title.name}
                   </li>
                 );
               })
@@ -113,11 +87,14 @@ export const Search = () => {
         </Select>
       </div>
 
-      <Link to={'/search'}>
-        <button className="button-style search__button" type="button">
-          Пошук
-        </button>
-      </Link>
+      <button
+        className="button-style search__button"
+        onClick={() => {
+          navigate(`/search?search=${search}&genre=${genre}`);
+        }}
+      >
+        Пошук
+      </button>
     </div>
   );
 };
