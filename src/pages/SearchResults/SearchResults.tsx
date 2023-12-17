@@ -17,17 +17,18 @@ import { NEXT_ANIME, RECOMMENDATIONS_ANIME } from '@/constants';
 import { useSearchParams } from 'react-router-dom';
 
 export const SearchResults = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const params = {
-    search: searchParams.get('search') || '',
-    genre: searchParams.get('genre') || ''
-  };
+  const [searchParams] = useSearchParams();
 
   const { data: newTitles, isLoading: isTitlesLoading } = useQuery({
-    queryKey: ['titles', ...Object.values(params)],
+    queryKey: ['titles', searchParams.get('search'), searchParams.get('genre')],
     queryFn: async () => {
-      return TitleService.getAllTitles({ ...params });
+      return TitleService.getAllTitles({
+        search: searchParams.get('search') || '',
+        genres:
+          searchParams.get('genre') !== 'null'
+            ? searchParams.get('genre') || ''
+            : ''
+      });
     },
     staleTime: 1000 * 60 * 60 // 60 minutes caching
   });
