@@ -4,6 +4,7 @@ import { fetchVideoPlayer } from '@helpers/fetchVideoPlayer';
 import { SavedPlayerInfo } from '@/interfaces/SavedPlayerInfo.interface';
 
 import { Select } from '@components/Select/Select';
+import { ListBoxItem } from 'react-aria-components';
 
 export const CustomPlayer = ({ url }: { url?: string }) => {
   const [info, setInfo] = useState<SavedPlayerInfo>();
@@ -77,7 +78,11 @@ export const CustomPlayer = ({ url }: { url?: string }) => {
             setSeason(selected);
           }}
         >
-          {(item) => <div key={item.season}>Сезон {item.season}</div>}
+          {(item) => (
+            <ListBoxItem textValue={item.season.toString()} id={item.season}>
+              Сезон {item.season}
+            </ListBoxItem>
+          )}
         </Select>
 
         <Select
@@ -91,7 +96,11 @@ export const CustomPlayer = ({ url }: { url?: string }) => {
             setStartTime(0);
           }}
         >
-          {(item) => <div key={item.episode}>Серія {item.episode}</div>}
+          {(item) => (
+            <ListBoxItem textValue={item.episode.toString()} id={item.episode}>
+              Серія {item.episode}
+            </ListBoxItem>
+          )}
         </Select>
       </div>
 
