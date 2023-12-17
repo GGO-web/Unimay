@@ -18,9 +18,7 @@ export const Search = () => {
   });
 
   const [search, setSearch] = useQueryState('search', '');
-  const [genre, setGenre] = useQueryState('genre', '');
-
-  const selectedGenre = newGenres?.find((g) => g.name === genre)?.id || null;
+  const [genre, setGenre] = useQueryState<number | null>('genre', null);
 
   const navigate = useNavigate();
 
@@ -28,8 +26,8 @@ export const Search = () => {
     queryKey: ['titles', search, genre],
     queryFn: async () => {
       return TitleService.getAllTitles({
-        search,
-        genres: genre || ''
+        search: search || '',
+        genres: genre ? genre.toString() : ''
       });
     },
     staleTime: 1000 * 60 * 60 // 60 minutes caching
@@ -47,12 +45,10 @@ export const Search = () => {
   };
 
   const onSelectionGenre = (selected: React.Key) => {
-    const genreItem = newGenres?.find((g) => g.id === selected)?.name || '';
-
-    if (genreItem === genre) {
-      setGenre('');
+    if (selected === genre) {
+      setGenre(null);
     } else {
-      setGenre(genreItem);
+      setGenre(Number(selected));
     }
   };
 
@@ -108,7 +104,7 @@ export const Search = () => {
         <Select
           label="Виберіть епізод"
           items={newGenres}
-          selectedKey={selectedGenre}
+          selectedKey={genre}
           placeholder="Виберіть жанр"
           bgNone
           maxWidth={250}

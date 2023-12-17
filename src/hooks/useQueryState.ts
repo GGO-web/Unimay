@@ -19,7 +19,7 @@ export const useQueryState = <T = any>(
 
     setSearchParams({
       ...Object.fromEntries(searchParams.entries()),
-      [key]: String(queryValue)
+      [key]: String(queryValue || '')
     });
   }, [state]);
 
