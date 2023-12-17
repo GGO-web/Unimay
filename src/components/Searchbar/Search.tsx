@@ -1,15 +1,14 @@
-import React, { Key, useEffect, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 import { ListBoxItem } from 'react-aria-components';
 import { Select } from '@components/Select/Select';
 import { useQuery } from '@tanstack/react-query';
 import { GenreService } from '@services/Genre/Genre.service';
 import { TitleService } from '@services/Title/Title.service';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useQueryState } from '@hooks/useQueryState';
 
 export const Search = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
   const { data: newGenres } = useQuery({
     queryKey: ['genres'],
     queryFn: async () => {
@@ -18,10 +17,10 @@ export const Search = () => {
     staleTime: 1000 * 60 * 60 // 60 minutes caching
   });
 
-  const [search, setSearch] = useState(searchParams.get('search') || '');
-  const [genre, setGenre] = useState<React.Key>(1);
+  const [search, setSearch] = useQueryState('search', '');
+  const [genre, setGenre] = useQueryState('genre', '');
 
-  const genreItem = newGenres?.find((g) => g.id === genre);
+  const selectedGenre = newGenres?.find((g) => g.name === genre)?.id || null;
 
   const navigate = useNavigate();
 
@@ -30,44 +29,61 @@ export const Search = () => {
     queryFn: async () => {
       return TitleService.getAllTitles({
         search,
-        genres: genreItem?.name || ''
+        genres: genre || ''
       });
     },
     staleTime: 1000 * 60 * 60 // 60 minutes caching
   });
 
   const [isGenreLoading] = useState(false);
+  const [showSearchResultsDropdown, setShowSearchResultsDropdown] =
+    useState(false);
 
-  const isSearchDisabled = isLoadingTitles || isGenreLoading || !genre;
+  const isSearchDisabled = isLoadingTitles || isGenreLoading;
 
-  useEffect(() => {
-    if (!newGenres || newGenres.length === 0) {
-      return;
+  const onSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+    setShowSearchResultsDropdown(true);
+  };
+
+  const onSelectionGenre = (selected: React.Key) => {
+    const genreItem = newGenres?.find((g) => g.id === selected)?.name || '';
+
+    if (genreItem === genre) {
+      setGenre('');
+    } else {
+      setGenre(genreItem);
     }
+  };
 
-    const genreIndex = newGenres?.find(
-      (g) => g.name === searchParams.get('genre') || ''
-    )?.id as Key;
+  const onSelectSearchResult = (searchResult: string) => {
+    setSearch(searchResult);
+    setShowSearchResultsDropdown(false);
+  };
 
-    setGenre(genreIndex);
-  }, [newGenres]);
+  const onClickSearch = () => {
+    navigate(`/search?search=${search}&genre=${genre || ''}`);
+  };
 
   return (
     <div className="search">
       <div className="search__input ">
         <input
           value={search}
-          onChange={(e) => {
-            setSearch(e.target.value);
-            setSearchParams({
-              ...Object.fromEntries(searchParams.entries()),
-              search: e.target.value
-            });
+          onChange={onSearchChange}
+          onFocus={() => {
+            if (searchTitles && searchTitles.length > 0) {
+              setShowSearchResultsDropdown(true);
+            }
           }}
+          onBlur={() =>
+            setTimeout(() => setShowSearchResultsDropdown(false), 100)
+          }
           type="text"
           placeholder="Почніть вводити назву..."
         />
-        {search.length > 0 && (
+
+        {showSearchResultsDropdown && (
           <ul className="search__list">
             {isLoadingTitles ? (
               <li className="search__list-item">loading...</li>
@@ -76,9 +92,7 @@ export const Search = () => {
                 return (
                   <li
                     key={title.id}
-                    onClick={() => {
-                      setSearch(title.name);
-                    }}
+                    onClick={() => onSelectSearchResult(title.name)}
                     className="search__list-item"
                   >
                     {title.name}
@@ -94,18 +108,12 @@ export const Search = () => {
         <Select
           label="Виберіть епізод"
           items={newGenres}
-          selectedKey={genre}
+          selectedKey={selectedGenre}
           placeholder="Виберіть жанр"
           bgNone
           maxWidth={250}
           isLoading={isGenreLoading}
-          onSelectionChange={(selected) => {
-            setGenre(selected);
-            setSearchParams({
-              ...Object.fromEntries(searchParams.entries()),
-              genre: newGenres?.find((g) => g.id === selected)?.name || ''
-            });
-          }}
+          onSelectionChange={onSelectionGenre}
         >
           {({ name, id }: { name: string; id: number }) => (
             <ListBoxItem textValue={name} id={id}>
@@ -118,9 +126,7 @@ export const Search = () => {
       <button
         className="button-style search__button"
         disabled={isSearchDisabled}
-        onClick={() => {
-          navigate(`/search?search=${search}&genre=${genreItem?.name || ''}`);
-        }}
+        onClick={onClickSearch}
       >
         Пошук
       </button>

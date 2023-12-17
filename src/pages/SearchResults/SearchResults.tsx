@@ -19,16 +19,19 @@ import { useSearchParams } from 'react-router-dom';
 export const SearchResults = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const { data: newTitles } = useQuery({
-    queryKey: ['titles'],
+  const params = {
+    search: searchParams.get('search') || '',
+    genre: searchParams.get('genre') || ''
+  };
+
+  const { data: newTitles, isLoading: isTitlesLoading } = useQuery({
+    queryKey: ['titles', ...Object.values(params)],
     queryFn: async () => {
-      return TitleService.getAllTitles({
-        search: searchParams.get('search') || '',
-        genres: searchParams.get('genre') || ''
-      });
+      return TitleService.getAllTitles({ ...params });
     },
     staleTime: 1000 * 60 * 60 // 60 minutes caching
   });
+
   const [isOpenPopup, setIsOpenPopup] = React.useState<boolean>(false);
 
   const togglePopup = (open: boolean) => {
@@ -56,7 +59,13 @@ export const SearchResults = () => {
               </div>
             )}
 
-            <Heading className="mb-[67px]">Результати пошуку... (12)</Heading>
+            <Heading className="mb-[67px]">
+              {isTitlesLoading
+                ? 'Йде пошук...'
+                : newTitles?.length === 0
+                ? 'Не знайдено нічого для цього запиту'
+                : `Результати пошуку... (${newTitles?.length})`}
+            </Heading>
           </div>
           <div className="container">
             <ListTitles items={newTitles} />
