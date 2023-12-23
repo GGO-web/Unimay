@@ -35,13 +35,15 @@ export const Header = () => {
           <nav className="menu__body">
             <ul className="menu__list list-reset">
               {navigationItems.map((navItem) => {
-                return (
-                  <li key={navItem.id} className="menu__item">
-                    <Link to={navItem.href} className="menu__link">
-                      {navItem.text}
-                    </Link>
-                  </li>
-                );
+                if (navItem.text !== 'Новини') {
+                  return (
+                    <li key={navItem.id} className="menu__item">
+                      <Link to={navItem.href} className="menu__link">
+                        {navItem.text}
+                      </Link>
+                    </li>
+                  );
+                }
               })}
             </ul>
 
