@@ -1,10 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import { navigationItems } from '../../constants';
 
 export const Header = () => {
   const iconMenu = useRef<HTMLButtonElement>(null);
+  const [isVisibleBtnsAuth, setIsVisibleBtnsAuth] = useState<boolean>(false);
 
   function menuToggle() {
     if (iconMenu.current?.getAttribute('aria-expanded') === 'true') {
@@ -44,18 +45,20 @@ export const Header = () => {
               })}
             </ul>
 
-            <div className="button-group">
-              <Link to="/login" className="button-style">
-                Вхід
-              </Link>
+            {isVisibleBtnsAuth && (
+              <div className="button-group">
+                <Link to="/login" className="button-style">
+                  Вхід
+                </Link>
 
-              <Link
-                to="/registration"
-                className="button-style button-style_stroke"
-              >
-                Реєстрація
-              </Link>
-            </div>
+                <Link
+                  to="/registration"
+                  className="button-style button-style_stroke"
+                >
+                  Реєстрація
+                </Link>
+              </div>
+            )}
           </nav>
         </div>
       </div>
