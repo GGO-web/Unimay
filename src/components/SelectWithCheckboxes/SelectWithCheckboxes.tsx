@@ -24,6 +24,7 @@ export const SelectWithCheckboxes: React.FC<SelectWithCheckboxesProps> = ({
       defaultValue={[]}
       isMulti
       name="genre"
+      value={selectOptions}
       options={items?.map((item) => ({
         value: item.id,
         label: item.name,

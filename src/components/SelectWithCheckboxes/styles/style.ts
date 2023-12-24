@@ -47,6 +47,20 @@ export const colourStyles: StylesConfig<any, true> = {
       backgroundColor: '#df4c4c'
     };
   },
+
+  valueContainer: (styles) => {
+    return {
+      ...styles,
+      flexWrap: 'nowrap',
+      overflow: 'auto',
+      width: 'auto',
+
+      '& > div:not(:nth-last-child(-n + 4))': {
+        display: 'none'
+      }
+    };
+  },
+
   multiValueLabel: (styles, { data }) => ({
     ...styles,
     color: data.color
