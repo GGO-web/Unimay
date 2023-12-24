@@ -36,7 +36,7 @@ export const SelectWithCheckboxes: React.FC<SelectWithCheckboxesProps> = ({
       classNamePrefix="select"
       styles={colourStyles}
       placeholder="Виберіть жанр..."
-      noOptionsMessage={() => 'Не має такого жанра'}
+      noOptionsMessage={() => 'Немає такого жанра'}
     />
   );
 };

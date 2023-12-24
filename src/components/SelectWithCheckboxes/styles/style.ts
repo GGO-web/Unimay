@@ -61,5 +61,13 @@ export const colourStyles: StylesConfig<any, true> = {
   }),
   menu: (styles) => {
     return { ...styles, backgroundColor: '#1d2d44' };
+  },
+
+  clearIndicator: (styles) => {
+    return { ...styles, cursor: 'pointer' };
+  },
+
+  dropdownIndicator: (styles) => {
+    return { ...styles, cursor: 'pointer' };
   }
 };
