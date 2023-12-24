@@ -35,7 +35,7 @@ export const Header = () => {
           <nav className="menu__body">
             <ul className="menu__list list-reset">
               {navigationItems.map((navItem) => {
-                if (navItem.text !== 'Новини' && navItem.text !== 'Послуги') {
+                if (navItem.text !== 'Новини') {
                   return (
                     <li key={navItem.id} className="menu__item">
                       <Link to={navItem.href} className="menu__link">
