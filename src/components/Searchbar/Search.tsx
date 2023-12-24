@@ -7,6 +7,7 @@ import { GenreService } from '@services/Genre/Genre.service';
 import { TitleService } from '@services/Title/Title.service';
 import { useNavigate } from 'react-router-dom';
 import { useQueryState } from '@hooks/useQueryState';
+import { SelectWithCheckboxes } from '@components/SelectWithCheckboxes/SelectWithCheckboxes';
 
 export const Search = () => {
   const { data: newGenres } = useQuery({
@@ -101,22 +102,7 @@ export const Search = () => {
       </div>
 
       <div className="search__select">
-        <Select
-          label="Виберіть епізод"
-          items={newGenres}
-          selectedKey={genre}
-          placeholder="Виберіть жанр"
-          bgNone
-          maxWidth={250}
-          isLoading={isGenreLoading}
-          onSelectionChange={onSelectionGenre}
-        >
-          {({ name, id }: { name: string; id: number }) => (
-            <ListBoxItem textValue={name} id={id}>
-              {name}
-            </ListBoxItem>
-          )}
-        </Select>
+        <SelectWithCheckboxes items={newGenres} />
       </div>
 
       <button

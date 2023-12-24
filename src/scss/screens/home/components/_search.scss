@@ -27,8 +27,9 @@
 .search {
   padding: 20px;
   display: flex;
+  align-items: center;
   color: $white;
-  overflow: hidden;
+  // overflow: hidden;
 
   background-color: black;
 

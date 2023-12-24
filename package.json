@@ -46,6 +46,7 @@
     "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
+    "react-select": "^5.8.0",
     "react-simple-star-rating": "^5.1.7",
     "swiper": "^9.0.5",
     "uuid": "^9.0.0",
