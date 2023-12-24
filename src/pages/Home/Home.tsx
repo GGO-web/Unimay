@@ -14,6 +14,7 @@ import { TeamBlock } from './components/TeamBlock/TeamBlock';
 import { useQuery } from '@tanstack/react-query';
 import { TitleService } from '@services/Title/Title.service';
 
+
 export function Home() {
   const { data: newTitles } = useQuery({
     queryKey: ['titles'],
