@@ -55,8 +55,10 @@ export const colourStyles: StylesConfig<any, true> = {
       overflow: 'auto',
       width: 'auto',
 
-      '& > div:not(:nth-last-child(-n + 4))': {
-        display: 'none'
+      '& > div': {
+        width: 'auto !important',
+        overflow: 'unset !important',
+        'white-space': 'unset !important'
       }
     };
   },
