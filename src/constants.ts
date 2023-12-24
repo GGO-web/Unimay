@@ -106,6 +106,7 @@ export const ROUTES = {
   TITLE: '/title/:id',
   NEWS: '/news',
   SEARCH: '/search',
+  SERVICE: '/service',
   NOT_FOUND: '*',
   VIEW_TITLE_BY_ID: (id: string) => {
     return `/title/${id}`;
@@ -131,7 +132,7 @@ export const navigationItems: NavigationItem[] = [
   },
   {
     id: v4(),
-    href: '#',
+    href: ROUTES.SERVICE,
     text: 'Послуги'
   },
   {
@@ -146,6 +147,15 @@ export const navigationItems: NavigationItem[] = [
   }
 ];
 
+export const SERVICE_BREADCRUMBS = [
+  {
+    name: 'Головна',
+    link: ROUTES.HOME
+  },
+  {
+    name: 'Послуги'
+  }
+];
 export const TEAM_BREADCRUMBS = [
   {
     name: 'Головна',
