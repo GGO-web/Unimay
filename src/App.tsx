@@ -10,6 +10,7 @@ import { Title } from '@pages/Title/Title';
 
 import { ROUTES } from './constants';
 import { SearchResults } from '@pages/SearchResults/SearchResults';
+import { Service } from '@pages/Service/Service';
 
 export const App = () => {
   return (
@@ -21,6 +22,7 @@ export const App = () => {
         <Route path={ROUTES.NEWS} element={<News />} />
         <Route path={ROUTES.SEARCH} element={<SearchResults />} />
         <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
+        <Route path={ROUTES.SERVICE} element={<Service />} />
       </Routes>
     </div>
   );
